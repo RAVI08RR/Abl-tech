@@ -236,16 +236,22 @@ export function Header({ navigation }: HeaderProps) {
           </div>
         </div>
 
-        {/* ─── Premium Full-Screen Mobile Menu ─── */}
+      </header>
+
+      {/* Spacer */}
+      <div className="h-16 lg:h-20" aria-hidden="true" />
+
+      {/* ─── Premium Full-Screen Mobile Menu (outside header to avoid z-index clipping) ─── */}
+      <div
+        id="mobile-menu"
+        className="lg:hidden"
+        aria-hidden={!isMobileOpen}
+      >
         <div
-          id="mobile-menu"
           className={cn(
-            'lg:hidden fixed inset-0 top-16 z-40 transition-all duration-300 ease-in-out',
-            isMobileOpen
-              ? 'opacity-100 translate-x-0 pointer-events-auto'
-              : 'opacity-0 translate-x-full pointer-events-none'
+            'fixed inset-0 top-16 z-[9999] transition-transform duration-300 ease-in-out',
+            isMobileOpen ? 'translate-x-0' : 'translate-x-full'
           )}
-          aria-hidden={!isMobileOpen}
         >
           {/* Dark Gradient Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#0D0D1A] via-[#111827] to-[#0D0D1A]" />
@@ -368,10 +374,7 @@ export function Header({ navigation }: HeaderProps) {
             </div>
           </div>
         </div>
-      </header>
-
-      {/* Spacer */}
-      <div className="h-16 lg:h-20" aria-hidden="true" />
+      </div>
     </>
   )
 }

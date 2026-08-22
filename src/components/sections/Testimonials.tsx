@@ -1,10 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import { useState, useEffect, useCallback } from 'react'
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import Image from 'next/image'
+import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import type { Testimonial } from '@/types'
 
 interface TestimonialsProps {
@@ -55,6 +54,13 @@ const defaultTestimonials: Testimonial[] = [
   },
 ]
 
+const avatarGrads = [
+  ['#E3164F', '#FF6B9D'],
+  ['#008BCB', '#00C4FF'],
+  ['#7C3AED', '#A78BFA'],
+  ['#059669', '#34D399'],
+]
+
 export function Testimonials({ heading, testimonials }: TestimonialsProps) {
   const [current, setCurrent] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
@@ -71,48 +77,109 @@ export function Testimonials({ heading, testimonials }: TestimonialsProps) {
 
   useEffect(() => {
     if (!isAutoPlaying) return
-    const timer = setInterval(next, 5000)
+    const timer = setInterval(next, 5500)
     return () => clearInterval(timer)
   }, [isAutoPlaying, next])
 
   const testimonial = displayTestimonials[current]
+  const [g1, g2] = avatarGrads[current % avatarGrads.length]
 
   return (
-    <section className="section-padding bg-white" aria-label="Client testimonials">
-      <Container>
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-14">
-          <SectionHeading
-            eyebrow="Client Stories"
-            title={displayHeading}
-          />
+    <section
+      className="relative section-padding overflow-hidden"
+      style={{ background: 'linear-gradient(160deg, #060D1A 0%, #0A1628 60%, #0D0520 100%)' }}
+      aria-label="Client testimonials"
+    >
+      {/* Dot grid */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
+        }}
+      />
+      {/* Glow */}
+      <div
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] blur-[120px]"
+        aria-hidden="true"
+        style={{ background: 'radial-gradient(ellipse, rgba(0,139,203,0.08) 0%, transparent 70%)' }}
+      />
+      {/* Top accent line */}
+      <div
+        className="pointer-events-none absolute top-0 left-0 right-0 h-px"
+        aria-hidden="true"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(227,22,79,0.4), rgba(0,139,203,0.4), transparent)' }}
+      />
+
+      <Container className="relative z-10">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+          <div>
+            <div className="inline-flex items-center gap-2 mb-4">
+              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #E3164F)' }} />
+              <span
+                className="text-xs font-bold tracking-[0.18em] uppercase"
+                style={{
+                  background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Client Stories
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-white">
+              {displayHeading}
+            </h2>
+          </div>
 
           {/* Nav arrows */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => { prev(); setIsAutoPlaying(false) }}
-              className="w-11 h-11 rounded-full border-2 border-gray-200 hover:border-[#E3164F] hover:text-[#E3164F] flex items-center justify-center transition-all duration-200"
+              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#E3164F50'; e.currentTarget.style.background = 'rgba(227,22,79,0.12)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)' }}
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+              <ChevronLeft className="w-5 h-5 text-white" aria-hidden="true" />
             </button>
             <button
               onClick={() => { next(); setIsAutoPlaying(false) }}
-              className="w-11 h-11 rounded-full border-2 border-gray-200 hover:border-[#E3164F] hover:text-[#E3164F] flex items-center justify-center transition-all duration-200"
+              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#E3164F50'; e.currentTarget.style.background = 'rgba(227,22,79,0.12)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)' }}
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-5 h-5" aria-hidden="true" />
+              <ChevronRight className="w-5 h-5 text-white" aria-hidden="true" />
             </button>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-start">
-          {/* Main testimonial */}
+        <div className="grid lg:grid-cols-5 gap-8 items-start">
+          {/* Main testimonial card */}
           <div className="lg:col-span-3">
             <div
-              className="testimonial-card relative bg-[#F7F8FA] rounded-3xl p-10 border border-gray-100"
+              className="relative rounded-3xl p-8 lg:p-10 transition-all duration-500"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.10)',
+                backdropFilter: 'blur(10px)',
+              }}
               role="article"
               aria-label={`Testimonial from ${testimonial.clientName}`}
             >
+              {/* Large quote icon */}
+              <Quote
+                className="absolute top-6 right-8 w-16 h-16 opacity-[0.06]"
+                style={{ color: '#E3164F' }}
+                aria-hidden="true"
+              />
+
               {/* Stars */}
               <div className="flex gap-1 mb-6" aria-label={`Rating: ${testimonial.rating} out of 5`}>
                 {[...Array(testimonial.rating || 5)].map((_, i) => (
@@ -121,14 +188,16 @@ export function Testimonials({ heading, testimonials }: TestimonialsProps) {
               </div>
 
               <blockquote>
-                <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                <p className="text-lg text-gray-200 leading-relaxed font-medium">
                   &ldquo;{testimonial.testimonial}&rdquo;
                 </p>
               </blockquote>
 
               <footer className="mt-8 flex items-center gap-4">
-                {/* Avatar */}
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#E3164F] to-[#008BCB] flex items-center justify-center text-white font-bold text-lg overflow-hidden shrink-0">
+                <div
+                  className="w-13 h-13 rounded-full flex items-center justify-center text-white font-bold text-lg overflow-hidden shrink-0 w-12 h-12"
+                  style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
+                >
                   {testimonial.photo?.asset?.url ? (
                     <Image
                       src={testimonial.photo.asset.url}
@@ -142,60 +211,98 @@ export function Testimonials({ heading, testimonials }: TestimonialsProps) {
                   )}
                 </div>
                 <div>
-                  <p className="font-bold text-[#111111]">{testimonial.clientName}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="font-bold text-white">{testimonial.clientName}</p>
+                  <p className="text-sm text-gray-400">
                     {testimonial.designation}{testimonial.company && `, ${testimonial.company}`}
                   </p>
                 </div>
+
+                {/* Accent dot in footer */}
+                <div
+                  className="ml-auto w-2 h-2 rounded-full shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
+                  aria-hidden="true"
+                />
               </footer>
             </div>
 
-            {/* Pagination dots */}
+            {/* Dots */}
             <div className="flex items-center justify-center gap-2 mt-6" role="tablist" aria-label="Testimonial navigation">
-              {displayTestimonials.map((_, i) => (
-                <button
-                  key={i}
-                  role="tab"
-                  aria-selected={i === current}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                  onClick={() => { setCurrent(i); setIsAutoPlaying(false) }}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === current ? 'w-8 bg-[#E3164F]' : 'w-2 bg-gray-300'
-                  }`}
-                />
-              ))}
+              {displayTestimonials.map((_, i) => {
+                const [dg1] = avatarGrads[i % avatarGrads.length]
+                return (
+                  <button
+                    key={i}
+                    role="tab"
+                    aria-selected={i === current}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                    onClick={() => { setCurrent(i); setIsAutoPlaying(false) }}
+                    className="h-2 rounded-full transition-all duration-300 cursor-pointer"
+                    style={{
+                      width: i === current ? '32px' : '8px',
+                      background: i === current ? dg1 : 'rgba(255,255,255,0.2)',
+                    }}
+                  />
+                )
+              })}
             </div>
           </div>
 
-          {/* Other testimonials preview */}
+          {/* Preview cards */}
           <div className="lg:col-span-2 space-y-4">
             {displayTestimonials
               .filter((_, i) => i !== current)
               .slice(0, 2)
-              .map((t) => (
-                <button
-                  key={t._id}
-                  onClick={() => { setCurrent(displayTestimonials.indexOf(t)); setIsAutoPlaying(false) }}
-                  className="w-full text-left p-5 rounded-2xl bg-[#F7F8FA] border border-gray-100 hover:border-[#E3164F]/20 hover:shadow-md transition-all duration-200 group"
-                  aria-label={`Read testimonial from ${t.clientName}`}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 group-hover:from-[#E3164F]/20 group-hover:to-[#008BCB]/20 flex items-center justify-center text-sm font-bold text-gray-600 transition-all duration-200">
-                      {t.clientName[0]}
+              .map((t) => {
+                const idx = displayTestimonials.indexOf(t)
+                const [pg1] = avatarGrads[idx % avatarGrads.length]
+                return (
+                  <button
+                    key={t._id}
+                    onClick={() => { setCurrent(idx); setIsAutoPlaying(false) }}
+                    className="w-full text-left rounded-2xl p-5 transition-all duration-200 cursor-pointer group"
+                    style={{
+                      background: 'rgba(255,255,255,0.04)',
+                      border: '1px solid rgba(255,255,255,0.07)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.07)'
+                      e.currentTarget.style.borderColor = `${pg1}30`
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
+                    }}
+                    aria-label={`Read testimonial from ${t.clientName}`}
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
+                        style={{ background: `linear-gradient(135deg, ${pg1}, ${avatarGrads[idx % avatarGrads.length][1]})` }}
+                      >
+                        {t.clientName[0]}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-100">{t.clientName}</p>
+                        <p className="text-xs text-gray-500">{t.company}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[#111111]">{t.clientName}</p>
-                      <p className="text-xs text-gray-400">{t.company}</p>
-                    </div>
-                  </div>
-                  <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
-                    &ldquo;{t.testimonial}&rdquo;
-                  </p>
-                </button>
-              ))}
+                    <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                      &ldquo;{t.testimonial}&rdquo;
+                    </p>
+                  </button>
+                )
+              })}
           </div>
         </div>
       </Container>
+
+      {/* Bottom accent line */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-px"
+        aria-hidden="true"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(0,139,203,0.4), rgba(227,22,79,0.4), transparent)' }}
+      />
     </section>
   )
 }

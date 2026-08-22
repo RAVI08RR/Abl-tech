@@ -1,6 +1,9 @@
 import { type SchemaTypeDefinition } from 'sanity'
 import { siteSettings } from './siteSettings'
-import { navigation, footer, homePage } from './settings'
+import {
+  navigation, footer, homePage, aboutPage, contactPage,
+  servicesPage, industriesPage, workPage, insightsPage,
+} from './settings'
 import { service, industry, caseStudy } from './content'
 import {
   post, category, author, client, testimonial, teamMember,
@@ -13,6 +16,12 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     navigation,
     footer,
     homePage,
+    aboutPage,
+    contactPage,
+    servicesPage,
+    industriesPage,
+    workPage,
+    insightsPage,
     service,
     industry,
     caseStudy,
@@ -30,3 +39,4 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     contactSubmission,
   ],
 }
+

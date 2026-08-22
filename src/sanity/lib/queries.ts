@@ -48,7 +48,7 @@ export async function getFooter() {
 }
 
 // =============================================
-// HOMEPAGE
+// PAGE SETTINGS
 // =============================================
 export async function getHomePage() {
   return client.fetch(
@@ -58,7 +58,56 @@ export async function getHomePage() {
   );
 }
 
+export async function getAboutPage() {
+  return client.fetch(
+    `*[_type == "aboutPage"][0]`,
+    {},
+    fetchOptions
+  );
+}
+
+export async function getContactPage() {
+  return client.fetch(
+    `*[_type == "contactPage"][0]`,
+    {},
+    fetchOptions
+  );
+}
+
+export async function getServicesPage() {
+  return client.fetch(
+    `*[_type == "servicesPage"][0]`,
+    {},
+    fetchOptions
+  );
+}
+
+export async function getIndustriesPage() {
+  return client.fetch(
+    `*[_type == "industriesPage"][0]`,
+    {},
+    fetchOptions
+  );
+}
+
+export async function getWorkPage() {
+  return client.fetch(
+    `*[_type == "workPage"][0]`,
+    {},
+    fetchOptions
+  );
+}
+
+export async function getInsightsPage() {
+  return client.fetch(
+    `*[_type == "insightsPage"][0]`,
+    {},
+    fetchOptions
+  );
+}
+
 // =============================================
+
 // SERVICES
 // =============================================
 export async function getServices() {

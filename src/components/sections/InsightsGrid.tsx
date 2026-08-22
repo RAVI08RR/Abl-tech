@@ -1,10 +1,10 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Clock, User } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
-import { formatDate } from '@/lib/utils'
 import type { Post } from '@/types'
 
 interface InsightsGridProps {
@@ -49,98 +49,170 @@ const defaultPosts: Post[] = [
   },
 ]
 
+const cardAccents = [
+  { from: '#E3164F', to: '#FF6B9D' },
+  { from: '#008BCB', to: '#00C4FF' },
+  { from: '#7C3AED', to: '#A78BFA' },
+]
+
 export function InsightsGrid({ heading, description, posts }: InsightsGridProps) {
   const displayPosts = posts?.length ? posts : defaultPosts
   const displayHeading = heading || 'Latest Insights & Perspectives'
   const displayDescription = description || 'Practical technology thinking from our engineers, architects, and consultants.'
 
   return (
-    <section className="section-padding bg-[#F7F8FA]" aria-label="Latest insights">
-      <Container>
+    <section className="relative section-padding overflow-hidden bg-white" aria-label="Latest insights">
+      {/* Background dot grid pattern */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+        }}
+      />
+
+      <Container className="relative z-10">
+        {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
-          <SectionHeading
-            eyebrow="Insights"
-            title={displayHeading}
-            description={displayDescription}
-          />
+          <div className="max-w-2xl">
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 mb-4">
+              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #E3164F)' }} />
+              <span
+                className="text-xs font-bold tracking-[0.18em] uppercase"
+                style={{
+                  background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Insights
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-[#111111]">
+              {displayHeading}
+            </h2>
+            <p className="mt-4 text-lg text-gray-500 leading-relaxed">{displayDescription}</p>
+          </div>
           <Button href="/insights" variant="outline" className="shrink-0 self-start lg:self-auto">
             All Insights <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Button>
         </div>
 
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {displayPosts.slice(0, 3).map((post, index) => (
-            <article key={post._id} className="group">
-              <Link
-                href={`/insights/${post.slug.current}`}
-                className="block bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#E3164F]/20 hover:shadow-xl transition-all duration-300 h-full"
-                aria-label={`Read: ${post.title}`}
-              >
-                {/* Image */}
-                <div className="blog-image-wrapper aspect-[16/9] relative bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-                  {post.featuredImage?.asset?.url ? (
-                    <Image
-                      src={post.featuredImage.asset.url}
-                      alt={post.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div
-                      className="w-full h-full flex items-center justify-center"
-                      style={{
-                        background: index === 0
-                          ? 'linear-gradient(135deg, #1A0A1A 0%, #E3164F20 100%)'
-                          : index === 1
-                          ? 'linear-gradient(135deg, #0A1220 0%, #008BCB20 100%)'
-                          : 'linear-gradient(135deg, #0A1A0A 0%, #10B98120 100%)',
-                      }}
-                      aria-hidden="true"
-                    >
-                      <span className="text-4xl opacity-30">
-                        {index === 0 ? '🤖' : index === 1 ? '⚙️' : '🔄'}
-                      </span>
-                    </div>
-                  )}
-                </div>
+          {displayPosts.slice(0, 3).map((post, index) => {
+            const accent = cardAccents[index % cardAccents.length]
 
-                <div className="p-6">
-                  {/* Category */}
-                  {post.category && (
-                    <span className="inline-block badge badge-primary mb-3">
-                      {post.category.title}
-                    </span>
-                  )}
+            return (
+              <article key={post._id} className="group flex flex-col h-full">
+                <Link
+                  href={`/insights/${post.slug.current}`}
+                  className="flex flex-col h-full bg-white rounded-3xl overflow-hidden transition-all duration-300 relative"
+                  style={{
+                    border: '1px solid rgba(0,0,0,0.07)',
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget
+                    el.style.borderColor = `${accent.from}30`
+                    el.style.boxShadow = `0 20px 45px ${accent.from}15, 0 4px 12px rgba(0,0,0,0.05)`
+                    el.style.transform = 'translateY(-4px)'
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget
+                    el.style.borderColor = 'rgba(0,0,0,0.07)'
+                    el.style.boxShadow = '0 2px 10px rgba(0,0,0,0.03)'
+                    el.style.transform = 'translateY(0)'
+                  }}
+                  aria-label={`Read: ${post.title}`}
+                >
+                  {/* Top accent highlight */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[3px] z-20"
+                    style={{ background: `linear-gradient(90deg, ${accent.from}, ${accent.to})` }}
+                    aria-hidden="true"
+                  />
 
-                  {/* Title */}
-                  <h3 className="text-base font-bold text-[#111111] leading-snug mb-3 group-hover:text-[#E3164F] transition-colors duration-200">
-                    {post.title}
-                  </h3>
-
-                  {/* Excerpt */}
-                  {post.excerpt && (
-                    <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-5">
-                      {post.excerpt}
-                    </p>
-                  )}
-
-                  {/* Meta */}
-                  <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-50 pt-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#E3164F]/20 to-[#008BCB]/20 flex items-center justify-center">
-                        <User className="w-3 h-3 text-gray-400" aria-hidden="true" />
+                  {/* Image Wrapper */}
+                  <div className="aspect-[16/10] relative bg-gray-50 overflow-hidden shrink-0 border-b border-gray-100">
+                    {post.featuredImage?.asset?.url ? (
+                      <Image
+                        src={post.featuredImage.asset.url}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full flex items-center justify-center relative overflow-hidden"
+                        style={{
+                          background: `linear-gradient(135deg, ${accent.from}10 0%, ${accent.to}20 100%)`,
+                        }}
+                        aria-hidden="true"
+                      >
+                        {/* Glow orb inside image area */}
+                        <div
+                          className="absolute w-32 h-32 rounded-full blur-2xl"
+                          style={{
+                            background: `radial-gradient(circle, ${accent.from}30 0%, transparent 70%)`,
+                          }}
+                        />
+                        <span className="text-5xl font-black relative z-10" style={{ color: accent.from }}>
+                          {index === 0 ? '01' : index === 1 ? '02' : '03'}
+                        </span>
                       </div>
-                      <span>{post.author?.name}</span>
+                    )}
+                  </div>
+
+                  <div className="p-6 flex flex-col justify-between flex-1 relative z-10">
+                    <div>
+                      {/* Category Label */}
+                      {post.category && (
+                        <span
+                          className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase mb-4"
+                          style={{
+                            background: `${accent.from}15`,
+                            color: accent.from,
+                          }}
+                        >
+                          {post.category.title}
+                        </span>
+                      )}
+
+                      {/* Title */}
+                      <h3 className="text-base font-bold text-[#111111] leading-snug mb-3 group-hover:text-[#E3164F] transition-colors duration-200">
+                        {post.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      {post.excerpt && (
+                        <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-5">
+                          {post.excerpt}
+                        </p>
+                      )}
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" aria-hidden="true" />
-                      <span>{post.readingTime} min read</span>
+
+                    {/* Meta info */}
+                    <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-50 pt-4 mt-auto">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                          <User className="w-3.5 h-3.5 text-gray-500" aria-hidden="true" />
+                        </div>
+                        <span className="font-bold text-gray-600">{post.author?.name}</span>
+                      </div>
+                      <div className="flex items-center gap-1 font-bold">
+                        <Clock className="w-3.5 h-3.5 text-[#008BCB]" aria-hidden="true" />
+                        <span>{post.readingTime} min read</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </article>
-          ))}
+                </Link>
+              </article>
+            )
+          })}
         </div>
       </Container>
     </section>

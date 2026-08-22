@@ -58,7 +58,7 @@ const defaultColumns = [
 ]
 
 const defaultBottomLinks = [
-  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Privacy Policy', href: 'https://staffordshirewebdesign.com/privacypolicy.pdf', openInNewTab: true },
   { label: 'Terms & Conditions', href: '/terms-conditions' },
   { label: 'Cookie Policy', href: '/cookie-policy' },
 ]
@@ -165,6 +165,8 @@ export function Footer({ footer }: FooterProps) {
                 <li key={link.label}>
                   <Link
                     href={link.href}
+                    target={(link as FooterLink & { openInNewTab?: boolean }).openInNewTab || link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={(link as FooterLink & { openInNewTab?: boolean }).openInNewTab || link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
                   >
                     {link.label}

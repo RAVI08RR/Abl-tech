@@ -6,9 +6,10 @@ interface AnimatedNumberProps {
   value: string
   duration?: number
   className?: string
+  style?: React.CSSProperties
 }
 
-export function AnimatedNumber({ value, duration = 2000, className }: AnimatedNumberProps) {
+export function AnimatedNumber({ value, duration = 2000, className, style }: AnimatedNumberProps) {
   const [displayed, setDisplayed] = useState('0')
   const [hasStarted, setHasStarted] = useState(false)
   const ref = useRef<HTMLSpanElement>(null)
@@ -56,7 +57,7 @@ export function AnimatedNumber({ value, duration = 2000, className }: AnimatedNu
   }, [hasStarted, numericValue, duration])
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={className} style={style}>
       {displayed}{suffix}
     </span>
   )

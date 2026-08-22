@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Clock, Calendar, User, ArrowLeft } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
@@ -34,6 +35,7 @@ const defaultPost = {
   category: { title: 'AI & Technology', slug: { current: 'ai-technology' } },
   tags: ['AI', 'Enterprise', 'Software Development'],
   content: null,
+  featuredImage: undefined as { asset?: { url?: string } } | undefined,
 }
 
 export default async function InsightPostPage({ params }: Props) {
@@ -114,6 +116,19 @@ export default async function InsightPostPage({ params }: Props) {
       <section className="section-padding bg-white">
         <Container>
           <div className="max-w-3xl mx-auto">
+            {/* Featured Image */}
+            {p.featuredImage?.asset?.url && (
+              <div className="aspect-[21/9] relative rounded-2xl overflow-hidden mb-10 border border-gray-100 shadow-md">
+                <Image
+                  src={p.featuredImage.asset.url}
+                  alt={p.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+
             {/* Placeholder for PortableText content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-600 leading-relaxed">
@@ -140,7 +155,7 @@ export default async function InsightPostPage({ params }: Props) {
             {/* Tags */}
             {p.tags && p.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-10 pt-8 border-t border-gray-100">
-                {p.tags.map((tag) => (
+                {p.tags.map((tag: string) => (
                   <span key={tag} className="badge badge-secondary">{tag}</span>
                 ))}
               </div>

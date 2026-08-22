@@ -9,89 +9,143 @@ interface ClientLogosProps {
   clients?: Client[]
 }
 
-const defaultLogos = [
-  { _id: '1', name: 'TechCorp', industry: 'Enterprise Software' },
-  { _id: '2', name: 'InnovatePlus', industry: 'Fintech' },
-  { _id: '3', name: 'DataStream', industry: 'AI & Data Solutions' },
-  { _id: '4', name: 'CloudFirst', industry: 'Cloud Engineering' },
-  { _id: '5', name: 'NexaDigital', industry: 'E-commerce' },
-  { _id: '6', name: 'SmartRetail', industry: 'Retail Technology' },
-  { _id: '7', name: 'FinEdge', industry: 'Banking' },
-  { _id: '8', name: 'HealthBridge', industry: 'Healthcare' },
+const defaultLogos: (Client | { _id: string; name: string; industry: string; logo?: { asset?: { url?: string } } })[] = [
+  { _id: '1', name: 'TechCorp', industry: 'Enterprise Software', logo: undefined },
+  { _id: '2', name: 'InnovatePlus', industry: 'Fintech', logo: undefined },
+  { _id: '3', name: 'DataStream', industry: 'AI & Data Solutions', logo: undefined },
+  { _id: '4', name: 'CloudFirst', industry: 'Cloud Engineering', logo: undefined },
+  { _id: '5', name: 'NexaDigital', industry: 'E-commerce', logo: undefined },
+  { _id: '6', name: 'SmartRetail', industry: 'Retail Technology', logo: undefined },
+  { _id: '7', name: 'FinEdge', industry: 'Banking', logo: undefined },
+  { _id: '8', name: 'HealthBridge', industry: 'Healthcare', logo: undefined },
+]
+
+const avatarGrads = [
+  ['#E3164F', '#FF6B9D'],
+  ['#008BCB', '#00C4FF'],
+  ['#7C3AED', '#A78BFA'],
+  ['#059669', '#34D399'],
+  ['#D97706', '#FCD34D'],
+  ['#E3164F', '#008BCB'],
+  ['#0891B2', '#67E8F9'],
+  ['#DC2626', '#F87171'],
 ]
 
 export function ClientLogos({ heading, clients }: ClientLogosProps) {
-  const displayHeading = heading || 'Trusted Technology Partner for Growing Businesses'
+  const displayHeading = heading || 'Trusted by Growing Businesses Worldwide'
   const displayClients = clients?.length ? clients : defaultLogos
+  const tripled = [...displayClients, ...displayClients, ...displayClients]
 
   return (
-    <section className="py-16 bg-gradient-to-b from-[#F7F8FA] via-white to-[#F7F8FA] border-y border-gray-200/60 overflow-hidden relative" aria-label="Client logos">
-      {/* Background Subtle Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[150px] bg-gradient-to-r from-[#E3164F]/5 via-[#008BCB]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+    <section
+      className="relative overflow-hidden border-y"
+      style={{
+        background: 'linear-gradient(180deg, #F0F4FF 0%, #FFFFFF 50%, #F0F4FF 100%)',
+        borderColor: 'rgba(0,139,203,0.10)',
+      }}
+      aria-label="Client logos"
+    >
+      {/* Ambient glow */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+        style={{
+          background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,139,203,0.06) 0%, transparent 70%)',
+        }}
+      />
 
-      <Container className="relative z-10">
-        {/* Header Badge & Title */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-white shadow-xs mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#E3164F] animate-pulse" />
-            <span className="text-[11px] font-bold text-gray-600 uppercase tracking-widest font-sans">
-              GLOBAL CLIENT PARTNERSHIPS
+      <div className="relative z-10 py-14">
+        {/* Label */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-3 mb-4">
+            <span className="h-px w-10" style={{ background: 'linear-gradient(90deg, transparent, #E3164F)' }} />
+            <span
+              className="text-[11px] font-bold tracking-[0.2em] uppercase"
+              style={{
+                background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Global Client Partnerships
             </span>
+            <span className="h-px w-10" style={{ background: 'linear-gradient(90deg, #008BCB, transparent)' }} />
           </div>
-
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111111] font-display">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">
             {displayHeading}
           </h2>
         </div>
 
-        {/* Marquee Slider */}
-        <div className="relative overflow-hidden py-2" role="list" aria-label="Our clients">
-          {/* Left Fade Overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#F7F8FA] via-[#F7F8FA]/90 to-transparent z-10 pointer-events-none" aria-hidden="true" />
-          {/* Right Fade Overlay */}
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#F7F8FA] via-[#F7F8FA]/90 to-transparent z-10 pointer-events-none" aria-hidden="true" />
+        {/* Marquee */}
+        <div className="relative overflow-hidden" role="list" aria-label="Our clients">
+          {/* Fade edges */}
+          <div
+            className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 z-10"
+            style={{ background: 'linear-gradient(90deg, #F0F4FF, transparent)' }}
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 z-10"
+            style={{ background: 'linear-gradient(270deg, #F0F4FF, transparent)' }}
+            aria-hidden="true"
+          />
 
           <div className="flex overflow-hidden">
-            <div className="marquee-track flex items-center">
-              {[...displayClients, ...displayClients, ...displayClients].map((client, i) => (
-                <div
-                  key={`${client._id || client.name}-${i}`}
-                  className="flex items-center justify-center mx-4 shrink-0"
-                  role="listitem"
-                >
-                  <div className="group flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md hover:border-[#E3164F]/30 transition-all duration-300 min-w-[160px]">
+            <div className="marquee-track flex items-center gap-4 py-2">
+              {tripled.map((client, i) => {
+                const [g1, g2] = avatarGrads[i % avatarGrads.length]
+                return (
+                  <div
+                    key={`${client._id}-${i}`}
+                    className="flex items-center gap-3 shrink-0 px-5 py-3.5 rounded-2xl border transition-all duration-300"
+                    style={{
+                      background: 'rgba(255,255,255,0.85)',
+                      backdropFilter: 'blur(8px)',
+                      borderColor: 'rgba(0,0,0,0.07)',
+                      minWidth: '176px',
+                      boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
+                    }}
+                    role="listitem"
+                  >
                     {client.logo?.asset?.url ? (
-                      <div className="w-8 h-8 relative shrink-0 flex items-center justify-center">
-                        <Image
-                          src={client.logo.asset.url}
-                          alt={client.name}
-                          width={32}
-                          height={32}
-                          className="w-8 h-8 object-contain"
-                        />
+                      <div className="w-9 h-9 shrink-0 flex items-center justify-center">
+                        <Image src={client.logo.asset.url} alt={client.name} width={36} height={36} className="w-9 h-9 object-contain" />
                       </div>
                     ) : (
-                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#E3164F]/10 to-[#008BCB]/10 group-hover:from-[#E3164F]/20 group-hover:to-[#008BCB]/20 flex items-center justify-center shrink-0 transition-colors">
-                        <span className="text-xs font-black text-[#E3164F]">{client.name[0]}</span>
+                      <div
+                        className="w-9 h-9 rounded-xl shrink-0 flex items-center justify-center text-white font-black text-sm"
+                        style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
+                      >
+                        {client.name[0]}
                       </div>
                     )}
-                    <div className="flex flex-col">
-                      <span className="text-xs font-bold text-gray-800 group-hover:text-[#E3164F] transition-colors whitespace-nowrap">
-                        {client.name}
-                      </span>
+                    <div>
+                      <p className="text-[13px] font-bold text-[#111111] whitespace-nowrap leading-none mb-0.5">{client.name}</p>
                       {client.industry && (
-                        <span className="text-[10px] text-gray-400 font-medium whitespace-nowrap">
-                          {client.industry}
-                        </span>
+                        <p className="text-[10px] text-gray-400 whitespace-nowrap">{client.industry}</p>
                       )}
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
-      </Container>
+
+        {/* Trust indicators */}
+        <div className="flex items-center justify-center gap-8 mt-10 flex-wrap">
+          {['100+ Projects Delivered', 'ISO-Grade Security', 'Agile & Transparent', 'On-Time Delivery'].map((item) => (
+            <div key={item} className="flex items-center gap-2">
+              <div
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ background: 'linear-gradient(135deg, #E3164F, #008BCB)' }}
+              />
+              <span className="text-xs font-semibold text-gray-500">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

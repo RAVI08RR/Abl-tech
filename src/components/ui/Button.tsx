@@ -7,6 +7,7 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg'
   href?: string
   className?: string
+  style?: React.CSSProperties
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
@@ -33,6 +34,7 @@ export function Button({
   size = 'md',
   href,
   className,
+  style,
   onClick,
   type = 'button',
   disabled,
@@ -50,6 +52,7 @@ export function Button({
       <Link
         href={href}
         className={styles}
+        style={style}
         target={openInNewTab ? '_blank' : undefined}
         rel={openInNewTab ? 'noopener noreferrer' : undefined}
       >
@@ -59,7 +62,7 @@ export function Button({
   }
 
   return (
-    <button type={type} className={styles} onClick={onClick} disabled={disabled}>
+    <button type={type} className={styles} style={style} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   )

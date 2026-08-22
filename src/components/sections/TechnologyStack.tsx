@@ -2,6 +2,18 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import {
+  Monitor,
+  Server,
+  Smartphone,
+  Cloud,
+  BrainCircuit,
+  Database,
+  GitMerge,
+  ShoppingBag,
+  FileText,
+  Zap,
+} from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import type { Technology } from '@/types'
@@ -60,16 +72,16 @@ const defaultTechnologies = [
   { _id: 'e3', name: 'Magento', category: 'E-commerce', featured: false, order: 3 },
 ] as Technology[]
 
-const categoryIcons: Record<string, string> = {
-  Frontend: '🖥️',
-  Backend: '⚙️',
-  Mobile: '📱',
-  Cloud: '☁️',
-  'AI/ML': '🤖',
-  Database: '🗄️',
-  DevOps: '🔧',
-  'E-commerce': '🛍️',
-  CMS: '📰',
+const categoryIcons: Record<string, React.ElementType> = {
+  Frontend: Monitor,
+  Backend: Server,
+  Mobile: Smartphone,
+  Cloud: Cloud,
+  'AI/ML': BrainCircuit,
+  Database: Database,
+  DevOps: GitMerge,
+  'E-commerce': ShoppingBag,
+  CMS: FileText,
 }
 
 export function TechnologyStack({ heading, description, technologies }: TechnologyStackProps) {
@@ -102,24 +114,33 @@ export function TechnologyStack({ heading, description, technologies }: Technolo
 
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12" role="tablist" aria-label="Technology categories">
-          {availableCategories.map((cat) => (
-            <button
-              key={cat}
-              role="tab"
-              aria-selected={activeCategory === cat}
-              aria-controls={`tech-panel-${cat}`}
-              id={`tech-tab-${cat}`}
-              onClick={() => setActiveCategory(cat)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                activeCategory === cat
-                  ? 'bg-[#E3164F] text-white shadow-md shadow-[#E3164F]/20'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200/80'
-              }`}
-            >
-              <span aria-hidden="true">{categoryIcons[cat] || '⚡'}</span>
-              {cat}
-            </button>
-          ))}
+          {availableCategories.map((cat) => {
+            const TabIcon = categoryIcons[cat] || Zap
+            const isActive = activeCategory === cat
+            return (
+              <button
+                key={cat}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`tech-panel-${cat}`}
+                id={`tech-tab-${cat}`}
+                onClick={() => setActiveCategory(cat)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? 'bg-[#E3164F] text-white shadow-md shadow-[#E3164F]/20'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200/80'
+                }`}
+              >
+                <TabIcon
+                  className={`w-4 h-4 shrink-0 transition-colors duration-200 ${
+                    isActive ? 'text-white' : 'text-gray-500'
+                  }`}
+                  aria-hidden="true"
+                />
+                {cat}
+              </button>
+            )
+          })}
         </div>
 
         {/* Tech Items Grid */}

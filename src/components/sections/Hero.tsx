@@ -32,10 +32,10 @@ export function Hero({ headline, subheadline, buttons }: HeroProps) {
           {/* Core Services Horizontal Badges Row */}
           <div className="flex flex-wrap justify-center gap-3 mb-8 max-w-2xl animate-fade-in-up">
             {[
-              { icon: <Code className="w-4 h-4 text-[#E3164F]" />, label: 'Custom Software' },
-              { icon: <Cloud className="w-4 h-4 text-[#008BCB]" />, label: 'Cloud Solutions' },
+              { icon: <Code className="w-4 h-4 text-[#E3164F]" />, label: 'AI & Data Engineering' },
+              { icon: <Cloud className="w-4 h-4 text-[#008BCB]" />, label: 'Cloud & DevOps' },
               { icon: <Paintbrush className="w-4 h-4 text-purple-500" />, label: 'UI/UX Design' },
-              { icon: <HelpCircle className="w-4 h-4 text-green-500" />, label: 'IT Consulting' },
+              { icon: <HelpCircle className="w-4 h-4 text-green-500" />, label: 'Staff Augmentation' },
             ].map((badge) => (
               <div
                 key={badge.label}
@@ -51,8 +51,8 @@ export function Hero({ headline, subheadline, buttons }: HeroProps) {
           <h1 className="text-4xl sm:text-6xl lg:text-7.5xl font-bold tracking-tight leading-[1.05] text-[#111111] mb-6 font-display animate-fade-in-up">
             {!headline ? (
               <>
-                Software Solutions <br className="hidden sm:inline" />
-                <span className="text-[#E3164F]">that Power Growth</span>
+                Turn AI Hype into <br className="hidden sm:inline" />
+                <span className="text-[#E3164F]">Hard Enterprise ROI.</span>
               </>
             ) : headline.includes('|') ? (
               <>
@@ -66,7 +66,7 @@ export function Hero({ headline, subheadline, buttons }: HeroProps) {
 
           {/* Subheadline */}
           <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto mb-10 leading-relaxed text-pretty font-sans animate-fade-in-up">
-            {subheadline || "We build scalable, secure, and innovative software solutions that help ambitious businesses streamline operations and achieve more."}
+            {subheadline || "Stop getting stuck in the pilot phase. We engineer production-ready AI agents, automate data pipelines, and deploy custom ML models that solve real operational bottlenecks—securely and at scale."}
           </p>
 
           {/* CTA Button */}
@@ -92,10 +92,10 @@ export function Hero({ headline, subheadline, buttons }: HeroProps) {
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
             {[
-              { icon: <Clock className="w-5 h-5 text-[#E3164F]" />, title: 'Agile & Transparent Process' },
-              { icon: <ArrowUpRight className="w-5 h-5 text-[#008BCB]" />, title: 'On-time Delivery Assurance' },
-              { icon: <Shield className="w-5 h-5 text-purple-500" />, title: 'Secure & Scalable Architecture' },
-              { icon: <Users className="w-5 h-5 text-green-500" />, title: 'Dedicated Expert Team' },
+              { icon: <Clock className="w-5 h-5 text-[#E3164F]" />, title: 'Top 1% Engineering Talent' },
+              { icon: <ArrowUpRight className="w-5 h-5 text-[#008BCB]" />, title: '40% Faster Time-to-Market' },
+              { icon: <Shield className="w-5 h-5 text-purple-500" />, title: 'Enterprise-Grade Security' },
+              { icon: <Users className="w-5 h-5 text-green-500" />, title: 'Trusted by MasterCard, VISA & More' },
             ].map((benefit) => (
               <div key={benefit.title} className="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start">
                 <div className="w-10 h-10 rounded-xl bg-white border border-gray-200/60 shadow-sm flex items-center justify-center shrink-0">

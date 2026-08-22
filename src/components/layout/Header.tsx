@@ -96,11 +96,11 @@ export function Header({ navigation }: HeaderProps) {
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0" aria-label="AB BusinessTech LLP - Home">
               <Image
-                src="/logo.png"
+                src="/logo-abltech.png"
                 alt="AB BusinessTech LLP Logo"
                 width={150}
                 height={45}
-                style={{ width: 'auto', height: '75px' }}
+                style={{ width: 'auto', height: '80px' }}
                 className="h-10 lg:h-12 object-contain mix-blend-multiply"
                 priority
               />

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { LinkedInIcon, InstagramIcon, FacebookIcon, TwitterIcon } from '@/components/ui/Icons'
@@ -29,12 +30,14 @@ const defaultColumns = [
   {
     heading: 'Services',
     links: [
-      { label: 'Software Development', href: '/services/software-development' },
-      { label: 'AI & Machine Learning', href: '/services/ai-machine-learning' },
-      { label: 'Cloud Solutions', href: '/services/cloud-solutions' },
-      { label: 'Mobile App Development', href: '/services/mobile-app-development' },
-      { label: 'UI/UX Design', href: '/services/ui-ux-design' },
-      { label: 'Digital Transformation', href: '/services/digital-transformation' },
+      { label: 'AI & Data Engineering', href: '/services/ai-data-engineering' },
+      { label: 'Software Engineering', href: '/services/software-engineering' },
+      { label: 'Digital Experiences', href: '/services/digital-experiences-web-mobile' },
+      { label: 'Enterprise Applications', href: '/services/enterprise-applications' },
+      { label: 'Cloud & DevOps', href: '/services/cloud-and-devops' },
+      { label: 'Data & Analytics', href: '/services/data-analytics-solutions' },
+      { label: 'QA & Testing', href: '/services/quality-assurance-testing' },
+      { label: 'Staff Augmentation', href: '/services/staff-augmentation' },
     ],
   },
   {
@@ -76,7 +79,7 @@ export function Footer({ footer }: FooterProps) {
 
   const columns = footer?.columns?.length ? footer.columns : defaultColumns
   const bottomLinks = footer?.bottomLinks?.length ? footer.bottomLinks : defaultBottomLinks
-  const tagline = footer?.tagline || 'Helping businesses transform ideas into scalable digital products.'
+  const tagline = footer?.tagline || 'Engineering production-ready AI, software, and cloud solutions for enterprises that cannot afford to fail.'
   const copyright = footer?.copyright || `© ${new Date().getFullYear()} AB BusinessTech LLP. All rights reserved.`
 
   return (
@@ -87,13 +90,15 @@ export function Footer({ footer }: FooterProps) {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Brand column */}
             <div className="lg:col-span-2">
-              <Link href="/" className="flex items-center gap-2 mb-5" aria-label="AB BusinessTech LLP - Home">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#E3164F] to-[#008BCB] flex items-center justify-center">
-                  <span className="text-white font-black text-sm">AB</span>
-                </div>
-                <span className="font-bold text-lg text-white">
-                  AB BusinessTech<span className="text-[#E3164F] font-black"> LLP</span>
-                </span>
+              <Link href="/" className="flex items-center mb-5" aria-label="AB BusinessTech LLP - Home">
+                <Image
+                  src="/logo-abltech.png"
+                  alt="AB BusinessTech LLP"
+                  width={160}
+                  height={50}
+                  style={{ width: 'auto', height: '52px', filter: 'brightness(0) invert(1)' }}
+                  className="object-contain"
+                />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
                 {tagline}

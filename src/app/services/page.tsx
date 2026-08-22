@@ -21,8 +21,8 @@ import { getServices, getServicesPage } from '@/sanity/lib/queries'
 import type { Service } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Technology Services',
-  description: 'Comprehensive technology services from software development and AI to cloud solutions and digital transformation.',
+  title: 'Technology Services — AI, Software & Cloud Engineering',
+  description: 'From production-ready AI to enterprise software and cloud infrastructure — AB BusinessTech LLP delivers engineering solutions that drive hard ROI for global enterprises.',
 }
 
 const serviceIcons: Record<string, React.ElementType> = {
@@ -68,28 +68,25 @@ export default async function ServicesPage() {
   } catch { /* use defaults */ }
 
   const defaultServices = [
-    { _id: '1', title: 'Software Development', shortDescription: 'Custom enterprise software engineered for scale, reliability, and performance.', icon: '💻', slug: { current: 'software-development' }, featured: true, order: 1 },
-    { _id: '2', title: 'AI & Machine Learning', shortDescription: 'Intelligent automation and data-driven insights that transform decision making.', icon: '🤖', slug: { current: 'ai-machine-learning' }, featured: true, order: 2 },
-    { _id: '3', title: 'Digital Transformation', shortDescription: 'End-to-end digitization strategies that modernize operations and unlock growth.', icon: '🔄', slug: { current: 'digital-transformation' }, featured: true, order: 3 },
-    { _id: '4', title: 'Web Development', shortDescription: 'High-performance web applications built with modern frameworks and best practices.', icon: '🌐', slug: { current: 'web-development' }, featured: true, order: 4 },
-    { _id: '5', title: 'Mobile App Development', shortDescription: 'Native and cross-platform mobile apps that deliver exceptional user experiences.', icon: '📱', slug: { current: 'mobile-app-development' }, featured: true, order: 5 },
-    { _id: '6', title: 'Cloud Solutions', shortDescription: 'Scalable cloud infrastructure on AWS, Azure, and GCP for modern workloads.', icon: '☁️', slug: { current: 'cloud-solutions' }, featured: true, order: 6 },
-    { _id: '7', title: 'UI/UX Design', shortDescription: 'User-centered design systems that balance aesthetics with conversion performance.', icon: '🎨', slug: { current: 'ui-ux-design' }, featured: true, order: 7 },
-    { _id: '8', title: 'Application Modernization', shortDescription: 'Migrate and modernize legacy systems with minimal risk and maximum business continuity.', icon: '⚡', slug: { current: 'application-modernization' }, featured: true, order: 8 },
-    { _id: '9', title: 'Product Engineering', shortDescription: 'Full-lifecycle product development from ideation through launch and scale.', icon: '⚙️', slug: { current: 'product-engineering' }, featured: true, order: 9 },
-    { _id: '10', title: 'Data Engineering', shortDescription: 'Data pipelines, warehouses, and analytics infrastructure that unlock business intelligence.', icon: '📊', slug: { current: 'data-engineering' }, featured: true, order: 10 },
-    { _id: '11', title: 'E-commerce Development', shortDescription: 'High-converting online stores built for performance, scale, and customer delight.', icon: '🛍️', slug: { current: 'ecommerce-development' }, featured: false, order: 11 },
-    { _id: '12', title: 'Technology Consulting', shortDescription: 'Strategic technology advisory to help leadership make confident, informed decisions.', icon: '💡', slug: { current: 'technology-consulting' }, featured: false, order: 12 },
+    { _id: '1', title: 'AI & Data Engineering', shortDescription: 'Turn AI hype into hard enterprise ROI. We engineer production-ready AI agents, automate data pipelines, and deploy custom ML models that solve real operational bottlenecks—securely and at scale.', icon: '🤖', slug: { current: 'ai-data-engineering' }, featured: true, order: 1 },
+    { _id: '2', title: 'Software Engineering', shortDescription: 'Build software that scales, not technical debt. We co-engineer robust enterprise software, high-performance SaaS applications, and custom digital products designed to drive hard ROI.', icon: '💻', slug: { current: 'software-engineering' }, featured: true, order: 2 },
+    { _id: '3', title: 'Digital Experiences', shortDescription: 'Stop losing users to clunky interfaces. We design and engineer high-performance web applications, enterprise portals, and custom mobile apps that drive adoption, engagement, and revenue.', icon: '📱', slug: { current: 'digital-experiences-web-mobile' }, featured: true, order: 3 },
+    { _id: '4', title: 'Enterprise Applications', shortDescription: 'Architected for scale. Engineered for your enterprise. We design and build custom ERPs, CRMs, and enterprise apps that adapt to your exact business operations—not the other way around.', icon: '🏢', slug: { current: 'enterprise-applications' }, featured: true, order: 4 },
+    { _id: '5', title: 'Cloud & DevOps', shortDescription: 'Ship code faster. Never go down. We architect scalable cloud solutions, execute zero-downtime migrations, and implement elite DevOps pipelines so your teams can ship secure code in minutes.', icon: '☁️', slug: { current: 'cloud-and-devops' }, featured: true, order: 5 },
+    { _id: '6', title: 'Data & Analytics Solutions', shortDescription: 'Stop drowning in data. Start driving revenue. We architect high-speed data pipelines, implement powerful BI platforms, and build custom dashboards that turn raw enterprise data into hard ROI.', icon: '📊', slug: { current: 'data-analytics-solutions' }, featured: true, order: 6 },
+    { _id: '7', title: 'Quality Assurance & Testing', shortDescription: 'Ruthless software testing. Enterprise quality assurance. We deploy senior QA engineering pods to stress-test your architecture, automate release pipelines, and execute rigorous security testing.', icon: '✅', slug: { current: 'quality-assurance-testing' }, featured: true, order: 7 },
+    { _id: '8', title: 'Staff Augmentation', shortDescription: 'Stop losing 6 months to hiring. Instantly inject vetted, top 1% engineers—AI specialists, cloud architects, full-stack developers—directly into your existing teams within 2 weeks.', icon: '👥', slug: { current: 'staff-augmentation' }, featured: true, order: 8 },
+    { _id: '9', title: 'UI/UX Design Services', shortDescription: 'Stop losing conversions to poor design. We execute UX-led design strategies—user research, wireframing, prototyping, and design systems—that turn complex workflows into intuitive user experiences.', icon: '🎨', slug: { current: 'ui-ux-design' }, featured: false, order: 9 },
   ] as Service[]
 
   const displayServices = services.length ? services : defaultServices
 
-  const eyebrow = pageData?.eyebrow || 'What We Do'
-  const headline = pageData?.headline || 'Technology Services That Drive Real Results'
-  const subheadline = pageData?.subheadline || 'From strategy through execution, we offer a complete suite of technology services designed to help ambitious businesses build, scale, and modernize their digital products.'
-  const ctaHeading = pageData?.cta?.heading || 'Not Sure Which Service You Need?'
-  const ctaDesc = pageData?.cta?.description || 'Tell us about your business challenge and our consultants will recommend the right approach.'
-  const ctaLabel = pageData?.cta?.buttonLabel || 'Book a Free Consultation'
+  const eyebrow = pageData?.eyebrow || 'Our Capabilities'
+  const headline = pageData?.headline || 'Engineering Solutions That Drive Hard ROI'
+  const subheadline = pageData?.subheadline || 'From production-ready AI to cloud infrastructure and custom enterprise software — we deploy dedicated engineering pods that integrate directly into your business and deliver measurable results. Trusted by MasterCard, VISA, Facebook, Autodesk, and UBS.'
+  const ctaHeading = pageData?.cta?.heading || 'Ready to Build With a Team That Actually Ships?'
+  const ctaDesc = pageData?.cta?.description || 'Stop experimenting. Speak with a senior architect today to evaluate your requirements and build a technical roadmap that drives revenue.'
+  const ctaLabel = pageData?.cta?.buttonLabel || 'Book a Technical Consultation'
   const ctaHref = pageData?.cta?.buttonHref || '/contact'
 
   return (

@@ -19,14 +19,14 @@ import { Button } from '@/components/ui/Button'
 import { getAboutPage, getTeamMembers, getStatistics, getCompanyValues, getOfficeLocations } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: 'Learn about AB BusinessTech LLP — our story, mission, team, and values. A technology partner that drives real business impact.',
+  title: 'About Us — Enterprise AI & Software Engineering Company Since 2005',
+  description: 'Since 2005, AB BusinessTech LLP has been building production-ready AI, software, and cloud solutions for global enterprises. Trusted by MasterCard, VISA, Facebook, Autodesk, and UBS.',
 }
 
 const defaultStats = [
-  { _id: '1', value: '12+', label: 'Years', description: 'In business', icon: Trophy },
-  { _id: '2', value: '200+', label: 'Projects', description: 'Delivered', icon: Rocket },
-  { _id: '3', value: '40+', label: 'Industries', description: 'Served', icon: Globe },
+  { _id: '1', value: '20+', label: 'Years', description: 'In business since 2005', icon: Trophy },
+  { _id: '2', value: '500+', label: 'Projects', description: 'Delivered globally', icon: Rocket },
+  { _id: '3', value: '40+', label: 'Industries', description: 'Served worldwide', icon: Globe },
   { _id: '4', value: '95%', label: 'Retention', description: 'Client rate', icon: Heart },
 ]
 
@@ -40,16 +40,16 @@ const defaultTeam = [
 ]
 
 const defaultValues = [
-  { icon: Target, title: 'Business Outcomes First', description: 'We measure success by your metrics, not just our deliverables.', color: '#E3164F' },
-  { icon: Search, title: 'Radical Transparency', description: 'Honest timelines, real progress, no surprises.', color: '#008BCB' },
-  { icon: Zap, title: 'Engineering Excellence', description: 'Code quality, performance, and security are non-negotiable.', color: '#7C3AED' },
-  { icon: Handshake, title: 'True Partnership', description: "We succeed when you succeed. That's not a tagline — it's how we operate.", color: '#059669' },
+  { icon: Target, title: 'Business Outcomes First', description: 'We measure success by your ROI, not just our deliverables. Every architectural decision is made with your business metrics in mind.', color: '#E3164F' },
+  { icon: Search, title: 'Radical Transparency', description: 'Honest timelines, real progress updates, and zero surprises. You always know exactly where your project stands.', color: '#008BCB' },
+  { icon: Zap, title: 'Engineering Excellence', description: 'Top 1% engineering talent only. Code quality, performance, security, and scalability are non-negotiable standards.', color: '#7C3AED' },
+  { icon: Handshake, title: 'True Co-Engineering Partnership', description: 'We act as true co-engineering partners — integrating seamlessly with your internal pods and understanding your architecture immediately.', color: '#059669' },
 ]
 
 const defaultMissionParagraphs = [
-  "Founded in 2014, AB BusinessTech LLP started with a simple belief: that businesses of all sizes deserve access to the same quality of technology that powers the world's leading digital companies.",
-  "Over the last decade, we've evolved from a small web development studio into a full-service technology consulting and engineering firm — serving clients across 20+ industries, from pre-seed startups to listed enterprises.",
-  "Our team combines deep technical expertise with genuine business acumen. We don't just build what you ask for — we help you figure out what you should be building in the first place.",
+  "Founded in 2005, AB BusinessTech LLP was built on a single belief: that enterprises at any scale deserve access to the same quality of engineering talent and technology that powers the world's leading digital companies.",
+  "Over two decades, we have evolved from a specialist engineering firm into a full-service AI, software, and cloud engineering company — serving clients across 40+ industries, from high-growth startups to listed global enterprises.",
+  "When global giants like MasterCard, VISA, Facebook, Autodesk, and UBS need to scale complex technical initiatives, they rely on our elite engineering talent. Whether it's injecting niche ML skills through staff augmentation or deploying a fully managed pod to take ownership of a product build, we adapt to your reality.",
 ]
 
 const memberGrads = [

@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
-import { Button } from '@/components/ui/Button'
 import { getServiceBySlug, getAllServiceSlugs } from '@/sanity/lib/queries'
 import type { Service } from '@/types'
 
@@ -378,112 +377,409 @@ export default async function ServicePage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0D0D1A] to-[#111827] py-24 lg:py-32">
-        <Container>
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex items-center gap-2 text-sm text-gray-400">
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li aria-hidden="true">/</li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
-              <li aria-hidden="true">/</li>
-              <li className="text-gray-200" aria-current="page">{s.title}</li>
+      {/* ═══════════════════════════════════════════════════
+          CINEMATIC HERO — Dark Navy + Pink/Cyan Brand Colors
+          ═══════════════════════════════════════════════════ */}
+      <section
+        className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #04081A 0%, #060D1F 40%, #0A0518 100%)' }}
+        aria-label={`${s.title} hero section`}
+      >
+        {/* Dot-grid texture */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+
+        {/* Pink glow — top right */}
+        <div
+          className="pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-[140px]"
+          style={{ background: 'radial-gradient(circle, rgba(227,22,79,0.18) 0%, transparent 70%)' }}
+        />
+        {/* Cyan glow — bottom left */}
+        <div
+          className="pointer-events-none absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.14) 0%, transparent 70%)' }}
+        />
+        {/* Subtle centre glow */}
+        <div
+          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[180px]"
+          style={{ background: 'radial-gradient(ellipse, rgba(0,139,203,0.05) 0%, transparent 70%)' }}
+        />
+
+        <Container className="relative z-10 py-24 lg:py-32">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-10">
+            <ol className="flex items-center gap-2 text-sm text-white/30">
+              <li><Link href="/" className="hover:text-white/60 transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="text-white/20">/</li>
+              <li><Link href="/services" className="hover:text-white/60 transition-colors">Services</Link></li>
+              <li aria-hidden="true" className="text-white/20">/</li>
+              <li className="text-white/60" aria-current="page">{s.title}</li>
             </ol>
           </nav>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* LEFT — headline + CTAs */}
             <div>
-              <div className="text-5xl mb-6" aria-hidden="true">{s.icon}</div>
-              <h1 className="text-4xl sm:text-5xl font-black text-white leading-[1.05] tracking-tight mb-6">
+              {/* Eyebrow pill */}
+              <div className="inline-flex items-center gap-2 mb-6">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#E3164F]/30 bg-[#E3164F]/10 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E3164F] animate-pulse" />
+                  <span className="text-xs font-bold tracking-[0.15em] uppercase text-[#E3164F]">
+                    {s.title}
+                  </span>
+                </div>
+              </div>
+
+              {/* Main headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight mb-6">
                 {s.heroTitle || s.title}
               </h1>
-              <p className="text-lg text-gray-300 leading-relaxed mb-8">
+
+              {/* Subheadline */}
+              <p className="text-lg text-white/55 leading-relaxed mb-10 max-w-lg">
                 {s.heroDescription || s.shortDescription}
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button href="/contact" variant="primary" size="lg">
-                  Start a Project <ArrowRight className="w-4 h-4" />
-                </Button>
-                <Button href="/work" variant="outline" size="lg" className="border-white/30 text-white hover:bg-white hover:text-[#111111]">
+
+              {/* CTA buttons */}
+              <div className="flex flex-wrap gap-4 mb-12">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-3 px-7 py-4 rounded-full font-bold text-sm text-white transition-all duration-200 shadow-lg shadow-[#E3164F]/30 hover:shadow-[#E3164F]/50 hover:scale-[1.02]"
+                  style={{ background: 'linear-gradient(135deg, #E3164F, #C0103C)' }}
+                >
+                  Book a Technical Consultation
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+                <Link
+                  href="/work"
+                  className="inline-flex items-center gap-3 px-7 py-4 rounded-full font-bold text-sm text-white/80 border border-white/15 hover:border-[#008BCB]/50 hover:text-white hover:bg-white/5 transition-all duration-200"
+                >
                   View Case Studies
-                </Button>
+                </Link>
+              </div>
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap items-center gap-6">
+                {[
+                  { label: 'Enterprise Ready', sub: 'Built for scale & security' },
+                  { label: 'Secure by Design', sub: 'Your data stays private' },
+                  { label: 'Scalable Solutions', sub: 'Grow with confidence' },
+                ].map((badge) => (
+                  <div key={badge.label} className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-4 h-4 text-[#008BCB]" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-white/80">{badge.label}</p>
+                      <p className="text-[10px] text-white/35">{badge.sub}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Benefits quick list */}
-            {s.benefits && s.benefits.length > 0 && (
-              <div className="glass-card p-7">
-                <h2 className="text-white font-bold mb-5 text-sm uppercase tracking-widest">What You Get</h2>
-                <ul className="space-y-3">
-                  {s.benefits.map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-4 h-4 text-[#E3164F] shrink-0 mt-0.5" aria-hidden="true" />
-                      <span className="text-sm text-gray-300">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
+            {/* RIGHT — floating feature cards grid */}
+            <div className="relative hidden lg:block">
+              {/* Central glow ring */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border border-[#008BCB]/15"
+                style={{ boxShadow: '0 0 80px rgba(0,139,203,0.08)' }}
+              />
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-[#E3164F]/10"
+                style={{ boxShadow: '0 0 60px rgba(227,22,79,0.06)' }}
+              />
+
+              {/* Feature cards floating around */}
+              <div className="grid grid-cols-2 gap-4 relative z-10">
+                {(s.features || []).slice(0, 4).map((feature, i) => {
+                  const accent = i % 2 === 0 ? '#E3164F' : '#008BCB'
+                  return (
+                    <div
+                      key={feature.title}
+                      className="rounded-2xl border p-5 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                      style={{
+                        background: 'rgba(255,255,255,0.04)',
+                        borderColor: i % 2 === 0 ? 'rgba(227,22,79,0.2)' : 'rgba(0,139,203,0.2)',
+                        boxShadow: i % 2 === 0
+                          ? '0 8px 32px rgba(227,22,79,0.08)'
+                          : '0 8px 32px rgba(0,139,203,0.08)',
+                      }}
+                    >
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-xl"
+                        style={{ background: `${accent}18`, border: `1px solid ${accent}30` }}
+                      >
+                        {feature.icon}
+                      </div>
+                      <p className="text-sm font-bold text-white leading-snug mb-1">{feature.title}</p>
+                      <p className="text-[11px] text-white/40 leading-relaxed line-clamp-2">{feature.description}</p>
+                    </div>
+                  )
+                })}
               </div>
-            )}
+
+              {/* What you get panel — benefits */}
+              {s.benefits && s.benefits.length > 0 && (
+                <div
+                  className="mt-4 rounded-2xl p-5 border border-white/8 backdrop-blur-md"
+                  style={{ background: 'rgba(255,255,255,0.03)' }}
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/30 mb-3">What You Get</p>
+                  <ul className="space-y-2">
+                    {s.benefits.slice(0, 3).map((benefit) => (
+                      <li key={benefit} className="flex items-start gap-2.5">
+                        <div className="w-4 h-4 rounded-full bg-[#E3164F]/20 flex items-center justify-center shrink-0 mt-0.5">
+                          <CheckCircle2 className="w-2.5 h-2.5 text-[#E3164F]" />
+                        </div>
+                        <span className="text-[11px] text-white/50 leading-snug">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
         </Container>
+
+        {/* Bottom edge fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, rgba(4,8,26,0.8))' }}
+        />
       </section>
 
-      {/* Features */}
+      {/* ═══════════════════════════════════════════
+          WHAT WE DELIVER — Dark features grid
+          ═══════════════════════════════════════════ */}
       {s.features && s.features.length > 0 && (
-        <section className="section-padding bg-white" aria-label="Service features">
-          <Container>
-            <h2 className="text-3xl font-black text-[#111111] mb-12">What We Deliver</h2>
+        <section
+          className="relative py-24 overflow-hidden"
+          style={{ background: 'linear-gradient(180deg, #060D1F 0%, #080F22 100%)' }}
+          aria-label="Service features"
+        >
+          {/* Subtle background texture */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: 'radial-gradient(circle, rgba(0,139,203,0.06) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+            }}
+          />
+          <div
+            className="pointer-events-none absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-[120px]"
+            style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.07) 0%, transparent 70%)' }}
+          />
+
+          <Container className="relative z-10">
+            {/* Section header */}
+            <div className="max-w-2xl mb-16">
+              <div className="inline-flex items-center gap-2 mb-5">
+                <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#008BCB]" />
+                <span
+                  className="text-xs font-bold tracking-[0.18em] uppercase"
+                  style={{
+                    background: 'linear-gradient(90deg, #008BCB, #E3164F)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  What We Deliver
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-4">
+                Engineering Capabilities Built for <span className="text-[#E3164F]">Enterprise Scale</span>
+              </h2>
+              <p className="text-white/45 text-base leading-relaxed">
+                Every service is engineered with a problem-first mindset — measurable business impact, not just deliverables.
+              </p>
+            </div>
+
+            {/* Feature cards grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {s.features.map((feature) => (
-                <div key={feature.title} className="p-6 rounded-2xl bg-[#F7F8FA] border border-gray-100 hover:border-[#E3164F]/20 hover:shadow-md transition-all duration-200">
-                  {feature.icon && <div className="text-2xl mb-4">{feature.icon}</div>}
-                  <h3 className="font-bold text-[#111111] mb-2">{feature.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
-                </div>
-              ))}
+              {s.features.map((feature, i) => {
+                const isPink = i % 3 === 0
+                const isCyan = i % 3 === 1
+                const accentColor = isPink ? '#E3164F' : isCyan ? '#008BCB' : '#7C3AED'
+                return (
+                  <div
+                    key={feature.title}
+                    className="group relative rounded-2xl p-6 border transition-all duration-300 hover:scale-[1.02] overflow-hidden"
+                    style={{
+                      background: 'rgba(255,255,255,0.03)',
+                      borderColor: 'rgba(255,255,255,0.07)',
+                    }}
+                  >
+                    {/* Hover glow */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
+                      style={{ background: `radial-gradient(circle at 30% 30%, ${accentColor}0A, transparent 70%)` }}
+                    />
+                    {/* Top accent line */}
+                    <div
+                      className="absolute top-0 left-6 right-6 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: `linear-gradient(90deg, transparent, ${accentColor}80, transparent)` }}
+                    />
+
+                    <div
+                      className="relative z-10 w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-2xl"
+                      style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}30` }}
+                    >
+                      {feature.icon}
+                    </div>
+                    <h3 className="relative z-10 font-bold text-white mb-2 text-base leading-snug">{feature.title}</h3>
+                    <p className="relative z-10 text-sm text-white/40 leading-relaxed">{feature.description}</p>
+                  </div>
+                )
+              })}
             </div>
           </Container>
         </section>
       )}
 
-      {/* Process */}
+      {/* ═══════════════════════════════════════════
+          HOW WE WORK — numbered process timeline
+          ═══════════════════════════════════════════ */}
       {s.process && s.process.length > 0 && (
-        <section className="section-padding bg-[#F7F8FA]" aria-label="Service process">
-          <Container>
-            <h2 className="text-3xl font-black text-[#111111] mb-12">How We Work</h2>
-            <ol className="space-y-6">
-              {s.process.map((step) => (
-                <li key={step.step} className="flex gap-6 items-start">
-                  <div className="shrink-0 w-12 h-12 rounded-xl bg-[#E3164F]/10 flex items-center justify-center">
-                    <span className="text-sm font-black text-[#E3164F]">
+        <section
+          className="relative py-24 overflow-hidden"
+          style={{ background: 'linear-gradient(180deg, #080F22 0%, #040810 100%)' }}
+          aria-label="Service process"
+        >
+          <div
+            className="pointer-events-none absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[140px]"
+            style={{ background: 'radial-gradient(circle, rgba(227,22,79,0.07) 0%, transparent 70%)' }}
+          />
+
+          <Container className="relative z-10">
+            <div className="max-w-2xl mb-16">
+              <div className="inline-flex items-center gap-2 mb-5">
+                <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#E3164F]" />
+                <span
+                  className="text-xs font-bold tracking-[0.18em] uppercase"
+                  style={{
+                    background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  Our Process
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-4">
+                How We Work — <span className="text-[#008BCB]">Engineered for Certainty</span>
+              </h2>
+              <p className="text-white/45 text-base leading-relaxed">
+                We bring order to complex builds. Our methodology ensures your project is delivered on time, securely, and exactly to spec.
+              </p>
+            </div>
+
+            <ol className="relative space-y-5">
+              {/* Vertical connector line */}
+              <div
+                className="absolute left-[27px] top-14 bottom-14 w-px"
+                style={{ background: 'linear-gradient(to bottom, rgba(227,22,79,0.4), rgba(0,139,203,0.4))' }}
+              />
+
+              {s.process.map((step, idx) => {
+                const isLast = idx === s.process!.length - 1
+                const accentColor = idx % 2 === 0 ? '#E3164F' : '#008BCB'
+                return (
+                  <li key={step.step} className="flex gap-6 items-start group">
+                    {/* Step number badge */}
+                    <div
+                      className="relative z-10 shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-black text-sm transition-all duration-300 group-hover:scale-110"
+                      style={{
+                        background: `${accentColor}15`,
+                        border: `1.5px solid ${accentColor}40`,
+                        color: accentColor,
+                        boxShadow: `0 0 24px ${accentColor}15`,
+                      }}
+                    >
                       {String(step.step).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <div className="pt-2">
-                    <h3 className="font-bold text-[#111111] mb-1">{step.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
-                  </div>
-                </li>
-              ))}
+                    </div>
+
+                    {/* Step content card */}
+                    <div
+                      className="flex-1 rounded-2xl p-6 border transition-all duration-300 group-hover:border-white/15"
+                      style={{
+                        background: 'rgba(255,255,255,0.03)',
+                        borderColor: 'rgba(255,255,255,0.06)',
+                      }}
+                    >
+                      <h3 className="font-bold text-white mb-2 text-base">{step.title}</h3>
+                      <p className="text-sm text-white/45 leading-relaxed">{step.description}</p>
+                    </div>
+                  </li>
+                )
+              })}
             </ol>
           </Container>
         </section>
       )}
 
-      {/* FAQs */}
+      {/* ═══════════════════════════════════════════
+          FAQs — premium accordion
+          ═══════════════════════════════════════════ */}
       {s.faqs && s.faqs.length > 0 && (
-        <section className="section-padding bg-white" aria-label="Frequently asked questions">
-          <Container className="max-w-3xl">
-            <h2 className="text-3xl font-black text-[#111111] mb-12">Frequently Asked Questions</h2>
-            <div className="space-y-4">
+        <section
+          className="relative py-24 overflow-hidden"
+          style={{ background: 'linear-gradient(180deg, #040810 0%, #060D1F 100%)' }}
+          aria-label="Frequently asked questions"
+        >
+          <div
+            className="pointer-events-none absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-[120px]"
+            style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.06) 0%, transparent 70%)' }}
+          />
+
+          <Container className="relative z-10 max-w-3xl">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 mb-5 justify-center">
+                <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#008BCB]" />
+                <span
+                  className="text-xs font-bold tracking-[0.18em] uppercase"
+                  style={{
+                    background: 'linear-gradient(90deg, #008BCB, #E3164F)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  FAQ
+                </span>
+                <span className="h-px w-8 bg-gradient-to-l from-transparent to-[#E3164F]" />
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Frequently Asked Questions</h2>
+              <p className="text-white/40 text-base">Everything you need to know before we start building.</p>
+            </div>
+
+            <div className="space-y-3">
               {s.faqs.map((faq, i) => (
-                <details key={i} className="group border border-gray-100 rounded-xl overflow-hidden">
-                  <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-[#111111] hover:text-[#E3164F] transition-colors list-none">
-                    {faq.question}
-                    <ChevronDown className="w-4 h-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
+                <details
+                  key={i}
+                  className="group rounded-2xl border overflow-hidden transition-all duration-200"
+                  style={{
+                    background: 'rgba(255,255,255,0.03)',
+                    borderColor: 'rgba(255,255,255,0.07)',
+                  }}
+                >
+                  <summary className="flex items-center justify-between gap-4 p-6 cursor-pointer font-semibold text-white/80 hover:text-white group-open:text-white transition-colors list-none">
+                    <span className="text-sm leading-snug pr-4">{faq.question}</span>
+                    <div className="shrink-0 w-7 h-7 rounded-full border border-white/15 flex items-center justify-center">
+                      <ChevronDown className="w-3.5 h-3.5 text-white/50 transition-transform group-open:rotate-180" aria-hidden="true" />
+                    </div>
                   </summary>
-                  <div className="px-5 pb-5 text-sm text-gray-500 leading-relaxed border-t border-gray-50">
-                    <div className="pt-4">{faq.answer}</div>
+                  <div
+                    className="px-6 pb-6 text-sm text-white/45 leading-relaxed border-t"
+                    style={{ borderColor: 'rgba(255,255,255,0.05)' }}
+                  >
+                    <div className="pt-5">{faq.answer}</div>
                   </div>
                 </details>
               ))}
@@ -492,22 +788,90 @@ export default async function ServicePage({ params }: Props) {
         </section>
       )}
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-[#E3164F] to-[#B00E3A]">
-        <Container className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-            Ready to Build with {s.title}?
+      {/* ═══════════════════════════════════════════
+          BOTTOM CTA — gradient banner
+          ═══════════════════════════════════════════ */}
+      <section
+        className="relative py-24 overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #0D0310 0%, #120418 50%, #04080F 100%)' }}
+      >
+        {/* Pink glow */}
+        <div
+          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[160px]"
+          style={{ background: 'radial-gradient(ellipse, rgba(227,22,79,0.15) 0%, transparent 70%)' }}
+        />
+        {/* Cyan glow right */}
+        <div
+          className="pointer-events-none absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full blur-[120px]"
+          style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.10) 0%, transparent 70%)' }}
+        />
+        {/* Border top */}
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(227,22,79,0.4), rgba(0,139,203,0.4), transparent)' }} />
+
+        <Container className="relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-[#E3164F]/20 bg-[#E3164F]/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E3164F] animate-pulse" />
+            <span className="text-xs font-bold tracking-widest uppercase text-[#E3164F]">Ready to Begin?</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-black text-white mb-5 leading-tight max-w-2xl mx-auto">
+            Stop Experimenting.{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #E3164F, #008BCB)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Start Shipping.
+            </span>
           </h2>
-          <p className="text-red-100 mb-8 max-w-xl mx-auto">
-            Let&apos;s discuss your project requirements and create a tailored plan for your business.
+
+          <p className="text-white/45 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+            Speak directly with a senior architect to evaluate your requirements and build a technical roadmap that drives real revenue.
           </p>
+
           <div className="flex flex-wrap justify-center gap-4">
-            <Button href="/contact" variant="white" size="lg">
-              Start a Project <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button href="/contact/book-consultation" variant="outline" size="lg" className="border-white/50 text-white hover:bg-white hover:text-[#E3164F]">
-              Book Free Consultation
-            </Button>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white text-sm transition-all duration-200 shadow-lg shadow-[#E3164F]/30 hover:shadow-[#E3164F]/50 hover:scale-[1.03]"
+              style={{ background: 'linear-gradient(135deg, #E3164F, #C0103C)' }}
+            >
+              Book a Technical Consultation
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm text-white/70 border border-white/15 hover:border-[#008BCB]/40 hover:text-white hover:bg-white/5 transition-all duration-200"
+            >
+              Explore Our Work
+            </Link>
+          </div>
+
+          {/* Social proof strip */}
+          <div className="mt-12 pt-10 border-t border-white/8 flex flex-wrap items-center justify-center gap-8">
+            {[
+              { value: '20+', label: 'Years Engineering Excellence' },
+              { value: '500+', label: 'Projects Delivered' },
+              { value: '40+', label: 'Industries Served' },
+              { value: '95%', label: 'Client Retention Rate' },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p
+                  className="text-2xl font-black mb-0.5"
+                  style={{
+                    background: 'linear-gradient(135deg, #E3164F, #008BCB)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  {stat.value}
+                </p>
+                <p className="text-xs text-white/35 font-medium">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>

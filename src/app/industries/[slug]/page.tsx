@@ -1,9 +1,8 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, CheckCircle2, AlertCircle, ChevronRight, ShieldCheck, Zap } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
-import { Button } from '@/components/ui/Button'
 import { getIndustryBySlug, getAllIndustrySlugs } from '@/sanity/lib/queries'
 
 interface Props { params: Promise<{ slug: string }> }
@@ -20,16 +19,55 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const ind = await getIndustryBySlug(slug)
     if (!ind) return { title: slug.replace(/-/g, ' ') }
-    return { title: `${ind.name} Technology Solutions`, description: ind.seo?.metaDescription || ind.description }
+    return { title: `${ind.name} Technology Solutions | ABL Tech`, description: ind.seo?.metaDescription || ind.description }
   } catch {
-    return { title: slug.replace(/-/g, ' ') }
+    return { title: `${slug.replace(/-/g, ' ')} | ABL Tech` }
   }
 }
 
-const industryMap: Record<string, { name: string; icon: string; description: string; challenges: { title: string; description: string }[]; solutions: { title: string; description: string }[] }> = {
-  'retail-ecommerce': { name: 'Retail & E-commerce', icon: '🛍️', description: 'Personalized commerce experiences that drive conversion, loyalty, and sustainable growth.', challenges: [{ title: 'Cart Abandonment', description: 'High abandonment rates due to friction in checkout and lack of personalization.' }, { title: 'Inventory Management', description: 'Real-time inventory sync across online and physical channels.' }], solutions: [{ title: 'AI Personalization Engine', description: 'Recommend the right product to the right customer at the right moment.' }, { title: 'Headless Commerce', description: 'Decouple your frontend from your commerce backend for speed and flexibility.' }] },
-  'healthcare': { name: 'Healthcare & Life Sciences', icon: '🏥', description: 'Secure, compliant digital platforms for patient care, clinical operations, and health data management.', challenges: [{ title: 'Data Fragmentation', description: 'Patient data siloed across multiple systems and care providers.' }, { title: 'Regulatory Compliance', description: 'Maintaining HIPAA and data privacy requirements as systems scale.' }], solutions: [{ title: 'Unified Health Records', description: 'Integrate disparate systems into a single source of truth for patient data.' }, { title: 'Compliance Infrastructure', description: 'Build HIPAA-compliant cloud architecture with audit trails and access control.' }] },
-  'financial-services': { name: 'Financial Services', icon: '💰', description: 'Fintech, digital banking, and compliance systems for the modern financial ecosystem.', challenges: [{ title: 'Legacy System Debt', description: 'Aging core banking systems that can\'t support real-time transactions or modern APIs.' }, { title: 'Fraud & Security', description: 'Rising fraud sophistication that outpaces traditional detection methods.' }], solutions: [{ title: 'Digital Banking Platform', description: 'Modern banking infrastructure with real-time payments and open banking APIs.' }, { title: 'AI Fraud Detection', description: 'Machine learning models that detect and prevent fraud in milliseconds.' }] },
+const industryMap: Record<string, { name: string; icon: string; tagline: string; description: string; challenges: { title: string; description: string }[]; solutions: { title: string; description: string }[] }> = {
+  'retail-ecommerce': {
+    name: 'Retail & E-commerce',
+    icon: '🛍️',
+    tagline: 'Headless Commerce & AI Recommendation Engines',
+    description: 'Personalized commerce experiences that drive conversion, loyalty, and sustainable growth with Next.js PWAs.',
+    challenges: [
+      { title: 'High Cart Abandonment', description: 'High abandonment rates due to friction in checkout and lack of real-time personalization.' },
+      { title: 'Multi-Channel Inventory Sync', description: 'Real-time inventory synchronization across online storefronts, physical retail stores, and warehouses.' }
+    ],
+    solutions: [
+      { title: 'AI Personalization Engine', description: 'Machine learning recommendation engines driving 3x higher cart conversion rates.' },
+      { title: 'Headless Next.js Commerce', description: 'Decoupled fast frontend storefronts with sub-second page loads.' }
+    ]
+  },
+  'healthcare': {
+    name: 'Healthcare & Life Sciences',
+    icon: '🏥',
+    tagline: 'HIPAA-Compliant Patient Portals & Telehealth',
+    description: 'Secure, compliant digital platforms for patient care, clinical operations, and health data management.',
+    challenges: [
+      { title: 'Data Fragmentation', description: 'Patient data siloed across legacy EHR systems and care providers.' },
+      { title: 'Strict HIPAA Compliance', description: 'Maintaining HIPAA and data privacy requirements as cloud systems scale.' }
+    ],
+    solutions: [
+      { title: 'HL7 & FHIR Record Interoperability', description: 'Integrate disparate hospital systems into a single encrypted data vault.' },
+      { title: 'HD WebRTC Telehealth Portals', description: 'Secure remote consultations with integrated e-prescribing.' }
+    ]
+  },
+  'financial-services': {
+    name: 'Financial Services',
+    icon: '💰',
+    tagline: 'FinTech, Core Banking & Real-Time Fraud Detection',
+    description: 'Fintech, digital banking, and compliance systems for the modern financial ecosystem.',
+    challenges: [
+      { title: 'Legacy Mainframe Debt', description: 'Aging core banking systems that cannot support real-time transactions or open banking APIs.' },
+      { title: 'Sophisticated Cyber Fraud', description: 'Rising fraud sophistication that outpaces traditional batch detection methods.' }
+    ],
+    solutions: [
+      { title: 'Digital Banking APIs', description: 'Modern open banking infrastructure with OAuth2 authentication and real-time ledger sync.' },
+      { title: 'Microsecond AI Fraud Engine', description: 'Machine learning models evaluating transaction velocity in real-time.' }
+    ]
+  },
 }
 
 export default async function IndustryPage({ params }: Props) {
@@ -43,62 +81,107 @@ export default async function IndustryPage({ params }: Props) {
   const ind = industry || defaultData
 
   return (
-    <>
-      <section className="bg-gradient-to-br from-[#0D0D1A] to-[#111827] py-24 lg:py-32">
+    <main className="bg-[#FFFFFF] text-[#0B1220] selection:bg-[#D9005B] selection:text-white">
+      {/* Light Hero */}
+      <section className="relative pt-28 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/60 border-b border-slate-200/60">
         <Container>
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex items-center gap-2 text-sm text-gray-400">
-              <li><Link href="/" className="hover:text-white">Home</Link></li>
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex items-center gap-2 text-xs font-semibold text-[#475569]">
+              <li><Link href="/" className="hover:text-[#D9005B]">Home</Link></li>
               <li>/</li>
-              <li><Link href="/industries" className="hover:text-white">Industries</Link></li>
+              <li><Link href="/industries" className="hover:text-[#D9005B]">Industries</Link></li>
               <li>/</li>
-              <li className="text-gray-200" aria-current="page">{ind.name}</li>
+              <li className="text-[#0B1220]" aria-current="page">{ind.name}</li>
             </ol>
           </nav>
-          <div className="text-5xl mb-6">{ind.icon}</div>
-          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-6">{ind.name} Technology Solutions</h1>
-          <p className="text-lg text-gray-300 max-w-2xl leading-relaxed mb-8">{ind.description}</p>
-          <Button href="/contact" variant="primary" size="lg">Discuss Your Project <ArrowRight className="w-4 h-4" /></Button>
-        </Container>
-      </section>
+          
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D9005B]/10 text-[#D9005B] font-bold text-xs mb-6">
+            <span>{ind.icon}</span>
+            <span>{ind.tagline || 'Specialized Industry Solutions'}</span>
+          </div>
 
-      {/* Challenges & Solutions */}
-      <section className="section-padding bg-white">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-2xl font-black text-[#111111] mb-8">Industry Challenges</h2>
-              <div className="space-y-5">
-                {ind.challenges?.map((c: { title: string; description: string }) => (
-                  <div key={c.title} className="p-5 rounded-xl bg-red-50 border border-red-100">
-                    <h3 className="font-bold text-[#111111] mb-1">⚠️ {c.title}</h3>
-                    <p className="text-sm text-gray-600">{c.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h2 className="text-2xl font-black text-[#111111] mb-8">Our Solutions</h2>
-              <div className="space-y-5">
-                {ind.solutions?.map((s: { title: string; description: string }) => (
-                  <div key={s.title} className="p-5 rounded-xl bg-green-50 border border-green-100">
-                    <h3 className="font-bold text-[#111111] mb-1">✅ {s.title}</h3>
-                    <p className="text-sm text-gray-600">{s.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#0B1220] leading-tight mb-6">
+            {ind.name} Technology Solutions
+          </h1>
+          <p className="text-lg text-[#475569] max-w-2xl leading-relaxed mb-8">
+            {ind.description}
+          </p>
+          
+          <div className="flex flex-wrap gap-4">
+            <Link 
+              href="/contact" 
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] shadow-lg shadow-[#D9005B]/20 hover:opacity-95 transition-all"
+            >
+              Discuss Your {ind.name} Project
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </Container>
       </section>
 
-      <section className="py-20 bg-[#F7F8FA]">
-        <Container className="text-center">
-          <h2 className="text-3xl font-black text-[#111111] mb-4">Let&apos;s Solve Your {ind.name} Challenge</h2>
-          <p className="text-gray-500 mb-8 max-w-lg mx-auto">Our industry specialists understand your domain and can build technology that fits perfectly.</p>
-          <Button href="/contact" variant="primary" size="lg">Get In Touch <ArrowRight className="w-4 h-4" /></Button>
+      {/* Challenges & Solutions */}
+      <section className="py-20 bg-[#FFFFFF]">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-12">
+            
+            {/* Challenges */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-600">
+                <span>INDUSTRY CHALLENGES</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B1220]">Key Operational Pain Points</h2>
+              <div className="space-y-4">
+                {ind.challenges?.map((c: { title: string; description: string }, idx: number) => (
+                  <div key={idx} className="p-6 rounded-2xl bg-red-50/60 border border-red-200/70 space-y-2">
+                    <h3 className="font-bold text-[#0B1220] flex items-center gap-2">
+                      <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                      <span>{c.title}</span>
+                    </h3>
+                    <p className="text-xs text-[#475569] leading-relaxed">{c.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Solutions */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#D9005B]">
+                <span>OUR SOLUTIONS</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0B1220]">How ABL Tech Solves It</h2>
+              <div className="space-y-4">
+                {ind.solutions?.map((s: { title: string; description: string }, idx: number) => (
+                  <div key={idx} className="p-6 rounded-2xl bg-emerald-50/60 border border-emerald-200/70 space-y-2">
+                    <h3 className="font-bold text-[#0B1220] flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                      <span>{s.title}</span>
+                    </h3>
+                    <p className="text-xs text-[#475569] leading-relaxed">{s.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
         </Container>
       </section>
-    </>
+
+      {/* CTA */}
+      <section className="py-20 bg-[#F8FAFC] border-t border-slate-200">
+        <Container className="text-center max-w-3xl">
+          <h2 className="text-3xl font-bold text-[#0B1220] mb-4">Let's Solve Your {ind.name} Challenge</h2>
+          <p className="text-sm text-[#475569] mb-8 leading-relaxed">
+            Our industry specialists understand your domain constraints and build software that fits perfectly into your enterprise workflow.
+          </p>
+          <Link 
+            href="/contact" 
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] shadow-xl hover:opacity-95 transition-all"
+          >
+            Get In Touch
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </Container>
+      </section>
+    </main>
   )
 }

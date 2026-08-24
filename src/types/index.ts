@@ -1,5 +1,5 @@
 // =============================================
-// Shared TypeScript Types for AB BusinessTech
+// Shared TypeScript Types for ABL BusinessTech
 // =============================================
 
 export interface SanityImage {

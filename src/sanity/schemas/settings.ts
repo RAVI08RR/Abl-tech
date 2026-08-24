@@ -151,13 +151,9 @@ export const aboutPage = defineType({
   icon: () => 'ℹ️',
   fields: [
     defineField({ name: 'title', title: 'Document Title', type: 'string', initialValue: 'About Page Settings' }),
-    defineField({ name: 'eyebrow', title: 'Hero Eyebrow Text', type: 'string', initialValue: 'About AB BusinessTech LLP' }),
+    defineField({ name: 'eyebrow', title: 'Hero Eyebrow Text', type: 'string', initialValue: 'About ABL BusinessTech LLP' }),
     defineField({ name: 'headline', title: 'Hero Headline', type: 'string', initialValue: 'We Build Technology That Moves Business' }),
-    defineField({ name: 'subheadline', title: 'Hero Subheadline', type: 'text', rows: 3 }),
-    defineField({
-      name: 'buttons', title: 'Hero Buttons', type: 'array',
-      of: [{ type: 'object', fields: [{ name: 'label', type: 'string' }, { name: 'href', type: 'string' }, { name: 'variant', type: 'string' }], preview: { select: { title: 'label' } } }],
-    }),
+    defineField({ name: 'subheadline', title: 'Hero Subheadline', type: 'text', rows: 3, initialValue: 'ABL BusinessTech LLP is a technology consulting and software engineering firm. We help ambitious businesses design, build, and scale digital products that create real impact.' }),
     defineField({ name: 'missionEyebrow', title: 'Mission Section Eyebrow', type: 'string', initialValue: 'Our Mission' }),
     defineField({ name: 'missionTitle', title: 'Mission Section Title', type: 'string', initialValue: 'Making World-Class Technology Accessible to Ambitious Businesses' }),
     defineField({ name: 'missionParagraphs', title: 'Mission Story Paragraphs', type: 'array', of: [{ type: 'text', rows: 3 }] }),
@@ -168,7 +164,7 @@ export const aboutPage = defineType({
     defineField({
       name: 'cta', title: 'CTA Section', type: 'object',
       fields: [
-        { name: 'heading', type: 'string', initialValue: 'Join the AB BusinessTech Team' },
+        { name: 'heading', type: 'string', initialValue: 'Join the ABL BusinessTech Team' },
         { name: 'description', type: 'text', rows: 2 },
         { name: 'buttons', type: 'array', of: [{ type: 'object', fields: [{ name: 'label', type: 'string' }, { name: 'href', type: 'string' }, { name: 'variant', type: 'string' }] }] },
       ],

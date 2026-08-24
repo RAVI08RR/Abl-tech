@@ -21,8 +21,8 @@ import { getServices, getServicesPage } from '@/sanity/lib/queries'
 import type { Service } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Technology Services — AI, Software & Cloud Engineering',
-  description: 'From production-ready AI to enterprise software and cloud infrastructure — AB BusinessTech LLP delivers engineering solutions that drive hard ROI for global enterprises.',
+  title: 'Technology Services — AI, Software & Cloud Engineering | ABL BusinessTech',
+  description: 'From production-ready AI to enterprise software and cloud infrastructure — ABL BusinessTech LLP delivers engineering solutions that drive hard ROI for global enterprises.',
 }
 
 const serviceIcons: Record<string, React.ElementType> = {

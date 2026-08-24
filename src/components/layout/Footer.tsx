@@ -80,7 +80,7 @@ export function Footer({ footer }: FooterProps) {
   const columns = footer?.columns?.length ? footer.columns : defaultColumns
   const bottomLinks = footer?.bottomLinks?.length ? footer.bottomLinks : defaultBottomLinks
   const tagline = footer?.tagline || 'Engineering production-ready AI, software, and cloud solutions for enterprises that cannot afford to fail.'
-  const copyright = footer?.copyright || `© ${new Date().getFullYear()} AB BusinessTech LLP. All rights reserved.`
+  const copyright = footer?.copyright || `© ${new Date().getFullYear()} ABL BusinessTech LLP. All rights reserved.`
 
   return (
     <footer className="bg-[#0D0D1A] text-white" role="contentinfo">
@@ -90,13 +90,13 @@ export function Footer({ footer }: FooterProps) {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Brand column */}
             <div className="lg:col-span-2">
-              <Link href="/" className="flex items-center mb-5" aria-label="AB BusinessTech LLP - Home">
+              <Link href="/" className="flex items-center mb-5" aria-label="ABL BusinessTech LLP - Home">
                 <Image
                   src="/logo-abltech.png"
-                  alt="AB BusinessTech LLP"
+                  alt="ABL BusinessTech LLP"
                   width={160}
-                  height={50}
-                  style={{ width: 'auto', height: '52px', filter: 'brightness(0) invert(1)' }}
+                  height={100}
+                  style={{ width: 'auto', height: '100px', }}
                   className="object-contain"
                 />
               </Link>

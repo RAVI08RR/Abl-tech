@@ -94,10 +94,10 @@ export function Header({ navigation }: HeaderProps) {
         <div className="container-xl">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center shrink-0" aria-label="AB BusinessTech LLP - Home">
+            <Link href="/" className="flex items-center shrink-0" aria-label="ABL BusinessTech LLP - Home">
               <Image
                 src="/logo-abltech.png"
-                alt="AB BusinessTech LLP Logo"
+                alt="ABL BusinessTech LLP Logo"
                 width={150}
                 height={45}
                 style={{ width: 'auto', height: '80px' }}
@@ -352,7 +352,7 @@ export function Header({ navigation }: HeaderProps) {
 
               {/* Company Info */}
               <div className="flex items-center justify-between pt-2">
-                <p className="text-xs text-white/30">AB BusinessTech LLP</p>
+                <p className="text-xs text-white/30">ABL BusinessTech LLP</p>
                 <div className="flex items-center gap-3">
                   <Link
                     href="/contact"

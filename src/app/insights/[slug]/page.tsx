@@ -29,16 +29,19 @@ const validSlugs = ['ai-reshaping-enterprise-software-2025', 'microservices-vs-m
 const defaultPost = {
   title: 'How AI is Reshaping Enterprise Software Development in 2025',
   excerpt: 'Artificial intelligence is no longer a futuristic concept — it\'s actively changing how enterprise software is built, deployed, and maintained.',
-  publishedAt: '2025-07-15T00:00:00Z',
+  publishedAt: '2025-01-15',
   readingTime: 8,
-  author: { name: 'Ravi Soni', designation: 'CTO, AB BusinessTech', bio: 'Technology leader with 15+ years building enterprise software.' },
+  author: { name: 'Ravi Soni', designation: 'CTO, ABL BusinessTech', bio: 'Technology leader with 15+ years building enterprise software.' },
   category: { title: 'AI & Technology', slug: { current: 'ai-technology' } },
   tags: ['AI', 'Enterprise', 'Software Development'],
-  content: null,
+  content: [
+    { _type: 'block', _key: '1', children: [{ _type: 'span', text: 'Building software in 2025 requires a fundamentally different approach than five years ago. AI is no longer an add-on — it is core infrastructure. Enterprise architecture must be designed for continuous model integration, automated data pipelines, and real-time observability.' }] },
+    { _type: 'block', _key: '2', children: [{ _type: 'span', text: 'In this article, we cover key architecture patterns for modern enterprise systems, common traps to avoid, and a practical roadmap for legacy modernization.' }] },
+  ],
   featuredImage: undefined as { asset?: { url?: string } } | undefined,
 }
 
-export default async function InsightPostPage({ params }: Props) {
+export default async function PostPage({ params }: Props) {
   const { slug } = await params
   let post = null
   try { post = await getPostBySlug(slug) } catch {}
@@ -53,8 +56,8 @@ export default async function InsightPostPage({ params }: Props) {
     headline: p.title,
     description: p.excerpt,
     datePublished: p.publishedAt,
-    author: { '@type': 'Person', name: p.author?.name },
-    publisher: { '@type': 'Organization', name: 'AB BusinessTech LLP' },
+    author: { '@type': 'Person', name: p.author?.name || 'ABL BusinessTech Team' },
+    publisher: { '@type': 'Organization', name: 'ABL BusinessTech LLP' },
   }
 
   return (

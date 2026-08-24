@@ -121,7 +121,7 @@ export function CTA({
 
         {/* Trust Note */}
         <p className="mt-12 text-xs text-gray-500 font-medium">
-          Join 100+ businesses that have transformed their technology with AB BusinessTech
+          Join 100+ businesses that have transformed their technology with ABL BusinessTech
         </p>
       </Container>
     </section>

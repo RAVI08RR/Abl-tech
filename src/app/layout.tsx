@@ -6,25 +6,25 @@ import { getNavigation, getFooter, getSiteSettings } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
   title: {
-    default: 'AB BusinessTech LLP — Technology Consulting & Software Development',
-    template: '%s | AB BusinessTech LLP',
+    default: 'ABL BusinessTech LLP — Technology Consulting & Software Development',
+    template: '%s | ABL BusinessTech LLP',
   },
-  description: 'AB BusinessTech LLP helps ambitious businesses design, build, modernize, and scale digital products using modern technology, data, and AI.',
-  keywords: ['software development', 'web development', 'mobile app development', 'AI', 'cloud solutions', 'digital transformation', 'technology consulting'],
-  authors: [{ name: 'AB BusinessTech LLP' }],
-  creator: 'AB BusinessTech LLP',
-  publisher: 'AB BusinessTech LLP',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://abbusinesstech.com'),
+  description: 'ABL BusinessTech LLP helps ambitious businesses design, build, modernize, and scale digital products using modern technology, data, and AI.',
+  keywords: ['software development company', 'AI consulting', 'cloud engineering', 'digital transformation', 'custom software', 'ABL BusinessTech'],
+  authors: [{ name: 'ABL BusinessTech LLP' }],
+  creator: 'ABL BusinessTech LLP',
+  publisher: 'ABL BusinessTech LLP',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'AB BusinessTech LLP',
-    title: 'AB BusinessTech LLP — Technology Consulting & Software Development',
-    description: 'Helping businesses transform ideas into scalable digital products.',
+    siteName: 'ABL BusinessTech LLP',
+    title: 'ABL BusinessTech LLP — Technology Consulting & Software Development',
+    description: 'ABL BusinessTech LLP helps ambitious businesses design, build, modernize, and scale digital products.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AB BusinessTech LLP',
+    title: 'ABL BusinessTech LLP',
     description: 'Helping businesses transform ideas into scalable digital products.',
   },
   robots: {

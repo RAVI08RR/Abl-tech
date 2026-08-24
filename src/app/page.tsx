@@ -26,41 +26,12 @@ import {
 } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
-  title: 'AB BusinessTech LLP — Technology Consulting & Software Development',
-  description: 'AB BusinessTech LLP helps ambitious businesses design, build, modernize, and scale digital products using modern technology, data, and AI.',
+  title: 'ABL BusinessTech LLP — Enterprise AI & Software Engineering Company',
+  description: 'ABL BusinessTech LLP helps ambitious businesses design, build, modernize, and scale digital products using modern technology, data, and AI.',
   openGraph: {
-    title: 'AB BusinessTech LLP — Technology Consulting & Software Development',
-    description: 'Helping businesses transform ideas into scalable digital products.',
+    title: 'ABL BusinessTech LLP — Enterprise AI & Software Engineering Company',
+    description: 'Custom AI solutions, web & mobile platforms, and enterprise cloud architecture built for scale.',
     type: 'website',
-  },
-}
-
-// JSON-LD structured data
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'AB BusinessTech LLP',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abbusinesstech.com',
-  description: 'Technology consulting and software development company helping businesses build scalable digital products.',
-  foundingDate: '2014',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'IN',
-  },
-  sameAs: [
-    'https://linkedin.com/company/ab-businesstech',
-  ],
-}
-
-const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'AB BusinessTech LLP',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abbusinesstech.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: { '@type': 'EntryPoint', urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL}/search?q={search_term_string}` },
-    'query-input': 'required name=search_term_string',
   },
 }
 
@@ -109,6 +80,34 @@ export default async function HomePage() {
   }
 
   const hp = homePageData
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ABL BusinessTech LLP',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com',
+    description: 'Technology consulting and software development company helping businesses build scalable digital products.',
+    foundingDate: '2005',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'IN',
+    },
+    sameAs: [
+      'https://linkedin.com/company/abl-tech',
+    ],
+  }
+
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ABL BusinessTech LLP',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL}/search?q={search_term_string}` },
+      'query-input': 'required name=search_term_string',
+    },
+  }
 
   return (
     <>

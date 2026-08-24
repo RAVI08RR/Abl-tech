@@ -44,7 +44,7 @@ export default async function WorkPage() {
   const headline = pageData?.headline || 'Real Problems. Measurable Outcomes.'
   const subheadline = pageData?.subheadline || 'We partner with businesses across industries to solve complex technology challenges. Every engagement delivers tangible, measurable results.'
   const ctaHeading = pageData?.cta?.heading || 'Ready to Start Your Project?'
-  const ctaDesc = pageData?.cta?.description || 'Join 100+ businesses that have partnered with AB BusinessTech to transform their digital operations.'
+  const ctaDesc = pageData?.cta?.description || 'Join 100+ businesses that have partnered with ABL BusinessTech to transform their digital operations.'
   const ctaLabel = pageData?.cta?.buttonLabel || 'Start a Conversation'
   const ctaHref = pageData?.cta?.buttonHref || '/contact'
 

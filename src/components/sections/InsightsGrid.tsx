@@ -23,7 +23,7 @@ const defaultPosts: Post[] = [
     readingTime: 8,
     featured: true,
     category: { _id: 'c1', title: 'AI & Technology', slug: { current: 'ai-technology' } },
-    author: { name: 'Ravi Soni', designation: 'CTO, AB BusinessTech' },
+    author: { name: 'Ravi Soni', designation: 'CTO, ABL BusinessTech' },
   },
   {
     _id: '2',

@@ -195,7 +195,7 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
                   backgroundClip: 'text',
                 }}
               >
-                AB BusinessTech
+                ABL BusinessTech
               </span>
             </h2>
 

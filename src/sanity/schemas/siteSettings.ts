@@ -6,7 +6,7 @@ export const siteSettings = defineType({
   type: 'document',
   icon: () => '⚙️',
   fields: [
-    defineField({ name: 'siteName', title: 'Site Name', type: 'string', initialValue: 'AB BusinessTech LLP', validation: (Rule) => Rule.required() }),
+    defineField({ name: 'siteName', title: 'Site Name', type: 'string', initialValue: 'ABL BusinessTech LLP', validation: (Rule) => Rule.required() }),
     defineField({ name: 'logo', title: 'Logo', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'tagline', title: 'Tagline', type: 'string' }),
     defineField({ name: 'contactEmail', title: 'Contact Email', type: 'string' }),

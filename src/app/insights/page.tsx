@@ -28,7 +28,7 @@ export default function InsightsPage() {
 
   const eyebrow = 'Insights'
   const headline = 'Technology Thinking From Our Team'
-  const subheadline = 'Practical guides, engineering deep-dives, and strategic perspectives from the AB BusinessTech team.'
+  const subheadline = 'Practical guides, engineering deep-dives, and strategic perspectives from the ABL BusinessTech team.'
 
   return (
     <>

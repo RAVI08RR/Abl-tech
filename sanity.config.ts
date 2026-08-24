@@ -8,7 +8,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 
 export default defineConfig({
   name: 'ab-businesstech-studio',
-  title: 'AB BusinessTech LLP',
+  title: 'ABL BusinessTech LLP',
   projectId,
   dataset,
   document: {
@@ -20,7 +20,7 @@ export default defineConfig({
     structureTool({
       structure: (S) =>
         S.list()
-          .title('AB BusinessTech CMS')
+          .title('ABL BusinessTech CMS')
           .items([
             S.listItem().title('🏠 Homepage').child(
               S.document().schemaType('homePage').documentId('homePage')

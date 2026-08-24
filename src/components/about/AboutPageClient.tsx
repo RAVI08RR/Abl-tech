@@ -117,7 +117,7 @@ export function AboutPageClient() {
     {
       year: 2005,
       title: 'Company Founded',
-      description: 'AB BusinessTech LLP was established with a focus on core software engineering and enterprise IT consulting.',
+      description: 'ABL BusinessTech LLP was established with a focus on core software engineering and enterprise IT consulting.',
     },
     {
       year: 2012,
@@ -221,14 +221,14 @@ export function AboutPageClient() {
 
   const testimonials = [
     {
-      quote: "“AB BusinessTech LLP has been our core engineering partner for over 5 years. Their team's code quality, security standards, and speed of delivery are unmatched.”",
+      quote: "“ABL BusinessTech LLP has been our core engineering partner for over 5 years. Their team's code quality, security standards, and speed of delivery are unmatched.”",
       name: "Arthur Pendelton",
       role: "VP of Global Technology",
       company: "Enterprise Payments Corp",
       avatar: "AP",
     },
     {
-      quote: "“When we needed to scale our cloud infrastructure to support 10x user growth, AB BusinessTech deployed a senior DevOps pod that executed zero-downtime migration.”",
+      quote: "“When we needed to scale our cloud infrastructure to support 10x user growth, ABL BusinessTech deployed a senior DevOps pod that executed zero-downtime migration.”",
       name: "Sophia Vance",
       role: "Chief Technology Officer",
       company: "SaaS Scale Systems",
@@ -238,8 +238,8 @@ export function AboutPageClient() {
 
   const faqs = [
     {
-      question: 'When was AB BusinessTech LLP founded?',
-      answer: 'AB BusinessTech LLP was founded in 2005. Over two decades, we have evolved from a specialist software consulting firm into a global AI, software engineering, and cloud transformation powerhouse.',
+      question: 'When was ABL BusinessTech LLP founded?',
+      answer: 'ABL BusinessTech LLP was founded in 2005. Over two decades, we have evolved from a specialist software consulting firm into a global AI, software engineering, and cloud transformation powerhouse.',
     },
     {
       question: 'What types of companies do you partner with?',
@@ -284,7 +284,7 @@ export function AboutPageClient() {
               <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#D9005B]/10 via-[#8B5CF6]/10 to-[#00AEEF]/10 border border-[#D9005B]/20 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-[#D9005B] animate-ping" />
                 <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] bg-clip-text text-transparent">
-                  ABOUT AB BUSINESSTECH LLP (EST. 2005)
+                  ABOUT ABL BUSINESSTECH LLP (EST. 2005)
                 </span>
               </div>
 
@@ -298,7 +298,7 @@ export function AboutPageClient() {
 
               {/* Description */}
               <p className="text-lg sm:text-xl text-[#475569] max-w-2xl leading-relaxed font-normal">
-                Since 2005, AB BusinessTech LLP has been a trusted technology partner for global enterprises and ambitious scaleups. We design, build, and scale production-ready AI, custom software, and cloud platforms that create measurable business impact.
+                Since 2005, ABL BusinessTech LLP has been a trusted technology partner for global enterprises and ambitious scaleups. We design, build, and scale production-ready AI, custom software, and cloud platforms that create measurable business impact.
               </p>
 
               {/* CTA Buttons */}
@@ -361,7 +361,7 @@ export function AboutPageClient() {
 
                   <div className="text-center space-y-1">
                     <div className="text-xs font-bold uppercase tracking-widest text-[#D9005B]">
-                      AB BUSINESSTECH CORE
+                      ABL BUSINESSTECH CORE
                     </div>
                     <div className="text-sm font-semibold text-[#0B1220]">
                       Enterprise AI, Cloud & Co-Engineering
@@ -500,7 +500,7 @@ export function AboutPageClient() {
                 Making World-Class Technology Accessible to Ambitious Enterprises.
               </h2>
               <p className="text-base text-[#475569] leading-relaxed">
-                Founded in 2005, AB BusinessTech LLP was built on a single conviction: that ambitious businesses deserve access to the same elite engineering talent and cloud-native architecture that powers the world's tech giants.
+                Founded in 2005, ABL BusinessTech LLP was built on a single conviction: that ambitious businesses deserve access to the same elite engineering talent and cloud-native architecture that powers the world's tech giants.
               </p>
               <p className="text-base text-[#475569] leading-relaxed">
                 Over two decades, we have evolved into a full-service AI, software, and cloud engineering powerhouse—helping clients navigate technological disruptions from early web services to modern AI models.
@@ -606,7 +606,7 @@ export function AboutPageClient() {
               The People Behind the Engineering Excellence.
             </h2>
             <p className="text-base text-[#475569]">
-              Meet the founders, principal architects, and technology directors leading AB BusinessTech LLP.
+              Meet the founders, principal architects, and technology directors leading ABL BusinessTech LLP.
             </p>
           </div>
 
@@ -807,7 +807,7 @@ export function AboutPageClient() {
               Frequently Asked Questions
             </h2>
             <p className="text-base text-[#475569]">
-              Everything you need to know about AB BusinessTech LLP and our co-engineering model.
+              Everything you need to know about ABL BusinessTech LLP and our co-engineering model.
             </p>
           </div>
 
@@ -854,7 +854,7 @@ export function AboutPageClient() {
 
                 <div className="space-y-4">
                   <span className="text-xs font-bold uppercase tracking-widest text-[#D9005B]">
-                    WORK WITH AB BUSINESSTECH
+                    WORK WITH ABL BUSINESSTECH
                   </span>
                   <h2 className="text-3xl sm:text-5xl font-bold text-[#0B1220] leading-tight">
                     Ready to Scale Your Software Engineering Capabilities?
@@ -1107,7 +1107,7 @@ export function AboutPageClient() {
                             className="mt-1 rounded border-slate-300 text-[#D9005B] focus:ring-[#D9005B]"
                           />
                           <span className="text-xs text-[#475569]">
-                            I agree to the Privacy Policy and allow AB BusinessTech LLP to contact me regarding my inquiry.
+                            I agree to the Privacy Policy and allow ABL BusinessTech LLP to contact me regarding my inquiry.
                           </span>
                         </label>
                         {formErrors.agreeTerms && (

@@ -7,12 +7,12 @@ import ContactForm from './ContactForm'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with AB BusinessTech LLP. Tell us about your project and we\'ll respond within 1 business day.',
+  description: 'Get in touch with ABL BusinessTech LLP. Tell us about your project and we\'ll respond within 1 business day.',
 }
 
 const defaultContactInfo = [
-  { icon: Mail, label: 'Email Us', value: 'hello@abbusinesstech.com', href: 'mailto:hello@abbusinesstech.com' },
-  { icon: Phone, label: 'Call Us', value: '+91 9876 543 210', href: 'tel:+919876543210' },
+  { icon: Mail, label: 'Email Us', value: 'info@abbusinesstech.com', href: 'mailto:info@abbusinesstech.com' },
+  { icon: Phone, label: 'Call Us', value: '+91 7416 743 434', href: 'tel:+917416743434' },
   { icon: MapPin, label: 'Visit Us', value: 'Mumbai, Maharashtra, India', href: undefined },
   { icon: Clock, label: 'Working Hours', value: 'Mon – Fri, 9 AM – 7 PM IST', href: undefined },
 ]
@@ -30,7 +30,7 @@ export default async function ContactPage() {
     ;[pageData, siteSettings] = await Promise.all([
       getContactPage(), getSiteSettings()
     ])
-  } catch {}
+  } catch { }
 
   const eyebrow = pageData?.eyebrow || 'Contact Us'
   const headline = pageData?.headline || "Let's Build Something Great Together"

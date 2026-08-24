@@ -369,7 +369,7 @@ export default async function ServicePage({ params }: Props) {
     description: s.shortDescription,
     provider: {
       '@type': 'Organization',
-      name: 'AB BusinessTech LLP',
+      name: 'ABL BusinessTech LLP',
     },
   }
 

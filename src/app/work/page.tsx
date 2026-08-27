@@ -146,22 +146,33 @@ export default async function WorkPage() {
   return (
     <main id="main-content">
       {/* ── HERO ─────────────────────────────────────── */}
-      <section className="relative bg-[#F8FAFC] border-b border-slate-200/70 py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-        <div className="absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#D9005B]/8 to-[#00AEEF]/8 blur-3xl pointer-events-none" />
+      <section className="relative bg-[#F8FAFC] border-b border-slate-200/70 pt-32 pb-24 lg:pt-36 lg:pb-32 overflow-hidden">
+        {/* Abstract Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+          <Image
+            src="/client-bg.png"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
+        <div className="absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#E3164F]/8 to-[#05A7D4]/8 blur-3xl pointer-events-none z-0" />
 
         <Container className="relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#D9005B]/10 border border-[#D9005B]/20 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D9005B]" />
-              <span className="text-xs font-bold tracking-widest uppercase text-[#D9005B]">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#E3164F]/10 border border-[#E3164F]/20 mb-6 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E3164F]" />
+              <span className="text-xs font-bold tracking-widest uppercase text-[#E3164F]">
                 {eyebrow}
               </span>
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#0B1220] leading-[1.05] tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0B1220] leading-[1.1] tracking-tight mb-6">
               {headline}
             </h1>
-            <p className="text-lg sm:text-xl text-[#475569] leading-relaxed max-w-2xl">
+            <p className="text-lg text-[#475569] leading-relaxed max-w-2xl">
               {subheadline}
             </p>
           </div>
@@ -186,11 +197,11 @@ export default async function WorkPage() {
       </section>
 
       {/* ── FEATURED CASE STUDIES (Alternating Large Layout + Spotlight) ─── */}
-      <section className="bg-white py-24 lg:py-32">
+      <section className="bg-white py-20 lg:py-28">
         <Container>
-          <div className="mb-20">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#D9005B]">Featured Projects</span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0B1220] tracking-tight mt-2">
+          <div className="mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">Featured Projects</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] tracking-tight mt-2">
               Landmark Engagements
             </h2>
           </div>
@@ -460,11 +471,11 @@ export default async function WorkPage() {
 
       {/* ── REMAINING PROJECTS GRID ─────────────────── */}
       {remainingWork.length > 0 && (
-        <section className="bg-[#F8FAFC] border-t border-slate-100 py-24 lg:py-32">
+        <section className="bg-[#F8FAFC] border-t border-slate-100 py-20 lg:py-28">
           <Container>
-            <div className="mb-16">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#D9005B]">More Projects</span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0B1220] tracking-tight mt-2">
+            <div className="mb-14">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">More Projects</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] tracking-tight mt-2">
                 Additional Engagements
               </h2>
             </div>
@@ -538,15 +549,15 @@ export default async function WorkPage() {
       {/* ── CTA ─────────────────────────────────────── */}
       <section className="relative py-24 overflow-hidden bg-[#0B1220]">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#D9005B]/15 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00AEEF]/15 rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E3164F]/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#05A7D4]/15 rounded-full blur-3xl" />
         </div>
 
         <Container className="relative z-10 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             {ctaHeading}
           </h2>
-          <p className="text-[#94A3B8] mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#94A3B8] text-lg mb-10 max-w-xl mx-auto leading-relaxed">
             {ctaDesc}
           </p>
           <Button

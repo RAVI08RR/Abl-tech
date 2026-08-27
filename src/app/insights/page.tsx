@@ -16,11 +16,10 @@ const defaultPosts = [
 
 const cardAccents = [
   { from: '#E3164F', to: '#FF6B9D' },
-  { from: '#008BCB', to: '#00C4FF' },
-  { from: '#7C3AED', to: '#A78BFA' },
-  { from: '#059669', to: '#34D399' },
-  { from: '#D97706', to: '#FCD34D' },
-  { from: '#0891B2', to: '#67E8F9' },
+  { from: '#9F2A9B', to: '#C059BC' },
+  { from: '#5C3EE7', to: '#8B74F2' },
+  { from: '#1877F2', to: '#4B96F5' },
+  { from: '#05A7D4', to: '#38BDF8' },
 ]
 
 export default function InsightsPage() {
@@ -36,27 +35,38 @@ export default function InsightsPage() {
       <section
         className="relative py-28 lg:py-36 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/30 border-b border-slate-200/50"
       >
+        {/* Abstract Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+          <Image
+            src="/client-bg.png"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem]"
+          className="pointer-events-none absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] z-0"
         />
         <div
-          className="pointer-events-none absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-60"
-          style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.05) 0%, transparent 70%)' }}
+          className="pointer-events-none absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-60 z-0"
+          style={{ background: 'radial-gradient(circle, rgba(5,167,212,0.05) 0%, transparent 70%)' }}
         />
         <div
-          className="pointer-events-none absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-60"
+          className="pointer-events-none absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-60 z-0"
           style={{ background: 'radial-gradient(circle, rgba(227,22,79,0.04) 0%, transparent 70%)' }}
         />
 
         <Container className="relative z-10">
           <div className="max-w-3xl space-y-6">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-2">
-              <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#E3164F]" />
+            <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-white/60 border border-slate-200/50 shadow-sm backdrop-blur-sm w-fit">
+              <span className="h-px w-6 bg-gradient-to-r from-transparent to-[#E3164F]" />
               <span
                 className="text-xs font-bold tracking-[0.18em] uppercase"
                 style={{
-                  background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                  background: 'linear-gradient(90deg, #E3164F, #05A7D4)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -66,10 +76,10 @@ export default function InsightsPage() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-[#0B1220] leading-[1.05] tracking-tight text-pretty">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B1220] leading-[1.1] tracking-tight text-pretty">
               {headline}
             </h1>
-            <p className="text-lg sm:text-xl text-slate-500 leading-relaxed max-w-2xl font-normal text-pretty">
+            <p className="text-lg text-slate-500 leading-relaxed max-w-2xl font-normal text-pretty">
               {subheadline}
             </p>
           </div>

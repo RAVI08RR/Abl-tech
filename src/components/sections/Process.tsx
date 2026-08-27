@@ -52,7 +52,13 @@ const steps = [
   },
 ]
 
-export function Process() {
+interface ProcessProps {
+  heading?: string
+  description?: string
+  steps?: any[]
+}
+
+export function Process({ heading, description, steps: propSteps }: ProcessProps = {}) {
   const [activeStep, setActiveStep] = useState<number | null>(0)
 
   return (

@@ -70,6 +70,11 @@ const defaultTechnologies = [
   { _id: 'e1', name: 'Shopify', category: 'E-commerce', featured: true, order: 1 },
   { _id: 'e2', name: 'WooCommerce', category: 'E-commerce', featured: false, order: 2 },
   { _id: 'e3', name: 'Magento', category: 'E-commerce', featured: false, order: 3 },
+  // CMS
+  { _id: 'cms1', name: 'Sanity', category: 'CMS', featured: true, order: 1 },
+  { _id: 'cms2', name: 'WordPress', category: 'CMS', featured: true, order: 2 },
+  { _id: 'cms3', name: 'Strapi', category: 'CMS', featured: false, order: 3 },
+  { _id: 'cms4', name: 'Contentful', category: 'CMS', featured: false, order: 4 },
 ] as Technology[]
 
 const categoryIcons: Record<string, React.ElementType> = {
@@ -85,7 +90,17 @@ const categoryIcons: Record<string, React.ElementType> = {
 }
 
 export function TechnologyStack({ heading, description, technologies }: TechnologyStackProps) {
-  const displayTechs = technologies?.length ? technologies : defaultTechnologies
+  // Merge CMS technologies with default fallback technologies.
+  // This ensures all categories show up, and if a new tech is added via CMS, it's included!
+  const displayTechs = [...(technologies || [])]
+  
+  defaultTechnologies.forEach((dt) => {
+    // If the CMS hasn't provided this specific technology yet, use the fallback one.
+    if (!displayTechs.some((t) => t.name.toLowerCase() === dt.name.toLowerCase())) {
+      displayTechs.push(dt)
+    }
+  })
+
   const displayHeading = heading || 'Our Technology Ecosystem'
   const displayDescription = description || 'We work with the best-in-class tools and frameworks across the full technology stack — from frontend to AI to cloud infrastructure.'
 
@@ -93,10 +108,10 @@ export function TechnologyStack({ heading, description, technologies }: Technolo
   const [activeCategory, setActiveCategory] = useState<string>(availableCategories[0] || 'Frontend')
 
   useEffect(() => {
-    if (availableCategories.length && !availableCategories.includes(activeCategory)) {
+    if (availableCategories.length > 0 && !availableCategories.includes(activeCategory)) {
       setActiveCategory(availableCategories[0])
     }
-  }, [displayTechs, availableCategories, activeCategory])
+  }, [displayTechs, activeCategory]) // Removed availableCategories from dependency array to avoid infinite loops if references change
 
   const filtered = displayTechs.filter((t) => t.category === activeCategory)
 
@@ -127,8 +142,8 @@ export function TechnologyStack({ heading, description, technologies }: Technolo
                 onClick={() => setActiveCategory(cat)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-[#E3164F] text-white shadow-md shadow-[#E3164F]/20'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200/80'
+                    ? 'bg-[#05A7D4] text-white shadow-md shadow-[#05A7D4]/25'
+                    : 'bg-white text-gray-700 hover:bg-sky-50 border border-gray-200/80'
                 }`}
               >
                 <TabIcon
@@ -153,10 +168,10 @@ export function TechnologyStack({ heading, description, technologies }: Technolo
           {filtered.map((tech) => (
             <div
               key={tech._id}
-              className="group flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200/60 hover:border-[#E3164F]/30 hover:shadow-lg transition-all duration-300 card-hover text-center"
+              className="group flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200/60 hover:border-[#05A7D4]/30 hover:shadow-lg transition-all duration-300 card-hover text-center"
             >
               {/* Logo / Image rendering */}
-              <div className="w-14 h-14 rounded-2xl bg-[#F8F9FA] border border-gray-100 group-hover:border-[#E3164F]/20 group-hover:bg-gradient-to-br group-hover:from-[#E3164F]/5 group-hover:to-[#008BCB]/5 flex items-center justify-center transition-all duration-300 overflow-hidden p-2">
+              <div className="w-14 h-14 rounded-2xl bg-[#F8F9FA] border border-gray-100 group-hover:border-[#05A7D4]/20 group-hover:bg-gradient-to-br group-hover:from-[#05A7D4]/5 group-hover:to-[#037C9E]/8 flex items-center justify-center transition-all duration-300 overflow-hidden p-2">
                 {tech.logo?.asset?.url ? (
                   <Image
                     src={tech.logo.asset.url}
@@ -166,14 +181,14 @@ export function TechnologyStack({ heading, description, technologies }: Technolo
                     className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 ) : (
-                  <span className="text-xs font-black text-gray-700 group-hover:text-[#E3164F] transition-colors">
+                  <span className="text-xs font-black text-gray-700 group-hover:text-[#05A7D4] transition-colors">
                     {tech.name.slice(0, 3).toUpperCase()}
                   </span>
                 )}
               </div>
 
               {/* Title */}
-              <p className="text-xs font-bold text-gray-800 group-hover:text-[#E3164F] transition-colors leading-tight">
+              <p className="text-xs font-bold text-gray-800 group-hover:text-[#05A7D4] transition-colors leading-tight">
                 {tech.name}
               </p>
             </div>

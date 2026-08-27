@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
   ShoppingCart,
@@ -15,6 +18,7 @@ import {
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/MotionSection'
 import type { Industry } from '@/types'
 
 interface IndustriesGridProps {
@@ -73,21 +77,27 @@ export function IndustriesGrid({ heading, description, industries }: IndustriesG
   const displayHeading = heading || 'Technology Built Around Your Industry'
   const displayDescription = description || 'We bring deep domain knowledge across industries, delivering technology solutions that solve real business challenges.'
 
+  const shouldReduce = useReducedMotion()
+
   return (
-    <section className="section-padding bg-[#F7F8FA]" aria-label="Industries we serve">
-      <Container>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+    <section className="relative section-padding overflow-hidden bg-slate-900" aria-label="Industries we serve" style={{ backgroundImage: `url('/industries.png')`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
+      
+      <Container className="relative z-10">
+        <FadeUp className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
           <SectionHeading
             eyebrow="Industries"
             title={displayHeading}
             description={displayDescription}
+            light={true}
           />
-          <Button href="/industries" variant="outline" className="shrink-0 self-start lg:self-auto">
+          <Button href="/industries" variant="white" className="shrink-0 self-start lg:self-auto">
             All Industries <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Button>
-        </div>
+        </FadeUp>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {displayIndustries.slice(0, 8).map((industry, index) => {
             const IconComponent =
               industryIconMap[industry.slug.current] ||
@@ -96,50 +106,57 @@ export function IndustriesGrid({ heading, description, industries }: IndustriesG
             const grad = cardGradients[index % cardGradients.length]
 
             return (
-              <Link
-                key={industry._id}
-                href={`/industries/${industry.slug.current}`}
-                className="group relative flex flex-col gap-4 p-6 rounded-2xl bg-white border border-gray-100 hover:border-transparent hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover"
-                aria-label={`${industry.name} industry solutions`}
-              >
-                {/* Gradient top bar */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl"
-                  style={{ background: `linear-gradient(90deg, ${grad.from}, ${grad.to})` }}
-                  aria-hidden="true"
-                />
-
-                {/* Icon container */}
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 shrink-0"
-                  style={{
-                    background: `linear-gradient(135deg, ${grad.from}15, ${grad.to}25)`,
-                  }}
+              <StaggerItem key={industry._id}>
+                <motion.div
+                  className="h-full rounded-2xl overflow-hidden"
+                  whileHover={shouldReduce ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
                 >
-                  <IconComponent
-                    className="w-6 h-6 transition-colors duration-300"
-                    style={{ color: grad.from }}
-                    aria-hidden="true"
-                  />
-                </div>
+                  <Link
+                    href={`/industries/${industry.slug.current}`}
+                    className="group relative flex flex-col gap-4 p-6 rounded-2xl bg-white border border-gray-100 h-full hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                    aria-label={`${industry.name} industry solutions`}
+                  >
+                    {/* Gradient top bar */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl"
+                      style={{ background: `linear-gradient(90deg, ${grad.from}, ${grad.to})` }}
+                      aria-hidden="true"
+                    />
 
-                {/* Text */}
-                <div className="flex-1">
-                  <h3 className="text-sm font-bold text-[#111111] mb-1.5 group-hover:text-[#E3164F] transition-colors leading-snug">
-                    {industry.name}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{industry.description}</p>
-                </div>
+                    {/* Icon container */}
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 shrink-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${grad.from}15, ${grad.to}25)`,
+                      }}
+                    >
+                      <IconComponent
+                        className="w-6 h-6 transition-colors duration-300 group-hover:scale-110"
+                        style={{ color: grad.from }}
+                        aria-hidden="true"
+                      />
+                    </div>
 
-                {/* CTA */}
-                <div className="flex items-center gap-1 text-xs font-semibold text-[#E3164F] opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
-                  Explore <ArrowRight className="w-3 h-3" aria-hidden="true" />
-                </div>
-              </Link>
+                    {/* Text */}
+                    <div className="flex-1">
+                      <h3 className="text-sm font-bold text-[#111111] mb-1.5 group-hover:text-[#E3164F] transition-colors leading-snug">
+                        {industry.name}
+                      </h3>
+                      <p className="text-xs text-gray-500 leading-relaxed">{industry.description}</p>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex items-center gap-1 text-xs font-semibold text-[#E3164F] opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+                      Explore <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                    </div>
+                  </Link>
+                </motion.div>
+              </StaggerItem>
             )
           })}
-        </div>
+        </StaggerContainer>
       </Container>
     </section>
   )
 }
+

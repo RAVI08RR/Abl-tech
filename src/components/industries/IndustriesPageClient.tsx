@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ShoppingCart,
   HeartPulse,
@@ -300,7 +301,7 @@ export function IndustriesPageClient() {
       {/* ─────────────────────────────────────────────────────────
           1. HERO SECTION (Light Premium Backdrop with Industry Visual)
           ───────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-20 lg:pt-10 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/60 border-b border-slate-200/60">
+      <section className="relative pt-32 pb-24 lg:pt-20 lg:pb-36 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/30 border-b border-slate-200/50">
 
         {/* Subtle geometric background grid */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
@@ -324,7 +325,7 @@ export function IndustriesPageClient() {
               </div>
 
               {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B1220] leading-[1.12]">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-[#0B1220] leading-[1.05]">
                 Deep Domain Expertise.{' '}
                 <span className="bg-gradient-to-r from-[#D9005B] via-[#F04A8A] via-[#8B5CF6] to-[#00AEEF] bg-clip-text text-transparent">
                   Engineered for Your Sector.
@@ -373,85 +374,93 @@ export function IndustriesPageClient() {
             </div>
 
             {/* HERO RIGHT SIDE — 3D Visual & Floating Cards */}
-            <div className="lg:col-span-5 relative flex justify-center items-center">
+            <div className="lg:col-span-5 relative flex justify-center items-center w-full">
 
-              {/* Main Visual Glass Container */}
-              <div className="relative w-full max-w-lg aspect-square rounded-3xl bg-gradient-to-br from-white/90 via-slate-50/80 to-white/90 border border-slate-200 shadow-2xl p-6 backdrop-blur-xl flex flex-col justify-between overflow-hidden group">
+               {/* Main Visual Glass Container */}
+               <div className="relative w-full max-w-lg aspect-square rounded-3xl bg-gradient-to-br from-white/90 via-slate-50/80 to-white/90 border border-slate-200 shadow-2xl p-3 sm:p-6 backdrop-blur-xl flex flex-col justify-between group">
+                 {/* Visual Image Background with Low Opacity (with its own overflow-hidden wrapper to clip rounded corners) */}
+                 <div className="absolute inset-0 z-0 rounded-3xl overflow-hidden opacity-10 group-hover:opacity-15 transition-opacity duration-500">
+                   <Image
+                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80&auto=format&fit=crop"
+                     alt="Corporate infrastructure and tech teams"
+                     fill
+                     className="object-cover transition-transform duration-700 group-hover:scale-103"
+                     unoptimized
+                   />
+                   {/* Glowing Canvas backdrop */}
+                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(217,0,91,0.08)_0%,rgba(0,174,239,0.08)_50%,transparent_100%)] pointer-events-none" />
+                 </div>
 
-                {/* Glowing Canvas backdrop */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(217,0,91,0.08)_0%,rgba(0,174,239,0.08)_50%,transparent_100%)] pointer-events-none" />
+                 {/* Central Industry Core Component */}
+                 <div className="relative z-10 my-auto flex flex-col items-center justify-center space-y-4 sm:space-y-6">
 
-                {/* Central Industry Core Component */}
-                <div className="relative z-10 my-auto flex flex-col items-center justify-center space-y-6">
+                   {/* Outer Pulsing Glowing Ring */}
+                   <div className="relative w-24 h-24 sm:w-36 sm:h-36 rounded-full flex items-center justify-center bg-gradient-to-tr from-[#D9005B]/20 via-[#8B5CF6]/20 to-[#00AEEF]/20 p-1 animate-spin-slow">
+                     <div className="w-full h-full rounded-full bg-white flex items-center justify-center border border-slate-200/80 shadow-inner">
+                       <Building2 className="w-10 h-10 sm:w-16 sm:h-16 text-[#D9005B] animate-pulse" />
+                     </div>
+                     <span className="absolute -top-1 left-1/2 w-4 h-4 rounded-full bg-[#D9005B] shadow-lg shadow-[#D9005B]" />
+                     <span className="absolute bottom-2 right-2 w-3 h-3 rounded-full bg-[#00AEEF] shadow-lg shadow-[#00AEEF]" />
+                     <span className="absolute bottom-2 left-2 w-3.5 h-3.5 rounded-full bg-[#8B5CF6] shadow-lg shadow-[#8B5CF6]" />
+                   </div>
 
-                  {/* Outer Pulsing Glowing Ring */}
-                  <div className="relative w-36 h-36 rounded-full flex items-center justify-center bg-gradient-to-tr from-[#D9005B]/20 via-[#8B5CF6]/20 to-[#00AEEF]/20 p-1 animate-spin-slow">
-                    <div className="w-full h-full rounded-full bg-white flex items-center justify-center border border-slate-200/80 shadow-inner">
-                      <Building2 className="w-16 h-16 text-[#D9005B] animate-pulse" />
-                    </div>
-                    <span className="absolute -top-1 left-1/2 w-4 h-4 rounded-full bg-[#D9005B] shadow-lg shadow-[#D9005B]" />
-                    <span className="absolute bottom-2 right-2 w-3 h-3 rounded-full bg-[#00AEEF] shadow-lg shadow-[#00AEEF]" />
-                    <span className="absolute bottom-2 left-2 w-3.5 h-3.5 rounded-full bg-[#8B5CF6] shadow-lg shadow-[#8B5CF6]" />
-                  </div>
+                   <div className="text-center space-y-1">
+                     <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#D9005B]">
+                       ABL INDUSTRY DOMAIN CORE
+                     </div>
+                     <div className="text-xs sm:text-sm font-semibold text-[#0B1220] max-w-[200px] sm:max-w-none mx-auto leading-tight">
+                       Tailored Platforms for Enterprise Operations
+                     </div>
+                   </div>
+                 </div>
 
-                  <div className="text-center space-y-1">
-                    <div className="text-xs font-bold uppercase tracking-widest text-[#D9005B]">
-                      ABL INDUSTRY DOMAIN CORE
-                    </div>
-                    <div className="text-sm font-semibold text-[#0B1220]">
-                      Tailored Platforms for Enterprise Operations
-                    </div>
-                  </div>
-                </div>
+                 {/* Floating Card 1: Fintech & Banking */}
+                 <div className="absolute top-3 left-2 sm:top-6 sm:-left-4 z-20 flex items-center gap-2 sm:gap-3 px-2.5 py-2 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-bounce-slow">
+                   <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#D9005B] to-[#F04A8A] flex items-center justify-center text-white shadow-md shrink-0">
+                     <Landmark className="w-4 h-4 sm:w-5 sm:h-5" />
+                   </div>
+                   <div>
+                     <p className="text-[10px] sm:text-xs font-semibold text-[#0B1220]">FinTech & Banking</p>
+                     <p className="text-[8px] sm:text-[10px] text-[#475569]">SOC2 & Real-Time APIs</p>
+                   </div>
+                 </div>
 
-                {/* Floating Card 1: Fintech & Banking */}
-                <div className="absolute top-6 left-4 sm:-left-4 z-20 flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-bounce-slow">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#D9005B] to-[#F04A8A] flex items-center justify-center text-white shadow-md">
-                    <Landmark className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-[#0B1220]">FinTech & Banking</p>
-                    <p className="text-[10px] text-[#475569]">SOC2 & Real-Time APIs</p>
-                  </div>
-                </div>
+                 {/* Floating Card 2: Healthcare & Life Sciences */}
+                 <div className="absolute top-10 right-2 sm:top-12 sm:-right-4 z-20 flex items-center gap-2 sm:gap-3 px-2.5 py-2 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-float-delayed">
+                   <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#8B5CF6] to-[#A855F7] flex items-center justify-center text-white shadow-md shrink-0">
+                     <HeartPulse className="w-4 h-4 sm:w-5 sm:h-5" />
+                   </div>
+                   <div>
+                     <p className="text-[10px] sm:text-xs font-semibold text-[#0B1220]">Healthcare Systems</p>
+                     <p className="text-[8px] sm:text-[10px] text-[#475569]">HIPAA & EHR Interop</p>
+                   </div>
+                 </div>
 
-                {/* Floating Card 2: Healthcare & Life Sciences */}
-                <div className="absolute top-12 right-4 sm:-right-4 z-20 flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-float-delayed">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#8B5CF6] to-[#A855F7] flex items-center justify-center text-white shadow-md">
-                    <HeartPulse className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-[#0B1220]">Healthcare Systems</p>
-                    <p className="text-[10px] text-[#475569]">HIPAA & EHR Interop</p>
-                  </div>
-                </div>
+                 {/* Floating Card 3: Retail & E-Commerce */}
+                 <div className="absolute bottom-10 left-2 sm:bottom-10 sm:-left-4 z-20 flex items-center gap-2 sm:gap-3 px-2.5 py-2 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-float">
+                   <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#00AEEF] to-[#38BDF8] flex items-center justify-center text-white shadow-md shrink-0">
+                     <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                   </div>
+                   <div>
+                     <p className="text-[10px] sm:text-xs font-semibold text-[#0B1220]">Headless Commerce</p>
+                     <p className="text-[8px] sm:text-[10px] text-[#475569]">AI Personalization Engine</p>
+                   </div>
+                 </div>
 
-                {/* Floating Card 3: Retail & E-Commerce */}
-                <div className="absolute bottom-10 left-4 sm:-left-4 z-20 flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-float">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#00AEEF] to-[#38BDF8] flex items-center justify-center text-white shadow-md">
-                    <ShoppingCart className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-[#0B1220]">Headless Commerce</p>
-                    <p className="text-[10px] text-[#475569]">AI Personalization Engine</p>
-                  </div>
-                </div>
-
-                {/* Floating Card 4: Industry 4.0 & Supply Chain */}
-                <div className="absolute bottom-6 right-4 sm:-right-4 z-20 flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-bounce-slow">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] flex items-center justify-center text-white shadow-md">
-                    <Factory className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-[#0B1220]">Manufacturing & IoT</p>
-                    <p className="text-[10px] text-[#475569]">Predictive Factory AI</p>
-                  </div>
-                </div>
-
-              </div>
+                 {/* Floating Card 4: Industry 4.0 & Supply Chain */}
+                 <div className="absolute bottom-3 right-2 sm:bottom-6 sm:-right-4 z-20 flex items-center gap-2 sm:gap-3 px-2.5 py-2 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 border border-slate-200/90 shadow-xl backdrop-blur-md animate-bounce-slow">
+                   <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] flex items-center justify-center text-white shadow-md shrink-0">
+                     <Factory className="w-4 h-4 sm:w-5 sm:h-5" />
+                   </div>
+                   <div>
+                     <p className="text-[10px] sm:text-xs font-semibold text-[#0B1220]">Manufacturing & IoT</p>
+                     <p className="text-[8px] sm:text-[10px] text-[#475569]">Predictive Factory AI</p>
+                   </div>
+                 </div>
+               </div>
             </div>
-
           </div>
+
 
           {/* Trusted-By Logo Strip */}
           <div className="mt-20 pt-10 border-t border-slate-200/70">
@@ -477,44 +486,42 @@ export function IndustriesPageClient() {
       {/* ─────────────────────────────────────────────────────────
           2. STATS / BUSINESS IMPACT STRIP
           ───────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-[#FFFFFF]">
+      <section className="py-24 bg-[#FFFFFF] border-b border-slate-100">
         <div className="container-xl">
-          <div className="rounded-3xl bg-gradient-to-r from-slate-50 via-slate-100/80 to-slate-50 border border-slate-200/80 p-8 lg:p-12 shadow-sm">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
-              <div className="text-center pt-4 lg:pt-0 lg:px-4">
-                <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#D9005B] to-[#F04A8A] bg-clip-text text-transparent">
-                  20+
-                </div>
-                <p className="text-sm font-semibold text-[#0B1220] mt-2">Specialized Industry Domains</p>
-                <p className="text-xs text-[#475569]">Tailored operational logic</p>
+            <div className="text-center lg:text-left lg:pl-8 lg:first:pl-0 lg:border-l lg:first:border-l-0 border-slate-200/60">
+              <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#D9005B] to-[#F04A8A] bg-clip-text text-transparent tracking-tight">
+                20+
               </div>
-
-              <div className="text-center pt-4 lg:pt-0 lg:px-4">
-                <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] bg-clip-text text-transparent">
-                  100%
-                </div>
-                <p className="text-sm font-semibold text-[#0B1220] mt-2">Regulatory Compliance</p>
-                <p className="text-xs text-[#475569]">HIPAA, SOC2, PCI-DSS & GDPR</p>
-              </div>
-
-              <div className="text-center pt-4 lg:pt-0 lg:px-4">
-                <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#00AEEF] to-[#38BDF8] bg-clip-text text-transparent">
-                  99.999%
-                </div>
-                <p className="text-sm font-semibold text-[#0B1220] mt-2">Mission-Critical Uptime</p>
-                <p className="text-xs text-[#475569]">High-availability cloud infrastructure</p>
-              </div>
-
-              <div className="text-center pt-4 lg:pt-0 lg:px-4">
-                <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] bg-clip-text text-transparent">
-                  Zero
-                </div>
-                <p className="text-sm font-semibold text-[#0B1220] mt-2">Legacy Lock-In Risk</p>
-                <p className="text-xs text-[#475569]">100% IP & source code ownership</p>
-              </div>
-
+              <p className="text-sm font-bold text-[#0B1220] mt-3">Specialized Industry Domains</p>
+              <p className="text-xs text-slate-400 mt-1">Tailored operational logic</p>
             </div>
+
+            <div className="text-center lg:text-left lg:pl-8 lg:border-l border-slate-200/60">
+              <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] bg-clip-text text-transparent tracking-tight">
+                100%
+              </div>
+              <p className="text-sm font-bold text-[#0B1220] mt-3">Regulatory Compliance</p>
+              <p className="text-xs text-slate-400 mt-1">HIPAA, SOC2, PCI-DSS & GDPR</p>
+            </div>
+
+            <div className="text-center lg:text-left lg:pl-8 lg:border-l border-slate-200/60">
+              <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#00AEEF] to-[#38BDF8] bg-clip-text text-transparent tracking-tight">
+                99.999%
+              </div>
+              <p className="text-sm font-bold text-[#0B1220] mt-3">Mission-Critical Uptime</p>
+              <p className="text-xs text-slate-400 mt-1">High-availability cloud panels</p>
+            </div>
+
+            <div className="text-center lg:text-left lg:pl-8 lg:border-l border-slate-200/60">
+              <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] bg-clip-text text-transparent tracking-tight">
+                Zero
+              </div>
+              <p className="text-sm font-bold text-[#0B1220] mt-3">Legacy Lock-In Risk</p>
+              <p className="text-xs text-slate-400 mt-1">100% IP & source code ownership</p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -538,7 +545,7 @@ export function IndustriesPageClient() {
           </div>
 
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+          <div className="flex overflow-x-auto lg:flex-wrap items-center lg:justify-center gap-3 mb-12 pb-4 lg:pb-0 scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] px-6 lg:px-0 w-full">
             {[
               { id: 'all', label: 'All Industries' },
               { id: 'finance', label: 'FinTech & Banking' },
@@ -550,9 +557,9 @@ export function IndustriesPageClient() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`px-6 py-3 rounded-2xl font-semibold text-sm transition-all ${activeCategory === tab.id
-                    ? 'bg-gradient-to-r from-[#D9005B] to-[#00AEEF] text-white shadow-lg shadow-[#D9005B]/15'
-                    : 'bg-white text-[#475569] hover:bg-slate-100 border border-slate-200'
+                className={`px-6 py-3 rounded-2xl font-semibold text-sm transition-all shrink-0 ${activeCategory === tab.id
+                  ? 'bg-gradient-to-r from-[#D9005B] to-[#00AEEF] text-white shadow-lg shadow-[#D9005B]/15'
+                  : 'bg-white text-[#475569] hover:bg-slate-100 border border-slate-200'
                   }`}
               >
                 {tab.label}
@@ -934,24 +941,21 @@ export function IndustriesPageClient() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="divide-y divide-slate-100 max-w-3xl mx-auto">
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx
               return (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden transition-all duration-200"
-                >
+                <div key={idx} className="py-6 first:pt-0 last:pb-0">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-semibold text-base sm:text-lg text-[#0B1220] hover:text-[#D9005B] transition-colors"
+                    className="w-full text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#0B1220] hover:text-[#D9005B] transition-colors py-2"
                   >
                     <span>{faq.question}</span>
                     <ChevronDown className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#D9005B]' : ''}`} />
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 text-sm text-[#475569] leading-relaxed border-t border-slate-100 pt-4 bg-slate-50/50">
+                    <div className="pb-4 pr-10 text-sm text-slate-500 leading-relaxed pt-2 animate-fadeIn font-normal">
                       {faq.answer}
                     </div>
                   )}
@@ -969,7 +973,7 @@ export function IndustriesPageClient() {
       <section id="contact-form" className="py-20 lg:py-28 bg-[#F8FAFC] border-t border-slate-200">
         <div className="container-xl">
 
-          <div className="rounded-3xl bg-gradient-to-br from-pink-50/80 via-slate-50 to-cyan-50/80 border border-pink-200/60 p-8 sm:p-12 lg:p-16 shadow-2xl">
+          <div className="rounded-3xl bg-gradient-to-br from-pink-50/80 via-slate-50 to-cyan-50/80 border border-pink-200/60 p-2 sm:p-6 lg:p-6 shadow-2xl border-pink-200/60 p-5 sm:p-12 lg:p-16 shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
               {/* LEFT SIDE: Copy & Trust Points */}

@@ -1,5 +1,6 @@
 'use client'
 
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   Lightbulb,
   Users,
@@ -9,6 +10,7 @@ import {
   Handshake,
 } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/MotionSection'
 import type { CompanyValue } from '@/types'
 
 interface WhyUsProps {
@@ -20,45 +22,45 @@ interface WhyUsProps {
 const cardThemes = [
   {
     icon: Lightbulb,
-    gradFrom: '#E3164F',
-    gradTo: '#FF6B9D',
-    glowColor: 'rgba(227, 22, 79, 0.08)',
-    borderColor: 'rgba(227, 22, 79, 0.1)',
+    gradFrom: '#05A7D4',
+    gradTo: '#037C9E',
+    glowColor: 'rgba(5, 167, 212, 0.08)',
+    borderColor: 'rgba(5, 167, 212, 0.1)',
   },
   {
     icon: Users,
-    gradFrom: '#008BCB',
-    gradTo: '#00C4FF',
-    glowColor: 'rgba(0, 139, 203, 0.08)',
-    borderColor: 'rgba(0, 139, 203, 0.1)',
+    gradFrom: '#05A7D4',
+    gradTo: '#037C9E',
+    glowColor: 'rgba(5, 167, 212, 0.08)',
+    borderColor: 'rgba(5, 167, 212, 0.1)',
   },
   {
     icon: CloudCog,
-    gradFrom: '#7C3AED',
-    gradTo: '#A78BFA',
-    glowColor: 'rgba(124, 58, 237, 0.08)',
-    borderColor: 'rgba(124, 58, 237, 0.1)',
+    gradFrom: '#05A7D4',
+    gradTo: '#037C9E',
+    glowColor: 'rgba(5, 167, 212, 0.08)',
+    borderColor: 'rgba(5, 167, 212, 0.1)',
   },
   {
     icon: ShieldCheck,
-    gradFrom: '#059669',
-    gradTo: '#34D399',
-    glowColor: 'rgba(5, 150, 105, 0.08)',
-    borderColor: 'rgba(5, 150, 105, 0.1)',
+    gradFrom: '#05A7D4',
+    gradTo: '#037C9E',
+    glowColor: 'rgba(5, 167, 212, 0.08)',
+    borderColor: 'rgba(5, 167, 212, 0.1)',
   },
   {
     icon: TrendingUp,
-    gradFrom: '#D97706',
-    gradTo: '#FCD34D',
-    glowColor: 'rgba(217, 119, 6, 0.08)',
-    borderColor: 'rgba(217, 119, 6, 0.1)',
+    gradFrom: '#05A7D4',
+    gradTo: '#037C9E',
+    glowColor: 'rgba(5, 167, 212, 0.08)',
+    borderColor: 'rgba(5, 167, 212, 0.1)',
   },
   {
     icon: Handshake,
-    gradFrom: '#E3164F',
-    gradTo: '#008BCB',
-    glowColor: 'rgba(0, 139, 203, 0.08)',
-    borderColor: 'rgba(0, 139, 203, 0.1)',
+    gradFrom: '#05A7D4',
+    gradTo: '#037C9E',
+    glowColor: 'rgba(5, 167, 212, 0.08)',
+    borderColor: 'rgba(5, 167, 212, 0.1)',
   },
 ]
 
@@ -119,6 +121,8 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
     description ||
     'A trusted technology partner helping businesses build, scale, transform, and succeed in the digital world.'
 
+  const shouldReduce = useReducedMotion()
+
   return (
     <section
       className="relative overflow-hidden bg-white py-24 lg:py-32"
@@ -160,17 +164,14 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
         <div className="relative z-10">
 
           {/* ── Section Header ── */}
-          <div className="text-center mb-20 max-w-3xl mx-auto">
+          <FadeUp className="text-center mb-20 max-w-3xl mx-auto">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 mb-5">
-              <span
-                className="h-px w-8"
-                style={{ background: 'linear-gradient(90deg, transparent, #E3164F)' }}
-              />
+              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
               <span
                 className="text-xs font-bold tracking-[0.18em] uppercase"
                 style={{
-                  background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                  background: 'linear-gradient(90deg, #ED396D, #05A7D4)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -178,10 +179,7 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
               >
                 Why Choose Us
               </span>
-              <span
-                className="h-px w-8"
-                style={{ background: 'linear-gradient(90deg, #008BCB, transparent)' }}
-              />
+              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, #05A7D4, transparent)' }} />
             </div>
 
             {/* Main Heading */}
@@ -189,7 +187,7 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
               Why Businesses Choose{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #E3164F 0%, #008BCB 100%)',
+                  background: 'linear-gradient(135deg, #ED396D 0%, #05A7D4 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -218,89 +216,81 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
             <p className="text-lg text-gray-500 leading-relaxed text-pretty font-medium">
               {displayDescription}
             </p>
-          </div>
+          </FadeUp>
 
           {/* ── Feature Cards Grid ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayValues.slice(0, 6).map((value, index) => {
               const theme = cardThemes[index % cardThemes.length]
               const IconComponent = theme.icon
 
               return (
-                <div
-                  key={value._id}
-                  className="group relative rounded-2xl p-8 cursor-default transition-all duration-300 overflow-hidden"
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(0, 0, 0, 0.06)',
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget
-                    el.style.border = `1px solid ${theme.gradFrom}40`
-                    el.style.transform = 'translateY(-6px)'
-                    el.style.boxShadow = `0 20px 40px ${theme.glowColor}, 0 4px 12px rgba(0,0,0,0.03)`
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget
-                    el.style.background = '#FFFFFF'
-                    el.style.border = '1px solid rgba(0, 0, 0, 0.06)'
-                    el.style.transform = 'translateY(0)'
-                    el.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.02)'
-                  }}
-                  aria-label={value.title}
-                >
-                  {/* Top gradient bar */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: `linear-gradient(90deg, ${theme.gradFrom}, ${theme.gradTo})` }}
-                    aria-hidden="true"
-                  />
-
-                  {/* Corner number watermark */}
-                  <span
-                    className="absolute top-4 right-6 text-6xl font-black leading-none select-none pointer-events-none"
-                    style={{ color: 'rgba(0,0,0,0.03)' }}
-                    aria-hidden="true"
+                <StaggerItem key={value._id}>
+                  <motion.div
+                    className="group relative rounded-2xl p-8 cursor-default overflow-hidden h-full"
+                    style={{
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(0, 0, 0, 0.06)',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
+                    }}
+                    whileHover={shouldReduce ? {} : {
+                      y: -6,
+                      borderColor: `${theme.gradFrom}40`,
+                      boxShadow: `0 20px 40px ${theme.glowColor}, 0 4px 12px rgba(0,0,0,0.03)`,
+                      transition: { type: 'spring', stiffness: 400, damping: 25 },
+                    }}
+                    aria-label={value.title}
                   >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-
-                  {/* Icon container */}
-                  <div className="relative z-10 mb-6">
+                    {/* Top gradient bar */}
                     <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300"
-                      style={{
-                        background: `linear-gradient(135deg, ${theme.gradFrom}10, ${theme.gradTo}18)`,
-                        border: `1px solid ${theme.gradFrom}20`,
-                      }}
-                    >
-                      <IconComponent
-                        className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
-                        style={{ color: theme.gradFrom }}
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </div>
+                      className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: `linear-gradient(90deg, ${theme.gradFrom}, ${theme.gradTo})` }}
+                      aria-hidden="true"
+                    />
 
-                  {/* Text content */}
-                  <div className="relative z-10">
-                    <h3
-                      className="text-lg font-bold text-[#111111] mb-3 leading-snug transition-colors duration-200 group-hover:text-[#E3164F]"
+                    {/* Corner number watermark */}
+                    <span
+                      className="absolute top-4 right-6 text-6xl font-black leading-none select-none pointer-events-none"
+                      style={{ color: 'rgba(0,0,0,0.03)' }}
+                      aria-hidden="true"
                     >
-                      {value.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-600 transition-colors duration-200">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+
+                    {/* Icon container */}
+                    <div className="relative z-10 mb-6">
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300"
+                        style={{
+                          background: `linear-gradient(135deg, ${theme.gradFrom}10, ${theme.gradTo}18)`,
+                          border: `1px solid ${theme.gradFrom}20`,
+                        }}
+                      >
+                        <IconComponent
+                          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+                          style={{ color: theme.gradFrom }}
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Text content */}
+                    <div className="relative z-10">
+                      <h3 className="text-lg font-bold text-[#111111] mb-3 leading-snug transition-colors duration-200 group-hover:text-[#05A7D4]">
+                        {value.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-600 transition-colors duration-200">
+                        {value.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerContainer>
 
           {/* ── Bottom trust stats bar (light themed) ── */}
-          <div
+          <FadeUp
             className="mt-16 rounded-2xl px-8 py-6 flex flex-wrap items-center justify-center gap-8 text-center"
             style={{
               background: '#F9FAFB',
@@ -328,10 +318,11 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
                 <span className="text-xs text-gray-500 font-semibold">{label}</span>
               </div>
             ))}
-          </div>
+          </FadeUp>
 
         </div>
       </Container>
     </section>
   )
+
 }

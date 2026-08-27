@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
+import { FadeUp } from '@/components/ui/MotionSection'
 import type { Testimonial } from '@/types'
 
 interface TestimonialsProps {
@@ -55,15 +57,16 @@ const defaultTestimonials: Testimonial[] = [
 ]
 
 const avatarGrads = [
-  ['#E3164F', '#FF6B9D'],
-  ['#008BCB', '#00C4FF'],
-  ['#7C3AED', '#A78BFA'],
-  ['#059669', '#34D399'],
+  ['#05A7D4', '#037C9E'],
+  ['#05A7D4', '#037C9E'],
+  ['#05A7D4', '#037C9E'],
+  ['#05A7D4', '#037C9E'],
 ]
 
 export function Testimonials({ heading, testimonials }: TestimonialsProps) {
   const [current, setCurrent] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const shouldReduce = useReducedMotion()
   const displayTestimonials = testimonials?.length ? testimonials : defaultTestimonials
   const displayHeading = heading || 'What Our Clients Say'
 
@@ -109,19 +112,19 @@ export function Testimonials({ heading, testimonials }: TestimonialsProps) {
       <div
         className="pointer-events-none absolute top-0 left-0 right-0 h-px"
         aria-hidden="true"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(227,22,79,0.4), rgba(0,139,203,0.4), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(237,57,109,0.35), rgba(5,167,212,0.35), transparent)' }}
       />
 
       <Container className="relative z-10">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+        <FadeUp className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
           <div>
             <div className="inline-flex items-center gap-2 mb-4">
-              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #E3164F)' }} />
+              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
               <span
                 className="text-xs font-bold tracking-[0.18em] uppercase"
                 style={{
-                  background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                  background: 'linear-gradient(90deg, #ED396D, #05A7D4)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -141,7 +144,7 @@ export function Testimonials({ heading, testimonials }: TestimonialsProps) {
               onClick={() => { prev(); setIsAutoPlaying(false) }}
               className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
               style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#E3164F50'; e.currentTarget.style.background = 'rgba(227,22,79,0.12)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#05A7D450'; e.currentTarget.style.background = 'rgba(5,167,212,0.10)' }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)' }}
               aria-label="Previous testimonial"
             >
@@ -151,79 +154,89 @@ export function Testimonials({ heading, testimonials }: TestimonialsProps) {
               onClick={() => { next(); setIsAutoPlaying(false) }}
               className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
               style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#E3164F50'; e.currentTarget.style.background = 'rgba(227,22,79,0.12)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#05A7D450'; e.currentTarget.style.background = 'rgba(5,167,212,0.10)' }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)' }}
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5 text-white" aria-hidden="true" />
             </button>
           </div>
-        </div>
+        </FadeUp>
 
         <div className="grid lg:grid-cols-5 gap-8 items-start">
           {/* Main testimonial card */}
           <div className="lg:col-span-3">
-            <div
-              className="relative rounded-3xl p-8 lg:p-10 transition-all duration-500"
-              style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.10)',
-                backdropFilter: 'blur(10px)',
-              }}
-              role="article"
-              aria-label={`Testimonial from ${testimonial.clientName}`}
-            >
-              {/* Large quote icon */}
-              <Quote
-                className="absolute top-6 right-8 w-16 h-16 opacity-[0.06]"
-                style={{ color: '#E3164F' }}
-                aria-hidden="true"
-              />
-
-              {/* Stars */}
-              <div className="flex gap-1 mb-6" aria-label={`Rating: ${testimonial.rating} out of 5`}>
-                {[...Array(testimonial.rating || 5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-                ))}
-              </div>
-
-              <blockquote>
-                <p className="text-lg text-gray-200 leading-relaxed font-medium">
-                  &ldquo;{testimonial.testimonial}&rdquo;
-                </p>
-              </blockquote>
-
-              <footer className="mt-8 flex items-center gap-4">
-                <div
-                  className="w-13 h-13 rounded-full flex items-center justify-center text-white font-bold text-lg overflow-hidden shrink-0 w-12 h-12"
-                  style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
+            {/* Main testimonial card — AnimatePresence crossfade */}
+            <div className="relative overflow-hidden" style={{ minHeight: '280px' }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={testimonial._id}
+                  initial={shouldReduce ? false : { opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={shouldReduce ? {} : { opacity: 0, x: -20 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative rounded-3xl p-8 lg:p-10"
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    backdropFilter: 'blur(10px)',
+                  }}
+                  role="article"
+                  aria-label={`Testimonial from ${testimonial.clientName}`}
                 >
-                  {testimonial.photo?.asset?.url ? (
-                    <Image
-                      src={testimonial.photo.asset.url}
-                      alt={testimonial.clientName}
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    testimonial.clientName[0]
-                  )}
-                </div>
-                <div>
-                  <p className="font-bold text-white">{testimonial.clientName}</p>
-                  <p className="text-sm text-gray-400">
-                    {testimonial.designation}{testimonial.company && `, ${testimonial.company}`}
-                  </p>
-                </div>
+                  {/* Large quote icon */}
+                  <Quote
+                    className="absolute top-6 right-8 w-16 h-16 opacity-[0.06]"
+                    style={{ color: '#ED396D' }}
+                    aria-hidden="true"
+                  />
 
-                {/* Accent dot in footer */}
-                <div
-                  className="ml-auto w-2 h-2 rounded-full shrink-0"
-                  style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
-                  aria-hidden="true"
-                />
-              </footer>
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-6" aria-label={`Rating: ${testimonial.rating} out of 5`}>
+                    {[...Array(testimonial.rating || 5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+                    ))}
+                  </div>
+
+                  <blockquote>
+                    <p className="text-lg text-gray-200 leading-relaxed font-medium">
+                      &ldquo;{testimonial.testimonial}&rdquo;
+                    </p>
+                  </blockquote>
+
+                  <footer className="mt-8 flex items-center gap-4">
+                    <div
+                      className="w-13 h-13 rounded-full flex items-center justify-center text-white font-bold text-lg overflow-hidden shrink-0 w-12 h-12"
+                      style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
+                    >
+                      {testimonial.photo?.asset?.url ? (
+                        <Image
+                          src={testimonial.photo.asset.url}
+                          alt={testimonial.clientName}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        testimonial.clientName[0]
+                      )}
+                    </div>
+                    <div>
+                      <p className="font-bold text-white">{testimonial.clientName}</p>
+                      <p className="text-sm text-gray-400">
+                        {testimonial.designation}{testimonial.company && `, ${testimonial.company}`}
+                      </p>
+                    </div>
+
+                    {/* Accent dot in footer */}
+                    <div
+                      className="ml-auto w-2 h-2 rounded-full shrink-0"
+                      style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
+                      aria-hidden="true"
+                    />
+                  </footer>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Dots */}
@@ -301,7 +314,7 @@ export function Testimonials({ heading, testimonials }: TestimonialsProps) {
       <div
         className="pointer-events-none absolute bottom-0 left-0 right-0 h-px"
         aria-hidden="true"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(0,139,203,0.4), rgba(227,22,79,0.4), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(5,167,212,0.35), rgba(237,57,109,0.35), transparent)' }}
       />
     </section>
   )

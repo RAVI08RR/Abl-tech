@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { PageTransition } from '@/components/ui/PageTransition'
 import { getNavigation, getFooter, getSiteSettings } from '@/sanity/lib/queries'
 
 export const metadata: Metadata = {
@@ -63,10 +64,11 @@ export default async function RootLayout({
       <body>
         <Header navigation={navigation} />
         <main id="main-content">
-          {children}
+          <PageTransition>{children}</PageTransition>
         </main>
         <Footer footer={footer} />
       </body>
     </html>
   )
 }
+

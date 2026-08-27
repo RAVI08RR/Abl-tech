@@ -112,7 +112,7 @@ export function Footer({ footer }: FooterProps) {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#E3164F] flex items-center justify-center transition-colors duration-200"
+                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#05A7D4] flex items-center justify-center transition-all duration-200 hover:scale-110"
                     aria-label={label}
                   >
                     <Icon className="w-4 h-4" aria-hidden="true" />
@@ -126,7 +126,7 @@ export function Footer({ footer }: FooterProps) {
                 <p className="text-xs text-gray-400 mb-3">Let&apos;s build something great together.</p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E3164F] hover:gap-2.5 transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#05A7D4] hover:text-[#0390B5] hover:gap-2.5 transition-all duration-200"
                 >
                   Start a conversation <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </Link>

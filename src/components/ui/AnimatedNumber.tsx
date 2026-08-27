@@ -20,21 +20,39 @@ export function AnimatedNumber({ value, duration = 2000, className, style }: Ani
   const suffix = numMatch ? numMatch[2] : value
 
   useEffect(() => {
+    // If reduced motion, skip to final value immediately
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      setDisplayed(numericValue.toString())
+      setHasStarted(true)
+      return
+    }
+
+    // Lower threshold (0.15) so mobile stat cards trigger reliably
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasStarted) {
           setHasStarted(true)
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.15 }
     )
 
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [hasStarted])
+  }, [hasStarted, numericValue])
 
   useEffect(() => {
     if (!hasStarted) return
+
+    // Check reduced motion again at animation start
+    const prefersReducedMotion = typeof window !== 'undefined'
+      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      : false
+    if (prefersReducedMotion) {
+      setDisplayed(numericValue.toString())
+      return
+    }
 
     const start = Date.now()
     const end = start + duration
@@ -62,3 +80,4 @@ export function AnimatedNumber({ value, duration = 2000, className, style }: Ani
     </span>
   )
 }
+

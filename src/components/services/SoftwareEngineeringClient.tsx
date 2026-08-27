@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Code,
   Laptop,
@@ -248,7 +249,7 @@ export function SoftwareEngineeringClient() {
           1. HERO SECTION (Light Premium Backdrop with 3D Software Visual)
           ───────────────────────────────────────────────────────── */}
       <section className="relative pt-28 pb-20 lg:pt-10 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/60 border-b border-slate-200/60">
-        
+
         {/* Subtle geometric background grid */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
@@ -325,6 +326,16 @@ export function SoftwareEngineeringClient() {
 
               {/* Main Visual Glass Container */}
               <div className="relative w-full max-w-lg aspect-square rounded-3xl bg-gradient-to-br from-white/90 via-slate-50/80 to-white/90 border border-slate-200 shadow-2xl p-6 backdrop-blur-xl flex flex-col justify-between overflow-hidden group">
+                {/* Visual Image Background with Low Opacity */}
+                <div className="absolute inset-0 z-0 opacity-10 group-hover:opacity-15 transition-opacity duration-500">
+                  <Image
+                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&auto=format&fit=crop"
+                    alt="Developer workspace with screens showing lines of code"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-103"
+                    unoptimized
+                  />
+                </div>
 
                 {/* Glowing Canvas backdrop */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(217,0,91,0.08)_0%,rgba(0,174,239,0.08)_50%,transparent_100%)] pointer-events-none" />
@@ -953,8 +964,8 @@ export function SoftwareEngineeringClient() {
                   key={idx}
                   onClick={() => setActiveWorkflowStage(idx)}
                   className={`cursor-pointer rounded-2xl p-6 transition-all duration-300 border relative flex flex-col justify-between ${isActive
-                      ? 'bg-white border-[#D9005B] shadow-xl scale-105 z-10'
-                      : 'bg-white/70 border-slate-200/80 hover:bg-white hover:border-slate-300'
+                    ? 'bg-white border-[#D9005B] shadow-xl scale-105 z-10'
+                    : 'bg-white/70 border-slate-200/80 hover:bg-white hover:border-slate-300'
                     }`}
                 >
                   <div className="space-y-4">
@@ -1119,8 +1130,8 @@ export function SoftwareEngineeringClient() {
                 key={tab.id}
                 onClick={() => setActiveTechTab(tab.id as any)}
                 className={`px-6 py-3 rounded-2xl font-semibold text-sm transition-all ${activeTechTab === tab.id
-                    ? 'bg-gradient-to-r from-[#D9005B] to-[#00AEEF] text-white shadow-lg shadow-[#D9005B]/15'
-                    : 'bg-white text-[#475569] hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-gradient-to-r from-[#D9005B] to-[#00AEEF] text-white shadow-lg shadow-[#D9005B]/15'
+                  : 'bg-white text-[#475569] hover:bg-slate-100 border border-slate-200'
                   }`}
               >
                 {tab.label}
@@ -1384,7 +1395,7 @@ export function SoftwareEngineeringClient() {
       <section id="contact-form" className="py-20 lg:py-28 bg-[#F8FAFC] border-t border-slate-200">
         <div className="container-xl">
 
-          <div className="rounded-3xl bg-gradient-to-br from-pink-50/80 via-slate-50 to-cyan-50/80 border border-pink-200/60 p-8 sm:p-12 lg:p-16 shadow-2xl">
+          <div className="rounded-3xl bg-gradient-to-br from-pink-50/80 via-slate-50 to-cyan-50/80 border border-pink-200/60 p-2 sm:p-6 lg:p-6 shadow-2xl border-pink-200/60 p-5 sm:p-12 lg:p-16 shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
               {/* LEFT SIDE: Copy & Trust Points */}

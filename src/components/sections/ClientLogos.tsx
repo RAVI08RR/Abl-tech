@@ -10,14 +10,14 @@ interface ClientLogosProps {
 }
 
 const defaultLogos: (Client | { _id: string; name: string; industry: string; logo?: { asset?: { url?: string } } })[] = [
-  { _id: '1', name: 'TechCorp', industry: 'Enterprise Software', logo: undefined },
-  { _id: '2', name: 'InnovatePlus', industry: 'Fintech', logo: undefined },
-  { _id: '3', name: 'DataStream', industry: 'AI & Data Solutions', logo: undefined },
-  { _id: '4', name: 'CloudFirst', industry: 'Cloud Engineering', logo: undefined },
-  { _id: '5', name: 'NexaDigital', industry: 'E-commerce', logo: undefined },
-  { _id: '6', name: 'SmartRetail', industry: 'Retail Technology', logo: undefined },
-  { _id: '7', name: 'FinEdge', industry: 'Banking', logo: undefined },
-  { _id: '8', name: 'HealthBridge', industry: 'Healthcare', logo: undefined },
+  { _id: '1', name: 'MasterCard', industry: 'Global Payments', logo: undefined },
+  { _id: '2', name: 'VISA', industry: 'Financial Services', logo: undefined },
+  { _id: '3', name: 'Autodesk', industry: 'Engineering Software', logo: undefined },
+  { _id: '4', name: 'Salesforce', industry: 'CRM & Cloud', logo: undefined },
+  { _id: '5', name: 'Microsoft', industry: 'Enterprise Technology', logo: undefined },
+  { _id: '6', name: 'Amazon AWS', industry: 'Cloud Infrastructure', logo: undefined },
+  { _id: '7', name: 'UBS Global', industry: 'Investment Banking', logo: undefined },
+  { _id: '8', name: 'Oracle', industry: 'Enterprise Data', logo: undefined },
 ]
 
 const avatarGrads = [
@@ -108,16 +108,16 @@ export function ClientLogos({ heading, clients }: ClientLogosProps) {
                     }}
                     role="listitem"
                   >
-                    {client.logo?.asset?.url ? (
+                  {client.logo?.asset?.url ? (
                       <div className="w-9 h-9 shrink-0 flex items-center justify-center">
                         <Image src={client.logo.asset.url} alt={client.name} width={36} height={36} className="w-9 h-9 object-contain" />
                       </div>
                     ) : (
                       <div
-                        className="w-9 h-9 rounded-xl shrink-0 flex items-center justify-center text-white font-black text-sm"
+                        className="w-9 h-9 rounded-xl shrink-0 flex items-center justify-center font-black text-[10px] leading-none text-white"
                         style={{ background: `linear-gradient(135deg, ${g1}, ${g2})` }}
                       >
-                        {client.name[0]}
+                        {client.name.split(' ').map(w => w[0]).join('').slice(0, 2)}
                       </div>
                     )}
                     <div>

@@ -34,29 +34,24 @@ export default function InsightsPage() {
     <>
       {/* Hero */}
       <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #060D1A 0%, #0A1628 50%, #0D0520 100%)' }}
+        className="relative py-28 lg:py-36 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/30 border-b border-slate-200/50"
       >
         <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
-          }}
+          className="pointer-events-none absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem]"
         />
         <div
-          className="pointer-events-none absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-[120px]"
-          style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.12) 0%, transparent 70%)' }}
+          className="pointer-events-none absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-60"
+          style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.05) 0%, transparent 70%)' }}
         />
         <div
-          className="pointer-events-none absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px]"
-          style={{ background: 'radial-gradient(circle, rgba(227,22,79,0.10) 0%, transparent 70%)' }}
+          className="pointer-events-none absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-60"
+          style={{ background: 'radial-gradient(circle, rgba(227,22,79,0.04) 0%, transparent 70%)' }}
         />
 
         <Container className="relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl space-y-6">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-4">
+            <div className="inline-flex items-center gap-2 mb-2">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-[#E3164F]" />
               <span
                 className="text-xs font-bold tracking-[0.18em] uppercase"
@@ -71,10 +66,10 @@ export default function InsightsPage() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-[#0B1220] leading-[1.05] tracking-tight text-pretty">
               {headline}
             </h1>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-slate-500 leading-relaxed max-w-2xl font-normal text-pretty">
               {subheadline}
             </p>
           </div>
@@ -82,9 +77,9 @@ export default function InsightsPage() {
       </section>
 
       {/* Grid of articles */}
-      <section className="section-padding bg-white relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 opacity-[0.015]"
           style={{
             backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.02) 1px, transparent 1px)',
             backgroundSize: '28px 28px',
@@ -92,7 +87,7 @@ export default function InsightsPage() {
         />
 
         <Container className="relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayPosts.map((post: any, index: number) => {
               const accent = cardAccents[index % cardAccents.length]
 
@@ -100,23 +95,7 @@ export default function InsightsPage() {
                 <article key={post._id} className="group flex flex-col h-full">
                   <Link
                     href={`/insights/${post.slug.current}`}
-                    className="flex flex-col h-full bg-white rounded-3xl overflow-hidden transition-all duration-300 relative"
-                    style={{
-                      border: '1px solid rgba(0,0,0,0.07)',
-                      boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.currentTarget
-                      el.style.borderColor = `${accent.from}30`
-                      el.style.boxShadow = `0 20px 45px ${accent.from}15, 0 4px 12px rgba(0,0,0,0.05)`
-                      el.style.transform = 'translateY(-6px)'
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.currentTarget
-                      el.style.borderColor = 'rgba(0,0,0,0.07)'
-                      el.style.boxShadow = '0 2px 10px rgba(0,0,0,0.03)'
-                      el.style.transform = 'translateY(0)'
-                    }}
+                    className="flex flex-col h-full bg-white rounded-3xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group"
                     aria-label={`Read: ${post.title}`}
                   >
                     {/* Top border color glint */}
@@ -127,13 +106,13 @@ export default function InsightsPage() {
                     />
 
                     {/* Image Area */}
-                    <div className="aspect-[16/10] relative bg-gray-50 overflow-hidden shrink-0 border-b border-gray-100">
+                    <div className="aspect-[16/10] relative bg-gray-50 overflow-hidden shrink-0 border-b border-slate-100">
                       {post.featuredImage?.asset?.url ? (
                         <Image
                           src={post.featuredImage.asset.url}
                           alt={post.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-cover group-hover:scale-103 transition-transform duration-700"
                         />
                       ) : (
                         <div
@@ -157,13 +136,13 @@ export default function InsightsPage() {
                     </div>
 
                     {/* Content Area */}
-                    <div className="p-6 flex flex-col justify-between flex-1 relative z-10">
+                    <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 relative z-10 space-y-4">
                       <div>
                         {post.category && (
                           <span
-                            className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase mb-4"
+                            className="inline-block px-3 py-1 rounded-full text-[9px] font-bold tracking-wider uppercase mb-3"
                             style={{
-                              background: `${accent.from}15`,
+                              background: `${accent.from}12`,
                               color: accent.from,
                             }}
                           >
@@ -171,24 +150,24 @@ export default function InsightsPage() {
                           </span>
                         )}
 
-                        <h2 className="text-base font-bold text-[#111111] leading-snug mb-3 group-hover:text-[#E3164F] transition-colors duration-200">
+                        <h2 className="text-lg font-bold text-[#0B1220] leading-snug mb-3 group-hover:text-[#E3164F] transition-colors duration-200 tracking-tight">
                           {post.title}
                         </h2>
 
                         {post.excerpt && (
-                          <p className="text-xs text-gray-500 leading-relaxed font-medium line-clamp-2 mb-5">
+                          <p className="text-sm text-slate-500 leading-relaxed font-normal line-clamp-2 mb-1">
                             {post.excerpt}
                           </p>
                         )}
                       </div>
 
                       {/* Footer */}
-                      <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-50 pt-4 mt-auto">
+                      <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-100 pt-4 mt-auto">
                         <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                            <User className="w-3.5 h-3.5 text-gray-500" />
+                          <div className="w-6 h-6 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center">
+                            <User className="w-3.5 h-3.5 text-slate-400" />
                           </div>
-                          <span className="font-bold text-gray-600">{post.author?.name}</span>
+                          <span className="font-bold text-slate-600">{post.author?.name}</span>
                         </div>
                         <div className="flex items-center gap-1 font-bold">
                           <Clock className="w-3.5 h-3.5 text-[#008BCB]" />

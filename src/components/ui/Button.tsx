@@ -15,11 +15,14 @@ interface ButtonProps {
 }
 
 const variantStyles = {
-  primary: 'bg-[#E3164F] text-white hover:bg-[#B00E3A] shadow-sm hover:shadow-md',
-  secondary: 'bg-[#008BCB] text-white hover:bg-[#006699] shadow-sm hover:shadow-md',
-  outline: 'border-2 border-[#E3164F] text-[#E3164F] hover:bg-[#E3164F] hover:text-white',
+  primary:
+    'bg-[#05A7D4] text-white hover:bg-[#0390B5] shadow-sm hover:shadow-[0_6px_20px_rgba(5,167,212,0.30)] hover:-translate-y-0.5',
+  secondary:
+    'bg-[#037C9E] text-white hover:bg-[#025E78] shadow-sm hover:shadow-md hover:-translate-y-0.5',
+  outline:
+    'border-2 border-[#05A7D4] text-[#05A7D4] hover:bg-[#05A7D4] hover:text-white hover:-translate-y-0.5',
   ghost: 'text-[#111111] hover:bg-gray-100',
-  white: 'bg-white text-[#111111] hover:bg-gray-100 shadow-sm',
+  white: 'bg-white text-[#111111] hover:bg-gray-100 shadow-sm hover:-translate-y-0.5',
 }
 
 const sizeStyles = {
@@ -41,7 +44,7 @@ export function Button({
   openInNewTab,
 }: ButtonProps) {
   const styles = cn(
-    'inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E3164F] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
+    'inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#05A7D4] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
     variantStyles[variant],
     sizeStyles[size],
     className

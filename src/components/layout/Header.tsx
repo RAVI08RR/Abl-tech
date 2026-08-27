@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/Button'
@@ -48,6 +49,7 @@ export function Header({ navigation }: HeaderProps) {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   const megaRef = useRef<HTMLDivElement>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const shouldReduce = useReducedMotion()
 
   const navItems = navigation?.items?.length ? navigation.items : defaultNavItems
   const cta = navigation?.cta || { label: "Let's Talk", href: '/contact' }
@@ -87,7 +89,7 @@ export function Header({ navigation }: HeaderProps) {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200/20 backdrop-blur-md',
-          isScrolled ? 'bg-white shadow-sm' : 'bg-white/95'
+          isScrolled ? 'bg-white shadow-[0_2px_20px_rgba(0,0,0,0.07)]' : 'bg-white/95'
         )}
         role="banner"
       >
@@ -122,7 +124,7 @@ export function Header({ navigation }: HeaderProps) {
                     href={item.href}
                     className={cn(
                       'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-150',
-                      'text-gray-700 hover:text-[#E3164F] hover:bg-red-50'
+                      'text-gray-700 hover:text-[#ED396D] hover:bg-pink-50/60'
                     )}
                     target={item.openInNewTab ? '_blank' : undefined}
                     rel={item.openInNewTab ? 'noopener noreferrer' : undefined}
@@ -156,12 +158,12 @@ export function Header({ navigation }: HeaderProps) {
                             <Link
                               key={child.href}
                               href={child.href}
-                              className="group flex items-start gap-3 p-3 rounded-xl hover:bg-red-50/50 transition-colors duration-150"
+                              className="group flex items-start gap-3 p-3 rounded-xl hover:bg-sky-50/60 transition-colors duration-150"
                               onClick={() => setActiveMega(null)}
                             >
                               <span className="text-2xl shrink-0">{child.icon}</span>
                               <div className="min-w-0">
-                                <p className="text-sm font-bold text-gray-900 group-hover:text-[#E3164F] transition-colors">
+                                <p className="text-sm font-bold text-gray-900 group-hover:text-[#05A7D4] transition-colors">
                                   {child.label}
                                 </p>
                                 {child.description && (
@@ -175,9 +177,9 @@ export function Header({ navigation }: HeaderProps) {
 
                       {/* Right Side: Featured Showcase Panel */}
                       <div className="w-[280px] bg-gradient-to-br from-[#0D0D1A] to-[#1A1A2E] rounded-xl p-5 text-white flex flex-col justify-between shrink-0 border border-white/5 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(227,22,79,0.15),transparent_60%)]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(237,57,109,0.12),transparent_60%)]" />
                         <div className="relative z-10">
-                          <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#E3164F]/20 text-[#FF3D6E] uppercase tracking-wider mb-4">
+                          <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#ED396D]/20 text-[#FF5A86] uppercase tracking-wider mb-4">
                             Featured Case Study
                           </span>
                           <h4 className="text-sm font-bold text-white mb-2 leading-snug">
@@ -189,7 +191,7 @@ export function Header({ navigation }: HeaderProps) {
                         </div>
                         <Link
                           href="/work/ai-ecommerce-platform"
-                          className="relative z-10 inline-flex items-center gap-1.5 text-xs font-bold text-[#E3164F] hover:text-[#FF3D6E] hover:gap-2.5 transition-all mt-4"
+                          className="relative z-10 inline-flex items-center gap-1.5 text-xs font-bold text-[#05A7D4] hover:text-[#037C9E] hover:gap-2.5 transition-all mt-4"
                           onClick={() => setActiveMega(null)}
                         >
                           Read Case Study <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -208,9 +210,9 @@ export function Header({ navigation }: HeaderProps) {
               </Button>
             </div>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle (w-12 h-12/48px touch target complies with >= 44px target) */}
             <button
-              className="lg:hidden relative w-10 h-10 rounded-xl bg-gray-100 hover:bg-[#E3164F]/10 hover:text-[#E3164F] flex items-center justify-center transition-all duration-200"
+              className="lg:hidden relative w-12 h-12 rounded-xl bg-gray-100 hover:bg-[#05A7D4]/10 hover:text-[#05A7D4] flex items-center justify-center transition-all duration-200"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileOpen}
@@ -241,140 +243,152 @@ export function Header({ navigation }: HeaderProps) {
       {/* Spacer */}
       <div className="h-16 lg:h-20" aria-hidden="true" />
 
-      {/* ─── Premium Full-Screen Mobile Menu (outside header to avoid z-index clipping) ─── */}
-      <div
-        id="mobile-menu"
-        className="lg:hidden"
-        aria-hidden={!isMobileOpen}
-      >
-        <div
-          className={cn(
-            'fixed inset-0 top-16 z-[9999] transition-transform duration-300 ease-in-out',
-            isMobileOpen ? 'translate-x-0' : 'translate-x-full'
-          )}
-        >
-          {/* Dark Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D0D1A] via-[#111827] to-[#0D0D1A]" />
-          {/* Decorative glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#E3164F]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#008BCB]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* ─── Premium Full-Screen Mobile Menu (AnimatePresence slide-in) ─── */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            id="mobile-menu"
+            className="lg:hidden fixed inset-0 top-16 z-[9999]"
+            aria-modal="true"
+            role="dialog"
+            aria-label="Mobile navigation menu"
+            initial={shouldReduce ? false : { x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            {/* Dark Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D0D1A] via-[#111827] to-[#0D0D1A]" />
+            {/* Decorative glow */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#ED396D]/8 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#05A7D4]/8 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Scrollable content */}
-          <div className="relative z-10 h-full overflow-y-auto flex flex-col">
-            <nav className="flex-1 px-6 py-8 space-y-1" aria-label="Mobile navigation">
+            {/* Scrollable content */}
+            <div className="relative z-10 h-full overflow-y-auto flex flex-col">
+              <nav className="flex-1 px-6 py-8 space-y-1" aria-label="Mobile navigation">
 
-              {/* Nav Items */}
-              {navItems.map((item, index) => (
-                <div key={item.label}>
-                  {/* Main nav link row */}
-                  <div
-                    className="flex items-center justify-between group rounded-2xl px-2 py-1 hover:bg-white/5 transition-colors duration-150"
-                    style={{ animationDelay: `${index * 60}ms` }}
+                {/* Nav Items — staggered reveal */}
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={shouldReduce ? false : { opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.06, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <Link
-                      href={item.href}
-                      className="flex-1 py-3 text-xl font-bold text-white/90 hover:text-white group-hover:text-white transition-colors"
-                      onClick={() => !hasMegaMenu(item) && setIsMobileOpen(false)}
+                    {/* Main nav link row */}
+                    <div
+                      className="flex items-center justify-between group rounded-2xl px-2 py-1 hover:bg-white/5 transition-colors duration-150"
                     >
-                      <span className="flex items-center gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#E3164F] group-hover:scale-125 transition-transform" />
-                        {item.label}
-                      </span>
-                    </Link>
-
-                    {hasMegaMenu(item) && (
-                      <button
-                        onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                        className="p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200"
-                        aria-label={`Toggle ${item.label} submenu`}
-                        aria-expanded={mobileExpanded === item.label}
+                      <Link
+                        href={item.href}
+                        className="flex-1 py-3 text-xl font-bold text-white/90 hover:text-white group-hover:text-white transition-colors"
+                        onClick={() => !hasMegaMenu(item) && setIsMobileOpen(false)}
                       >
-                        <ChevronDown
-                          className={cn(
-                            'w-5 h-5 transition-transform duration-200',
-                            mobileExpanded === item.label && 'rotate-180'
-                          )}
-                        />
-                      </button>
-                    )}
-                  </div>
+                        <span className="flex items-center gap-3">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#ED396D] group-hover:scale-125 transition-transform" />
+                          {item.label}
+                        </span>
+                      </Link>
 
-                  {/* Expandable sub-items */}
-                  {hasMegaMenu(item) && mobileExpanded === item.label && (
-                    <div className="mt-2 mb-3 ml-4 grid grid-cols-1 gap-1 bg-white/5 rounded-2xl p-3 border border-white/10">
-                      {item.children?.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10 transition-colors group"
-                          onClick={() => setIsMobileOpen(false)}
+                      {hasMegaMenu(item) && (
+                        <button
+                          onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
+                          className="w-11 h-11 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200"
+                          aria-label={`Toggle ${item.label} submenu`}
+                          aria-expanded={mobileExpanded === item.label}
                         >
-                          <span className="text-xl shrink-0">{child.icon}</span>
-                          <div className="min-w-0">
-                            <p className="text-sm font-semibold text-white/90 group-hover:text-white transition-colors">
-                              {child.label}
-                            </p>
-                            {child.description && (
-                              <p className="text-xs text-white/40 mt-0.5 leading-snug">
-                                {child.description}
-                              </p>
+                          <ChevronDown
+                            className={cn(
+                              'w-5 h-5 transition-transform duration-200',
+                              mobileExpanded === item.label && 'rotate-180'
                             )}
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-[#E3164F] group-hover:translate-x-0.5 ml-auto shrink-0 transition-all duration-200" />
-                        </Link>
-                      ))}
+                          />
+                        </button>
+                      )}
                     </div>
-                  )}
 
-                  {/* Separator line */}
-                  <div className="border-b border-white/5 mx-2" />
-                </div>
-              ))}
-            </nav>
+                    {/* Expandable sub-items */}
+                    {hasMegaMenu(item) && mobileExpanded === item.label && (
+                      <div className="mt-2 mb-3 ml-4 grid grid-cols-1 gap-1 bg-white/5 rounded-2xl p-3 border border-white/10">
+                        {item.children?.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10 transition-colors group"
+                            onClick={() => setIsMobileOpen(false)}
+                          >
+                            <span className="text-xl shrink-0">{child.icon}</span>
+                            <div className="min-w-0">
+                              <p className="text-sm font-semibold text-white/90 group-hover:text-white transition-colors">
+                                {child.label}
+                              </p>
+                              {child.description && (
+                                <p className="text-xs text-white/40 mt-0.5 leading-snug">
+                                  {child.description}
+                                </p>
+                              )}
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-[#05A7D4] group-hover:translate-x-0.5 ml-auto shrink-0 transition-all duration-200" />
+                          </Link>
+                        ))}
+                      </div>
+                    )}
 
-            {/* Bottom CTA Section */}
-            <div className="relative z-10 px-6 pb-10 pt-4 space-y-4 border-t border-white/10 bg-black/20 backdrop-blur-sm">
-              {/* Quick Info */}
-              <p className="text-xs text-white/40 font-medium uppercase tracking-wider">
-                Ready to build something great?
-              </p>
+                    {/* Separator line */}
+                    <div className="border-b border-white/5 mx-2" />
+                  </motion.div>
+                ))}
+              </nav>
 
-              {/* CTA Button */}
-              <Button
-                href={cta.href}
-                variant="primary"
-                className="w-full !text-base !py-3.5 shadow-lg shadow-[#E3164F]/20"
-                onClick={() => setIsMobileOpen(false)}
+              {/* Bottom CTA Section */}
+              <motion.div
+                className="relative z-10 px-6 pb-10 pt-4 space-y-4 border-t border-white/10 bg-black/20 backdrop-blur-sm"
+                initial={shouldReduce ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navItems.length * 0.06 + 0.1, duration: 0.4 }}
               >
-                {cta.label}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+                {/* Quick Info */}
+                <p className="text-xs text-white/40 font-medium uppercase tracking-wider">
+                  Ready to build something great?
+                </p>
 
-              {/* Company Info */}
-              <div className="flex items-center justify-between pt-2">
-                <p className="text-xs text-white/30">ABL BusinessTech LLP</p>
-                <div className="flex items-center gap-3">
-                  <Link
-                    href="/contact"
-                    className="text-xs text-white/40 hover:text-white transition-colors"
-                    onClick={() => setIsMobileOpen(false)}
-                  >
-                    Contact
-                  </Link>
-                  <span className="text-white/20">•</span>
-                  <Link
-                    href="/about"
-                    className="text-xs text-white/40 hover:text-white transition-colors"
-                    onClick={() => setIsMobileOpen(false)}
-                  >
-                    About
-                  </Link>
+                {/* CTA Button */}
+                <Button
+                  href={cta.href}
+                  variant="primary"
+                  className="w-full !text-base !py-3.5 shadow-lg shadow-[#05A7D4]/20"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  {cta.label}
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+
+                {/* Company Info */}
+                <div className="flex items-center justify-between pt-2">
+                  <p className="text-xs text-white/30">ABL BusinessTech LLP</p>
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href="/contact"
+                      className="text-xs text-white/40 hover:text-white transition-colors"
+                      onClick={() => setIsMobileOpen(false)}
+                    >
+                      Contact
+                    </Link>
+                    <span className="text-white/20">•</span>
+                    <Link
+                      href="/about"
+                      className="text-xs text-white/40 hover:text-white transition-colors"
+                      onClick={() => setIsMobileOpen(false)}
+                    >
+                      About
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

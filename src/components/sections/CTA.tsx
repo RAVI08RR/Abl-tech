@@ -39,11 +39,11 @@ export function CTA({
         {/* Glow blurs */}
         <div
           className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-[120px]"
-          style={{ background: 'radial-gradient(circle, rgba(227,22,79,0.12) 0%, transparent 75%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(237,57,109,0.10) 0%, transparent 75%)' }}
         />
         <div
           className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-[120px]"
-          style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.12) 0%, transparent 75%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(5,167,212,0.12) 0%, transparent 75%)' }}
         />
 
         {/* Dynamic circular background highlights */}
@@ -54,7 +54,7 @@ export function CTA({
       <Container className="relative z-10 py-24 lg:py-32 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] mb-8">
-          <span className="w-2 h-2 rounded-full bg-[#E3164F] animate-pulse" aria-hidden="true" />
+          <span className="w-2 h-2 rounded-full bg-[#05A7D4] animate-pulse" aria-hidden="true" />
           <span className="text-[11px] font-bold text-gray-300 uppercase tracking-widest leading-none">
             Let&apos;s Build Together
           </span>
@@ -67,7 +67,7 @@ export function CTA({
             <>
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #E3164F 0%, #FF6B9D 100%)',
+                  background: 'linear-gradient(135deg, #ED396D 0%, #FF6B9D 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -77,7 +77,7 @@ export function CTA({
               </span>{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #E3164F 0%, #008BCB 100%)',
+                  background: 'linear-gradient(135deg, #ED396D 0%, #05A7D4 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -106,9 +106,9 @@ export function CTA({
               style={
                 i === 0
                   ? {
-                      background: 'linear-gradient(135deg, #E3164F 0%, #FF3D6E 100%)',
+                      background: 'linear-gradient(135deg, #05A7D4 0%, #037C9E 100%)',
                       border: 'none',
-                      boxShadow: '0 8px 30px rgba(227,22,79,0.35)',
+                      boxShadow: '0 8px 30px rgba(5,167,212,0.35)',
                     }
                   : {}
               }

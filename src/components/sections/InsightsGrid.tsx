@@ -2,9 +2,11 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Clock, User } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/MotionSection'
 import type { Post } from '@/types'
 
 interface InsightsGridProps {
@@ -50,13 +52,15 @@ const defaultPosts: Post[] = [
 ]
 
 const cardAccents = [
-  { from: '#E3164F', to: '#FF6B9D' },
-  { from: '#008BCB', to: '#00C4FF' },
-  { from: '#7C3AED', to: '#A78BFA' },
+  { from: '#05A7D4', to: '#037C9E' },
+  { from: '#05A7D4', to: '#037C9E' },
+  { from: '#05A7D4', to: '#037C9E' },
 ]
 
 export function InsightsGrid({ heading, description, posts }: InsightsGridProps) {
-  const displayPosts = posts?.length ? posts : defaultPosts
+  // Filter out CMS test/placeholder posts (titles matching /^test/i)
+  const realPosts = posts?.filter(p => !/^test/i.test(p.title.trim()))
+  const displayPosts = realPosts?.length ? realPosts : defaultPosts
   const displayHeading = heading || 'Latest Insights & Perspectives'
   const displayDescription = description || 'Practical technology thinking from our engineers, architects, and consultants.'
 
@@ -74,15 +78,15 @@ export function InsightsGrid({ heading, description, posts }: InsightsGridProps)
 
       <Container className="relative z-10">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+        <FadeUp className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
           <div className="max-w-2xl">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 mb-4">
-              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #E3164F)' }} />
+              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
               <span
                 className="text-xs font-bold tracking-[0.18em] uppercase"
                 style={{
-                  background: 'linear-gradient(90deg, #E3164F, #008BCB)',
+                  background: 'linear-gradient(90deg, #ED396D, #05A7D4)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -99,15 +103,18 @@ export function InsightsGrid({ heading, description, posts }: InsightsGridProps)
           <Button href="/insights" variant="outline" className="shrink-0 self-start lg:self-auto">
             All Insights <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Button>
-        </div>
+        </FadeUp>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {displayPosts.slice(0, 3).map((post, index) => {
             const accent = cardAccents[index % cardAccents.length]
-
             return (
-              <article key={post._id} className="group flex flex-col h-full">
+              <StaggerItem key={post._id} as="article">
+                <motion.div
+                  className="group flex flex-col h-full"
+                  whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+                >
                 <Link
                   href={`/insights/${post.slug.current}`}
                   className="flex flex-col h-full bg-white rounded-3xl overflow-hidden transition-all duration-300 relative"
@@ -183,7 +190,7 @@ export function InsightsGrid({ heading, description, posts }: InsightsGridProps)
                       )}
 
                       {/* Title */}
-                      <h3 className="text-base font-bold text-[#111111] leading-snug mb-3 group-hover:text-[#E3164F] transition-colors duration-200">
+                      <h3 className="text-base font-bold text-[#111111] leading-snug mb-3 group-hover:text-[#05A7D4] transition-colors duration-200">
                         {post.title}
                       </h3>
 
@@ -204,16 +211,17 @@ export function InsightsGrid({ heading, description, posts }: InsightsGridProps)
                         <span className="font-bold text-gray-600">{post.author?.name}</span>
                       </div>
                       <div className="flex items-center gap-1 font-bold">
-                        <Clock className="w-3.5 h-3.5 text-[#008BCB]" aria-hidden="true" />
+                        <Clock className="w-3.5 h-3.5 text-[#05A7D4]" aria-hidden="true" />
                         <span>{post.readingTime} min read</span>
                       </div>
                     </div>
                   </div>
                 </Link>
-              </article>
+                </motion.div>
+              </StaggerItem>
             )
           })}
-        </div>
+        </StaggerContainer>
       </Container>
     </section>
   )

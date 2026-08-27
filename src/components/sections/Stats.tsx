@@ -1,7 +1,9 @@
 'use client'
 
+import { motion, useReducedMotion } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/MotionSection'
 import { Trophy, Rocket, Globe, Heart } from 'lucide-react'
 import type { Statistic } from '@/types'
 
@@ -13,10 +15,10 @@ interface StatsProps {
 const statIcons = [Trophy, Rocket, Globe, Heart]
 
 const statAccents = [
-  { from: '#E3164F', to: '#FF6B9D' },
-  { from: '#008BCB', to: '#00C4FF' },
-  { from: '#7C3AED', to: '#A78BFA' },
-  { from: '#E3164F', to: '#008BCB' },
+  { from: '#05A7D4', to: '#037C9E' },
+  { from: '#05A7D4', to: '#037C9E' },
+  { from: '#05A7D4', to: '#037C9E' },
+  { from: '#05A7D4', to: '#037C9E' },
 ]
 
 const defaultStats: Statistic[] = [
@@ -27,12 +29,14 @@ const defaultStats: Statistic[] = [
 ]
 
 export function Stats({ heading, statistics }: StatsProps) {
+  const shouldReduce = useReducedMotion()
   const displayStats = statistics?.length ? statistics : defaultStats
 
   return (
     <section
-      className="relative overflow-hidden bg-white"
+      className="relative overflow-hidden bg-slate-50"
       aria-label="Company statistics"
+      style={{ backgroundImage: `url('/client-bg.png')`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}
     >
       {/* Subtle Dot grid */}
       <div
@@ -60,83 +64,79 @@ export function Stats({ heading, statistics }: StatsProps) {
       <div
         className="pointer-events-none absolute top-0 left-0 right-0 h-px"
         aria-hidden="true"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(227,22,79,0.1), rgba(0,139,203,0.1), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(237,57,109,0.12), rgba(5,167,212,0.12), transparent)' }}
       />
       <div
         className="pointer-events-none absolute bottom-0 left-0 right-0 h-px"
         aria-hidden="true"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(0,139,203,0.1), rgba(227,22,79,0.1), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(5,167,212,0.12), rgba(237,57,109,0.12), transparent)' }}
       />
 
       <Container className="relative z-10 py-24 lg:py-28">
         {heading && (
-          <h2 className="text-center text-gray-800 text-2xl font-bold mb-14">{heading}</h2>
+          <FadeUp>
+            <h2 className="text-center text-gray-800 text-2xl font-bold mb-14">{heading}</h2>
+          </FadeUp>
         )}
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {displayStats.map((stat, index) => {
             const IconComponent = statIcons[index % statIcons.length]
             const accent = statAccents[index % statAccents.length]
 
             return (
-              <div
-                key={stat._id}
-                className="group relative flex flex-col items-center text-center p-8 rounded-2xl transition-all duration-300"
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(0,0,0,0.05)',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget
-                  el.style.borderColor = `${accent.from}30`
-                  el.style.transform = 'translateY(-4px)'
-                  el.style.boxShadow = `0 20px 40px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02)`
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget
-                  el.style.borderColor = 'rgba(0,0,0,0.05)'
-                  el.style.transform = 'translateY(0)'
-                  el.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.02)'
-                }}
-              >
-                {/* Icon wrapper */}
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300"
-                  style={{ background: `linear-gradient(135deg, ${accent.from}10, ${accent.to}18)` }}
+              <StaggerItem key={stat._id}>
+                <motion.div
+                  className="group relative flex flex-col items-center text-center p-8 rounded-2xl bg-white cursor-default"
+                  style={{
+                    border: '1px solid rgba(0,0,0,0.05)',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
+                  }}
+                  whileHover={shouldReduce ? {} : {
+                    y: -4,
+                    borderColor: `${accent.from}30`,
+                    boxShadow: `0 20px 40px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02)`,
+                    transition: { type: 'spring', stiffness: 400, damping: 25 },
+                  }}
                 >
-                  <IconComponent
-                    className="w-7 h-7 transition-transform duration-300 group-hover:scale-110"
-                    style={{ color: accent.from }}
-                    aria-hidden="true"
-                  />
-                </div>
+                  {/* Icon wrapper */}
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300"
+                    style={{ background: `linear-gradient(135deg, ${accent.from}10, ${accent.to}18)` }}
+                  >
+                    <IconComponent
+                      className="w-7 h-7 transition-transform duration-300 group-hover:scale-110"
+                      style={{ color: accent.from }}
+                      aria-hidden="true"
+                    />
+                  </div>
 
-                {/* Animated value count */}
-                <div
-                  className="stat-value counter-number mb-2 font-black"
-                  aria-label={`${stat.value} ${stat.label}`}
-                >
-                  <AnimatedNumber
-                    value={stat.value}
-                    className="font-black"
-                    style={{
-                      background: `linear-gradient(135deg, ${accent.from}, ${accent.to})`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    } as React.CSSProperties}
-                  />
-                </div>
+                  {/* Animated value count */}
+                  <div
+                    className="stat-value counter-number mb-2 font-black"
+                    aria-label={`${stat.value} ${stat.label}`}
+                  >
+                    <AnimatedNumber
+                      value={stat.value}
+                      className="font-black"
+                      style={{
+                        background: `linear-gradient(135deg, ${accent.from}, ${accent.to})`,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                      } as React.CSSProperties}
+                    />
+                  </div>
 
-                <p className="text-sm font-bold text-gray-800 mb-1.5 leading-snug">{stat.label}</p>
-                {stat.description && (
-                  <p className="text-xs text-gray-500 leading-relaxed font-medium">{stat.description}</p>
-                )}
-              </div>
+                  <p className="text-sm font-bold text-gray-800 mb-1.5 leading-snug">{stat.label}</p>
+                  {stat.description && (
+                    <p className="text-xs text-gray-500 leading-relaxed font-medium">{stat.description}</p>
+                  )}
+                </motion.div>
+              </StaggerItem>
             )
           })}
-        </div>
+        </StaggerContainer>
       </Container>
     </section>
   )

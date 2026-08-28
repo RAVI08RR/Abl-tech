@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "@portabletext/react": "^7.0.1",
     "@sanity/client": "^7.26.2",
     "@sanity/image-url": "^2.1.1",
@@ -20,6 +22,7 @@
     "next-sanity": "^13.3.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "resend": "^6.24.0",
     "sanity": "^6.9.1",
     "styled-components": "^6.5.3",
     "tailwind-merge": "^3.6.0"

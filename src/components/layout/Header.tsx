@@ -36,6 +36,7 @@ const defaultNavItems: NavItem[] = [
   },
   { label: 'Industries', href: '/industries' },
   { label: 'Work', href: '/work' },
+  { label: 'Technologies', href: '/technologies' },
   { label: 'Insights', href: '/insights' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },

@@ -2,12 +2,15 @@
 
 import { writeClient } from '@/sanity/lib/client'
 import { revalidatePath } from 'next/cache'
+import { Resend } from 'resend'
 
 export interface ContactFormState {
   status: 'idle' | 'success' | 'error'
   message?: string
   errors?: Record<string, string>
 }
+
+const resend = new Resend(process.env.RESEND_API_KEY || '')
 
 export async function submitContactForm(
   prevState: ContactFormState,
@@ -37,6 +40,7 @@ export async function submitContactForm(
   }
 
   // Save to Sanity
+  let sanitySuccess = false
   try {
     await writeClient.create({
       _type: 'contactSubmission',
@@ -52,13 +56,41 @@ export async function submitContactForm(
       submittedAt: new Date().toISOString(),
       status: 'new',
     })
+    sanitySuccess = true
+  } catch (err) {
+    console.error('Contact form Sanity submission error (will still attempt Resend):', err)
+  }
 
+  // Send email notification via Resend
+  let emailSuccess = false
+  try {
+    await resend.emails.send({
+      from: 'ABL BusinessTech <onboarding@resend.dev>',
+      to: 'hello@abbusinesstech.com',
+      subject: `New Contact Submission from ${firstName} ${lastName}`,
+      html: `
+        <h3>New Contact Form Submission</h3>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+        <p><strong>Company:</strong> ${company || 'N/A'}</p>
+        <p><strong>Service:</strong> ${service || 'N/A'}</p>
+        <p><strong>Budget:</strong> ${budget || 'N/A'}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `
+    })
+    emailSuccess = true
+  } catch (emailErr) {
+    console.error('Failed to send contact email notification via Resend:', emailErr)
+  }
+
+  if (sanitySuccess || emailSuccess) {
     return {
       status: 'success',
       message: "Thank you for reaching out! We'll be in touch within 1 business day.",
     }
-  } catch (err) {
-    console.error('Contact form submission error:', err)
+  } else {
     return {
       status: 'error',
       message: 'Something went wrong. Please try again or email us directly at hello@abbusinesstech.com.',
@@ -92,6 +124,7 @@ export async function submitConsultationForm(
     return { status: 'error', message: 'Please fix the errors below.', errors }
   }
 
+  let sanitySuccess = false
   try {
     await writeClient.create({
       _type: 'contactSubmission',
@@ -108,13 +141,42 @@ export async function submitConsultationForm(
       submittedAt: new Date().toISOString(),
       status: 'new',
     })
+    sanitySuccess = true
+  } catch (err) {
+    console.error('Consultation form Sanity error (will still attempt Resend):', err)
+  }
 
+  // Send email notification via Resend
+  let emailSuccess = false
+  try {
+    await resend.emails.send({
+      from: 'ABL BusinessTech <onboarding@resend.dev>',
+      to: 'hello@abbusinesstech.com',
+      subject: `New Consultation Request from ${firstName} ${lastName}`,
+      html: `
+        <h3>New Consultation Request</h3>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Company:</strong> ${company || 'N/A'}</p>
+        <p><strong>Service:</strong> ${service || 'N/A'}</p>
+        <p><strong>Budget:</strong> ${budget || 'N/A'}</p>
+        <p><strong>Preferred Contact:</strong> ${preferredContact || 'N/A'}</p>
+        <p><strong>Project Details:</strong></p>
+        <p>${projectDetails}</p>
+      `
+    })
+    emailSuccess = true
+  } catch (emailErr) {
+    console.error('Failed to send consultation email notification via Resend:', emailErr)
+  }
+
+  if (sanitySuccess || emailSuccess) {
     return {
       status: 'success',
       message: "Your consultation request has been received! Our team will reach out within 24 hours to schedule a call.",
     }
-  } catch (err) {
-    console.error('Consultation form error:', err)
+  } else {
     return {
       status: 'error',
       message: 'Something went wrong. Please try again or call us directly.',

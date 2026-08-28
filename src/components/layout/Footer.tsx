@@ -55,7 +55,7 @@ const defaultColumns = [
     links: [
       { label: 'Insights', href: '/insights' },
       { label: 'Case Studies', href: '/work' },
-      { label: 'Technology Stack', href: '/technology' },
+      { label: 'Technology Stack', href: '/technologies' },
     ],
   },
 ]

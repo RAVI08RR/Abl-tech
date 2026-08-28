@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { Mail, Phone, MapPin, Clock, ArrowRight, ShieldCheck } from 'lucide-react'
 import { LinkedInIcon, InstagramIcon } from '@/components/ui/Icons'
 import { Container } from '@/components/ui/Container'
@@ -65,7 +66,7 @@ export default async function ContactPage() {
         {/* Abstract Background Image */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
           <Image
-            src="/client-bg.png"
+            src="/client-rotate.png"
             alt="Background"
             fill
             className="object-cover"
@@ -106,7 +107,7 @@ export default async function ContactPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B1220] leading-[1.1] tracking-tight text-pretty">
               {headline}
             </h1>
-            <p className="text-lg text-slate-500 leading-relaxed max-w-xl font-normal text-pretty">
+            <p className="text-lg text-black leading-relaxed max-w-xl font-normal text-pretty">
               {subheadline}
             </p>
           </div>

@@ -301,14 +301,25 @@ export function IndustriesPageClient() {
       {/* ─────────────────────────────────────────────────────────
           1. HERO SECTION (Light Premium Backdrop with Industry Visual)
           ───────────────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-24 lg:pt-20 lg:pb-36 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/30 border-b border-slate-200/50">
+      <section className="relative pt-32 pb-24 lg:pt-36 lg:pb-32 overflow-hidden bg-[#0A0F1C] border-b border-slate-800 text-white">
 
+        {/* Abstract Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+          <Image
+            src="/industries.png"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        
         {/* Subtle geometric background grid */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
 
         {/* Decorative soft gradient ambient blobs */}
-        <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-[#D9005B]/10 via-[#8B5CF6]/10 to-[#00AEEF]/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" />
-        <div className="absolute -bottom-20 right-10 w-[450px] h-[450px] bg-gradient-to-br from-[#00AEEF]/10 via-[#38BDF8]/10 to-[#D9005B]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-[#E3164F]/20 via-[#8B5CF6]/10 to-[#05A7D4]/10 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" />
+        <div className="absolute -bottom-20 right-10 w-[450px] h-[450px] bg-gradient-to-br from-[#05A7D4]/20 via-[#38BDF8]/10 to-[#E3164F]/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
         <div className="container-xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -317,23 +328,23 @@ export function IndustriesPageClient() {
             <div className="lg:col-span-7 space-y-6 text-left">
 
               {/* Badge */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#D9005B]/10 via-[#8B5CF6]/10 to-[#00AEEF]/10 border border-[#D9005B]/20 backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-[#D9005B] animate-ping" />
-                <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#D9005B] via-[#8B5CF6] to-[#00AEEF] bg-clip-text text-transparent">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-[#E3164F] animate-ping" />
+                <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-white">
                   INDUSTRIES WE TRANSFORM
                 </span>
               </div>
 
               {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-[#0B1220] leading-[1.05]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
                 Deep Domain Expertise.{' '}
-                <span className="bg-gradient-to-r from-[#D9005B] via-[#F04A8A] via-[#8B5CF6] to-[#00AEEF] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#E3164F] via-[#F04A8A] via-[#8B5CF6] to-[#05A7D4] bg-clip-text text-transparent">
                   Engineered for Your Sector.
                 </span>
               </h1>
 
               {/* Description */}
-              <p className="text-lg sm:text-xl text-[#475569] max-w-2xl leading-relaxed font-normal">
+              <p className="text-lg text-slate-300 max-w-2xl leading-relaxed font-normal">
                 Generic software fails when faced with strict industry compliance, legacy mainframes, and complex operational flows. We engineer custom technology solutions tailored specifically to the regulations, scale, and performance needs of your industry.
               </p>
 
@@ -341,7 +352,7 @@ export function IndustriesPageClient() {
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
                   href="#contact-form"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-semibold text-white bg-gradient-to-r from-[#D9005B] via-[#F04A8A] to-[#00AEEF] hover:opacity-95 transition-all shadow-lg shadow-[#D9005B]/20 hover:shadow-xl hover:shadow-[#D9005B]/30 hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-semibold text-white bg-gradient-to-r from-[#E3164F] to-[#F04A8A] hover:opacity-95 transition-all shadow-lg shadow-[#E3164F]/20 hover:shadow-xl hover:-translate-y-0.5"
                 >
                   Consult an Industry Architect
                   <ArrowRight className="w-5 h-5" />
@@ -349,16 +360,16 @@ export function IndustriesPageClient() {
 
                 <a
                   href="#industry-grid"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl font-semibold text-[#0B1220] bg-white border border-slate-200 shadow-sm hover:border-[#D9005B]/40 hover:bg-slate-50/80 transition-all hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl font-semibold text-white bg-white/10 border border-white/20 shadow-sm hover:bg-white/20 transition-all hover:-translate-y-0.5 backdrop-blur-sm"
                 >
                   Explore Industry Sectors
                 </a>
               </div>
 
               {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center gap-6 pt-4 text-sm font-medium text-[#475569] border-t border-slate-200/80">
+              <div className="flex flex-wrap items-center gap-6 pt-4 text-sm font-medium text-slate-300 border-t border-slate-700/80">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#D9005B]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#E3164F]" />
                   <span>20+ Industry Sectors</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -366,7 +377,7 @@ export function IndustriesPageClient() {
                   <span>SOC2 & HIPAA Compliant</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#00AEEF]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#05A7D4]" />
                   <span>Legacy Mainframe Middleware</span>
                 </div>
               </div>

@@ -146,7 +146,7 @@ export default async function WorkPage() {
   return (
     <main id="main-content">
       {/* ── HERO ─────────────────────────────────────── */}
-      <section className="relative bg-[#F8FAFC] border-b border-slate-200/70 pt-32 pb-24 lg:pt-36 lg:pb-32 overflow-hidden">
+      <section className="relative bg-[#F8FAFC] border-b border-slate-200/70 pt-32 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
         {/* Abstract Background Image */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
           <Image
@@ -169,16 +169,16 @@ export default async function WorkPage() {
                 {eyebrow}
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0B1220] leading-[1.1] tracking-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] leading-tight tracking-tight mb-5">
               {headline}
             </h1>
-            <p className="text-lg text-[#475569] leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl">
               {subheadline}
             </p>
           </div>
 
           {/* Stats bar */}
-          <div className="mt-16 pt-12 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="mt-12 pt-8 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { value: '500+', label: 'Projects Delivered' },
               { value: '20+', label: 'Years of Excellence' },
@@ -186,10 +186,10 @@ export default async function WorkPage() {
               { value: '95%', label: 'Client Retention' },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-[#D9005B] to-[#00AEEF] bg-clip-text text-transparent">
+                <p className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-[#E3164F] to-[#05A7D4] bg-clip-text text-transparent">
                   {stat.value}
                 </p>
-                <p className="text-sm font-semibold text-[#475569] mt-1">{stat.label}</p>
+                <p className="text-xs sm:text-sm font-semibold text-[#475569] mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -197,16 +197,16 @@ export default async function WorkPage() {
       </section>
 
       {/* ── FEATURED CASE STUDIES (Alternating Large Layout + Spotlight) ─── */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-white py-16 lg:py-20">
         <Container>
-          <div className="mb-16">
+          <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">Featured Projects</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] tracking-tight mt-2">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1220] tracking-tight mt-2">
               Landmark Engagements
             </h2>
           </div>
 
-          <div className="space-y-28">
+          <div className="space-y-16 lg:space-y-20">
             
             {/* Project 1: Image Left, Content Right */}
             {featuredWork[0] && (() => {
@@ -219,7 +219,7 @@ export default async function WorkPage() {
                   {/* Category Pill (Mobile Only: appears above image) */}
                   {study.industry && (
                     <div className="block lg:hidden">
-                      <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-[#D9005B]/10 text-[#D9005B]">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#E3164F]/10 text-[#E3164F]">
                         {study.industry.name}
                       </span>
                     </div>
@@ -228,7 +228,7 @@ export default async function WorkPage() {
                   <div className="lg:col-span-7">
                     <Link
                       href={`/work/${study.slug.current}`}
-                      className="block relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100"
+                      className="block relative rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100"
                       style={{ aspectRatio: '16/10' }}
                     >
                       <Image
@@ -242,40 +242,40 @@ export default async function WorkPage() {
                       <div className="absolute inset-0 bg-[#0B1220]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
                       {/* Category Pill (Desktop Only) */}
-                      <div className="absolute top-6 left-6 hidden lg:block">
+                      <div className="absolute top-5 left-5 hidden lg:block">
                         {study.industry && (
-                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#D9005B] shadow-sm">
+                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#E3164F] shadow-sm">
                             {study.industry.name}
                           </span>
                         )}
                       </div>
 
-                      <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <ArrowRight className="w-5 h-5 text-[#D9005B]" />
+                      <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <ArrowRight className="w-4 h-4 text-[#E3164F]" />
                       </div>
                     </Link>
                   </div>
 
-                  <div className="lg:col-span-5 space-y-6">
+                  <div className="lg:col-span-5 space-y-5">
                     {study.client && (
-                      <p className="text-xs font-bold uppercase tracking-widest text-[#D9005B]">
+                      <p className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">
                         {study.client}
                       </p>
                     )}
-                    <h3 className="text-3xl lg:text-4xl font-extrabold text-[#0B1220] leading-snug tracking-tight">
+                    <h3 className="text-2xl lg:text-3xl font-extrabold text-[#0B1220] leading-snug tracking-tight">
                       {study.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed text-base font-normal">
+                    <p className="text-slate-600 leading-relaxed text-sm lg:text-base font-normal">
                       {study.shortDescription}
                     </p>
                     {study.metrics && study.metrics.length > 0 && (
-                      <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-100">
+                      <div className="grid grid-cols-3 gap-4 pt-5 border-t border-slate-100">
                         {study.metrics.slice(0, 3).map((m: any) => (
                           <div key={m.metric}>
-                            <p className="text-3xl font-black bg-gradient-to-r from-[#D9005B] to-[#8B5CF6] bg-clip-text text-transparent">
+                            <p className="text-2xl font-black bg-gradient-to-r from-[#E3164F] to-[#8B5CF6] bg-clip-text text-transparent">
                               {m.value}
                             </p>
-                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">
+                            <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-1">
                               {m.metric}
                             </p>
                           </div>
@@ -285,7 +285,7 @@ export default async function WorkPage() {
                     <div className="pt-2">
                       <Link
                         href={`/work/${study.slug.current}`}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-[#D9005B] hover:gap-3 transition-all group/link"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#E3164F] hover:gap-3 transition-all group/link"
                       >
                         View Full Case Study
                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
@@ -307,7 +307,7 @@ export default async function WorkPage() {
                   {/* Category Pill (Mobile Only: appears above image) */}
                   {study.industry && (
                     <div className="block lg:hidden">
-                      <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-[#D9005B]/10 text-[#D9005B]">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#E3164F]/10 text-[#E3164F]">
                         {study.industry.name}
                       </span>
                     </div>
@@ -316,7 +316,7 @@ export default async function WorkPage() {
                   <div className="lg:col-span-7 lg:order-2">
                     <Link
                       href={`/work/${study.slug.current}`}
-                      className="block relative rounded-3xl overflow-hidden group shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100"
+                      className="block relative rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100"
                       style={{ aspectRatio: '16/10' }}
                     >
                       <Image
@@ -330,40 +330,40 @@ export default async function WorkPage() {
                       <div className="absolute inset-0 bg-[#0B1220]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
                       {/* Category Pill (Desktop Only) */}
-                      <div className="absolute top-6 left-6 hidden lg:block">
+                      <div className="absolute top-5 left-5 hidden lg:block">
                         {study.industry && (
-                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#D9005B] shadow-sm">
+                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#E3164F] shadow-sm">
                             {study.industry.name}
                           </span>
                         )}
                       </div>
 
-                      <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <ArrowRight className="w-5 h-5 text-[#D9005B]" />
+                      <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <ArrowRight className="w-4 h-4 text-[#E3164F]" />
                       </div>
                     </Link>
                   </div>
 
-                  <div className="lg:col-span-5 lg:order-1 space-y-6">
+                  <div className="lg:col-span-5 lg:order-1 space-y-5">
                     {study.client && (
-                      <p className="text-xs font-bold uppercase tracking-widest text-[#D9005B]">
+                      <p className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">
                         {study.client}
                       </p>
                     )}
-                    <h3 className="text-3xl lg:text-4xl font-extrabold text-[#0B1220] leading-snug tracking-tight">
+                    <h3 className="text-2xl lg:text-3xl font-extrabold text-[#0B1220] leading-snug tracking-tight">
                       {study.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed text-base font-normal">
+                    <p className="text-slate-600 leading-relaxed text-sm lg:text-base font-normal">
                       {study.shortDescription}
                     </p>
                     {study.metrics && study.metrics.length > 0 && (
-                      <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-100">
+                      <div className="grid grid-cols-3 gap-4 pt-5 border-t border-slate-100">
                         {study.metrics.slice(0, 3).map((m: any) => (
                           <div key={m.metric}>
-                            <p className="text-3xl font-black bg-gradient-to-r from-[#D9005B] to-[#8B5CF6] bg-clip-text text-transparent">
+                            <p className="text-2xl font-black bg-gradient-to-r from-[#E3164F] to-[#8B5CF6] bg-clip-text text-transparent">
                               {m.value}
                             </p>
-                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">
+                            <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-1">
                               {m.metric}
                             </p>
                           </div>
@@ -373,7 +373,7 @@ export default async function WorkPage() {
                     <div className="pt-2">
                       <Link
                         href={`/work/${study.slug.current}`}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-[#D9005B] hover:gap-3 transition-all group/link"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#E3164F] hover:gap-3 transition-all group/link"
                       >
                         View Full Case Study
                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
@@ -395,8 +395,8 @@ export default async function WorkPage() {
                     
                     {/* Category Pill (Mobile Only: appears above image) */}
                     {study.industry && (
-                      <div className="block lg:hidden p-6 pb-0">
-                        <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-[#D9005B]/10 text-[#D9005B]">
+                      <div className="block lg:hidden p-5 pb-0">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#E3164F]/10 text-[#E3164F]">
                           {study.industry.name}
                         </span>
                       </div>
@@ -415,9 +415,9 @@ export default async function WorkPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent hidden lg:block" />
                       
                       {/* Top industry pill (Desktop Only) */}
-                      <div className="absolute top-6 left-6 hidden lg:block">
+                      <div className="absolute top-5 left-5 hidden lg:block">
                         {study.industry && (
-                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-[#D9005B] text-white shadow-sm">
+                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-[#E3164F] text-white shadow-sm">
                             {study.industry.name}
                           </span>
                         )}
@@ -425,38 +425,41 @@ export default async function WorkPage() {
                     </div>
 
                     {/* Content Area - Absolute on Desktop, Stacked on Mobile */}
-                    <div className="p-6 sm:p-8 lg:p-12 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 text-[#0B1220] lg:text-white space-y-4">
+                    <div className="p-6 sm:p-8 lg:p-10 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 text-[#0B1220] lg:text-white space-y-3">
                       {study.client && (
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#D9005B] lg:text-[#FF3D6E]">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#E3164F] lg:text-[#FF6B9D]">
                           {study.client} &mdash; Featured Spotlight
                         </p>
                       )}
-                      <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight max-w-3xl leading-tight">
+                      <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight max-w-3xl leading-tight">
                         {study.title}
                       </h3>
-                      <p className="text-slate-600 lg:text-slate-200 max-w-2xl text-sm sm:text-base font-normal leading-relaxed line-clamp-2">
+                      <p className="text-slate-600 lg:text-slate-200 max-w-2xl text-sm font-normal leading-relaxed line-clamp-2">
                         {study.shortDescription}
                       </p>
                       
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-slate-100 lg:border-white/10">
                         {study.metrics && study.metrics.length > 0 && (
-                          <div className="flex gap-8 sm:gap-12">
+                          <div className="flex gap-6 sm:gap-10">
                             {study.metrics.slice(0, 3).map((m: any) => (
                               <div key={m.metric}>
-                                <p className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-[#D9005B] to-[#8B5CF6] bg-clip-text text-transparent lg:bg-none lg:text-white">
+                                <p className="text-xl sm:text-2xl font-black bg-gradient-to-r from-[#E3164F] to-[#8B5CF6] bg-clip-text text-transparent lg:bg-none lg:text-white">
                                   {m.value}
                                 </p>
-                                <p className="text-[10px] font-bold text-slate-400 lg:text-slate-300 uppercase tracking-wider mt-0.5">
+                                <p className="text-[9px] font-bold text-slate-400 lg:text-slate-300 uppercase tracking-wider mt-0.5">
                                   {m.metric}
                                 </p>
                               </div>
                             ))}
                           </div>
                         )}
-                        <div className="inline-flex items-center justify-center gap-2 text-sm font-bold text-white bg-[#D9005B] hover:bg-[#D9005B]/90 px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                        <Link
+                          href={`/work/${study.slug.current}`}
+                          className="inline-flex items-center justify-center gap-2 text-sm font-bold text-white bg-[#E3164F] hover:bg-[#C01040] px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                        >
                           Read Case Study
                           <ArrowRight className="w-4 h-4" />
-                        </div>
+                        </Link>
                       </div>
                     </div>
 
@@ -471,16 +474,16 @@ export default async function WorkPage() {
 
       {/* ── REMAINING PROJECTS GRID ─────────────────── */}
       {remainingWork.length > 0 && (
-        <section className="bg-[#F8FAFC] border-t border-slate-100 py-20 lg:py-28">
+        <section className="bg-[#F8FAFC] border-t border-slate-100 py-16 lg:py-20">
           <Container>
-            <div className="mb-14">
+            <div className="mb-12">
               <span className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">More Projects</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1220] tracking-tight mt-2">
+              <h2 className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[#0B1220] tracking-tight mt-2">
                 Additional Engagements
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {remainingWork.map((study) => {
                 const imgSrc = (study as any).imageUrl || `https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80&auto=format&fit=crop`
                 const imgAlt = (study as any).imageAlt || study.title
@@ -504,7 +507,7 @@ export default async function WorkPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       {study.industry && (
                         <div className="absolute top-4 left-4">
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-white/95 text-[#D9005B] shadow-sm">
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-white/95 text-[#E3164F] shadow-sm">
                             {study.industry.name}
                           </span>
                         </div>
@@ -512,13 +515,13 @@ export default async function WorkPage() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 sm:p-8 flex flex-col flex-1 space-y-4">
+                    <div className="p-5 sm:p-6 flex flex-col flex-1 space-y-3">
                       {study.client && (
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#D9005B]">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#E3164F]">
                           {study.client}
                         </p>
                       )}
-                      <h3 className="text-xl font-bold text-[#0B1220] group-hover:text-[#D9005B] transition-colors leading-snug tracking-tight">
+                      <h3 className="text-lg font-bold text-[#0B1220] group-hover:text-[#E3164F] transition-colors leading-snug tracking-tight">
                         {study.title}
                       </h3>
                       <p className="text-sm text-slate-500 leading-relaxed line-clamp-2 flex-1 font-normal">
@@ -527,12 +530,12 @@ export default async function WorkPage() {
 
                       {/* Key metric */}
                       {study.metrics && study.metrics.length > 0 && (
-                        <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
+                        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                           <div>
-                            <p className="text-2xl font-black bg-gradient-to-r from-[#D9005B] to-[#F04A8A] bg-clip-text text-transparent">{study.metrics[0].value}</p>
+                            <p className="text-xl font-black bg-gradient-to-r from-[#E3164F] to-[#F04A8A] bg-clip-text text-transparent">{study.metrics[0].value}</p>
                             <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">{study.metrics[0].metric}</p>
                           </div>
-                          <div className="w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#D9005B] transition-colors duration-300 border border-slate-100">
+                          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#E3164F] transition-colors duration-300 border border-slate-100">
                             <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-all duration-300" />
                           </div>
                         </div>
@@ -547,24 +550,24 @@ export default async function WorkPage() {
       )}
 
       {/* ── CTA ─────────────────────────────────────── */}
-      <section className="relative py-24 overflow-hidden bg-[#0B1220]">
+      <section className="relative py-16 overflow-hidden bg-[#0B1220]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E3164F]/15 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#05A7D4]/15 rounded-full blur-3xl" />
         </div>
 
         <Container className="relative z-10 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-white mb-5 leading-tight">
             {ctaHeading}
           </h2>
-          <p className="text-[#94A3B8] text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#94A3B8] text-base lg:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
             {ctaDesc}
           </p>
           <Button
             href={ctaHref}
             variant="primary"
             size="lg"
-            style={{ background: 'linear-gradient(135deg, #D9005B, #F04A8A)', border: 'none' }}
+            style={{ background: 'linear-gradient(135deg, #E3164F, #FF6B9D)', border: 'none' }}
           >
             {ctaLabel} <ArrowRight className="w-4 h-4 ml-1.5" />
           </Button>

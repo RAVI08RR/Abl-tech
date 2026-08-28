@@ -66,7 +66,7 @@ export async function submitContactForm(
   try {
     await resend.emails.send({
       from: 'ABL BusinessTech <onboarding@resend.dev>',
-      to: 'hello@abbusinesstech.com',
+      to: process.env.CONTACT_NOTIFICATION_EMAIL || 'ravisoni08rrrr@gmail.com',
       subject: `New Contact Submission from ${firstName} ${lastName}`,
       html: `
         <h3>New Contact Form Submission</h3>
@@ -151,7 +151,7 @@ export async function submitConsultationForm(
   try {
     await resend.emails.send({
       from: 'ABL BusinessTech <onboarding@resend.dev>',
-      to: 'hello@abbusinesstech.com',
+      to: process.env.CONTACT_NOTIFICATION_EMAIL || 'ravisoni08rrrr@gmail.com',
       subject: `New Consultation Request from ${firstName} ${lastName}`,
       html: `
         <h3>New Consultation Request</h3>

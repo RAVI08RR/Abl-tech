@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Hero } from '@/components/sections/Hero'
 import { ClientLogos } from '@/components/sections/ClientLogos'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
+import { SolutionsShowcase } from '@/components/sections/SolutionsShowcase'
 import { CaseStudyGrid } from '@/components/sections/CaseStudyGrid'
 import { Stats } from '@/components/sections/Stats'
 import { IndustriesGrid } from '@/components/sections/IndustriesGrid'
@@ -146,6 +147,9 @@ export default async function HomePage() {
           services={services}
         />
       )}
+
+      {/* Solutions Showcase */}
+      <SolutionsShowcase />
 
       {/* Featured Work */}
       {(!hp || hp.featuredWork?.enabled !== false) && (

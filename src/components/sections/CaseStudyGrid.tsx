@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -29,6 +28,7 @@ const defaultCaseStudies: CaseStudy[] = [
       { value: '42%', metric: 'Increase in Conversion', description: 'Year-over-year' },
       { value: '3x', metric: 'Faster Processing', description: 'Order processing speed' },
     ],
+    bannerImage: '/E-Commerce-banner.png',
   },
   {
     _id: '2',
@@ -43,6 +43,7 @@ const defaultCaseStudies: CaseStudy[] = [
       { value: '60%', metric: 'Reduction in Ops Cost', description: 'Automated workflows' },
       { value: '99.9%', metric: 'Uptime SLA', description: 'Maintained since launch' },
     ],
+    bannerImage: '/Digital-Banking.png',
   },
   {
     _id: '3',
@@ -57,8 +58,9 @@ const defaultCaseStudies: CaseStudy[] = [
       { value: '85%', metric: 'Faster Diagnosis', description: 'AI-assisted imaging' },
       { value: '12', metric: 'Hospitals Connected', description: 'Seamless data sharing' },
     ],
+    bannerImage: '/Healthcare-ab.png',
   },
-]
+] as (CaseStudy & { bannerImage?: string })[]
 
 const cardThemes = [
   { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#037C9E' },
@@ -122,6 +124,7 @@ export function CaseStudyGrid({ heading, description, caseStudies }: CaseStudyGr
         <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {displayStudies.slice(0, 3).map((study, index) => {
             const theme = cardThemes[index % cardThemes.length]
+            const bannerImage = (study as any).bannerImage as string | undefined
             return (
               <StaggerItem key={study._id}>
                 <motion.div
@@ -135,15 +138,34 @@ export function CaseStudyGrid({ heading, description, caseStudies }: CaseStudyGr
                   <Link
                     href={`/work/${study.slug.current}`}
                     className="group relative flex flex-col justify-between min-h-[460px] p-8 h-full transition-all duration-300"
-                    style={{ background: theme.bg }}
+                    style={bannerImage
+                      ? {
+                          backgroundImage: `url('${bannerImage}')`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          backgroundRepeat: 'no-repeat',
+                        }
+                      : { background: theme.bg }
+                    }
                     aria-label={`Case study: ${study.title}`}
                   >
-                    {/* Background radial accent */}
-                    <div
-                      className="absolute inset-0 opacity-[0.07] pointer-events-none transition-opacity duration-300 group-hover:opacity-[0.14]"
-                      style={{ background: `radial-gradient(ellipse at 30% 70%, ${theme.accent}, transparent 60%)` }}
-                      aria-hidden="true"
-                    />
+                    {/* Dark gradient overlay for banner images — ensures text is always readable */}
+                    {bannerImage && (
+                      <div
+                        className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-80"
+                        style={{ background: 'linear-gradient(160deg, rgba(6,21,37,0.78) 0%, rgba(6,21,37,0.60) 50%, rgba(6,21,37,0.75) 100%)' }}
+                        aria-hidden="true"
+                      />
+                    )}
+
+                    {/* Background radial accent (non-banner only) */}
+                    {!bannerImage && (
+                      <div
+                        className="absolute inset-0 opacity-[0.07] pointer-events-none transition-opacity duration-300 group-hover:opacity-[0.14]"
+                        style={{ background: `radial-gradient(ellipse at 30% 70%, ${theme.accent}, transparent 60%)` }}
+                        aria-hidden="true"
+                      />
+                    )}
 
                     {/* Top border accent */}
                     <div
@@ -152,13 +174,17 @@ export function CaseStudyGrid({ heading, description, caseStudies }: CaseStudyGr
                       aria-hidden="true"
                     />
 
-                    {/* Background hero image */}
-                    {study.heroImage?.asset?.url && (
-                      <Image
-                        src={study.heroImage.asset.url}
-                        alt={study.title}
-                        fill
-                        className="object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
+                    {/* Subtle zoom layer for banner hover */}
+                    {bannerImage && (
+                      <div
+                        className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                        style={{
+                          backgroundImage: `url('${bannerImage}')`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          zIndex: -1,
+                        }}
+                        aria-hidden="true"
                       />
                     )}
 

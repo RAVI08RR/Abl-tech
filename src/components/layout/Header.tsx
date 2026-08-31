@@ -34,6 +34,7 @@ const defaultNavItems: NavItem[] = [
       { label: 'UI/UX Design', href: '/services/ui-ux-design', description: 'UX-led design & design systems', icon: '🎨' },
     ],
   },
+  { label: 'Solutions', href: '/solutions' },
   { label: 'Industries', href: '/industries' },
   { label: 'Work', href: '/work' },
   { label: 'Technologies', href: '/technologies' },

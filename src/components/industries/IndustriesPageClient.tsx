@@ -297,7 +297,7 @@ export function IndustriesPageClient() {
       {/* ─────────────────────────────────────────────────────────
           1. HERO SECTION (Matching Homepage Light Theme Backdrop)
           ───────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/30 border-b border-slate-200/60">
+      <section className="relative pt-5 pb-20 lg:pt-10 lg:pb-28 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/30 border-b border-slate-200/60">
 
         {/* Abstract Background Image */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
@@ -402,7 +402,7 @@ export function IndustriesPageClient() {
             <div className="lg:col-span-5 relative flex justify-center items-center w-full">
 
               <div className="relative w-full max-w-lg aspect-square rounded-3xl bg-white border border-slate-200/90 shadow-2xl p-6 backdrop-blur-xl flex flex-col justify-between group overflow-hidden">
-                
+
                 {/* Glowing Canvas Backdrop */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,167,212,0.06)_0%,rgba(227,22,79,0.04)_50%,transparent_100%)] pointer-events-none" />
 

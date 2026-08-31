@@ -25,7 +25,7 @@ const defaultPosts: Post[] = [
     readingTime: 8,
     featured: true,
     category: { _id: 'c1', title: 'AI & Technology', slug: { current: 'ai-technology' } },
-    author: { name: 'Ravi Soni', designation: 'CTO, ABL BusinessTech' },
+    author: { name: 'Ravi Prasad Kavuru', designation: 'CTO, ABL BusinessTech' },
   },
   {
     _id: '2',
@@ -115,108 +115,108 @@ export function InsightsGrid({ heading, description, posts }: InsightsGridProps)
                   className="group flex flex-col h-full"
                   whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
                 >
-                <Link
-                  href={`/insights/${post.slug.current}`}
-                  className="flex flex-col h-full bg-white rounded-3xl overflow-hidden transition-all duration-300 relative"
-                  style={{
-                    border: '1px solid rgba(0,0,0,0.07)',
-                    boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget
-                    el.style.borderColor = `${accent.from}30`
-                    el.style.boxShadow = `0 20px 45px ${accent.from}15, 0 4px 12px rgba(0,0,0,0.05)`
-                    el.style.transform = 'translateY(-4px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget
-                    el.style.borderColor = 'rgba(0,0,0,0.07)'
-                    el.style.boxShadow = '0 2px 10px rgba(0,0,0,0.03)'
-                    el.style.transform = 'translateY(0)'
-                  }}
-                  aria-label={`Read: ${post.title}`}
-                >
-                  {/* Top accent highlight */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[3px] z-20"
-                    style={{ background: `linear-gradient(90deg, ${accent.from}, ${accent.to})` }}
-                    aria-hidden="true"
-                  />
+                  <Link
+                    href={`/insights/${post.slug.current}`}
+                    className="flex flex-col h-full bg-white rounded-3xl overflow-hidden transition-all duration-300 relative"
+                    style={{
+                      border: '1px solid rgba(0,0,0,0.07)',
+                      boxShadow: '0 2px 10px rgba(0,0,0,0.03)',
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget
+                      el.style.borderColor = `${accent.from}30`
+                      el.style.boxShadow = `0 20px 45px ${accent.from}15, 0 4px 12px rgba(0,0,0,0.05)`
+                      el.style.transform = 'translateY(-4px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget
+                      el.style.borderColor = 'rgba(0,0,0,0.07)'
+                      el.style.boxShadow = '0 2px 10px rgba(0,0,0,0.03)'
+                      el.style.transform = 'translateY(0)'
+                    }}
+                    aria-label={`Read: ${post.title}`}
+                  >
+                    {/* Top accent highlight */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-[3px] z-20"
+                      style={{ background: `linear-gradient(90deg, ${accent.from}, ${accent.to})` }}
+                      aria-hidden="true"
+                    />
 
-                  {/* Image Wrapper */}
-                  <div className="aspect-[16/10] relative bg-gray-50 overflow-hidden shrink-0 border-b border-gray-100">
-                    {post.featuredImage?.asset?.url ? (
-                      <Image
-                        src={post.featuredImage.asset.url}
-                        alt={post.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div
-                        className="w-full h-full flex items-center justify-center relative overflow-hidden"
-                        style={{
-                          background: `linear-gradient(135deg, ${accent.from}10 0%, ${accent.to}20 100%)`,
-                        }}
-                        aria-hidden="true"
-                      >
-                        {/* Glow orb inside image area */}
-                        <div
-                          className="absolute w-32 h-32 rounded-full blur-2xl"
-                          style={{
-                            background: `radial-gradient(circle, ${accent.from}30 0%, transparent 70%)`,
-                          }}
+                    {/* Image Wrapper */}
+                    <div className="aspect-[16/10] relative bg-gray-50 overflow-hidden shrink-0 border-b border-gray-100">
+                      {post.featuredImage?.asset?.url ? (
+                        <Image
+                          src={post.featuredImage.asset.url}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
-                        <span className="text-5xl font-black relative z-10" style={{ color: accent.from }}>
-                          {index === 0 ? '01' : index === 1 ? '02' : '03'}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="p-6 flex flex-col justify-between flex-1 relative z-10">
-                    <div>
-                      {/* Category Label */}
-                      {post.category && (
-                        <span
-                          className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase mb-4"
+                      ) : (
+                        <div
+                          className="w-full h-full flex items-center justify-center relative overflow-hidden"
                           style={{
-                            background: `${accent.from}15`,
-                            color: accent.from,
+                            background: `linear-gradient(135deg, ${accent.from}10 0%, ${accent.to}20 100%)`,
                           }}
+                          aria-hidden="true"
                         >
-                          {post.category.title}
-                        </span>
-                      )}
-
-                      {/* Title */}
-                      <h3 className="text-base font-bold text-[#111111] leading-snug mb-3 group-hover:text-[#05A7D4] transition-colors duration-200">
-                        {post.title}
-                      </h3>
-
-                      {/* Excerpt */}
-                      {post.excerpt && (
-                        <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-5">
-                          {post.excerpt}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Meta info */}
-                    <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-50 pt-4 mt-auto">
-                      <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                          <User className="w-3.5 h-3.5 text-gray-500" aria-hidden="true" />
+                          {/* Glow orb inside image area */}
+                          <div
+                            className="absolute w-32 h-32 rounded-full blur-2xl"
+                            style={{
+                              background: `radial-gradient(circle, ${accent.from}30 0%, transparent 70%)`,
+                            }}
+                          />
+                          <span className="text-5xl font-black relative z-10" style={{ color: accent.from }}>
+                            {index === 0 ? '01' : index === 1 ? '02' : '03'}
+                          </span>
                         </div>
-                        <span className="font-bold text-gray-600">{post.author?.name}</span>
+                      )}
+                    </div>
+
+                    <div className="p-6 flex flex-col justify-between flex-1 relative z-10">
+                      <div>
+                        {/* Category Label */}
+                        {post.category && (
+                          <span
+                            className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase mb-4"
+                            style={{
+                              background: `${accent.from}15`,
+                              color: accent.from,
+                            }}
+                          >
+                            {post.category.title}
+                          </span>
+                        )}
+
+                        {/* Title */}
+                        <h3 className="text-base font-bold text-[#111111] leading-snug mb-3 group-hover:text-[#05A7D4] transition-colors duration-200">
+                          {post.title}
+                        </h3>
+
+                        {/* Excerpt */}
+                        {post.excerpt && (
+                          <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-5">
+                            {post.excerpt}
+                          </p>
+                        )}
                       </div>
-                      <div className="flex items-center gap-1 font-bold">
-                        <Clock className="w-3.5 h-3.5 text-[#05A7D4]" aria-hidden="true" />
-                        <span>{post.readingTime} min read</span>
+
+                      {/* Meta info */}
+                      <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-50 pt-4 mt-auto">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <User className="w-3.5 h-3.5 text-gray-500" aria-hidden="true" />
+                          </div>
+                          <span className="font-bold text-gray-600">{post.author?.name}</span>
+                        </div>
+                        <div className="flex items-center gap-1 font-bold">
+                          <Clock className="w-3.5 h-3.5 text-[#05A7D4]" aria-hidden="true" />
+                          <span>{post.readingTime} min read</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
                 </motion.div>
               </StaggerItem>
             )

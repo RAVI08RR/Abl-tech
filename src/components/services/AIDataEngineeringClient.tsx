@@ -259,7 +259,7 @@ export function AIDataEngineeringClient() {
       {/* ─────────────────────────────────────────────────────────
           1. HERO SECTION (Light Premium Backdrop with 3D AI Visual)
           ───────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-20 lg:pt-10 lg:pb-32 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/60 border-b border-slate-200/60">
+      <section className="relative pt-10 pb-20 lg:pt-10 lg:pb-10 overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#FFFFFF] to-[#F1F5F9]/60 border-b border-slate-200/60">
 
         {/* Subtle geometric background grid */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
@@ -451,7 +451,7 @@ export function AIDataEngineeringClient() {
       <section className="py-16 bg-[#FFFFFF]">
         <div className="container-xl">
           <div className="rounded-3xl bg-gradient-to-r from-slate-50 via-slate-100/80 to-slate-50 border border-slate-200/80 p-8 lg:p-12 shadow-sm">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80">
 
               <div className="text-center pt-4 lg:pt-0 lg:px-4">
                 <div className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-[#D9005B] to-[#F04A8A] bg-clip-text text-transparent">

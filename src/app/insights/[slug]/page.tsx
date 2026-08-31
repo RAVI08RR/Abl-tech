@@ -31,7 +31,7 @@ const defaultPost = {
   excerpt: 'Artificial intelligence is no longer a futuristic concept — it\'s actively changing how enterprise software is built, deployed, and maintained.',
   publishedAt: '2025-01-15',
   readingTime: 8,
-  author: { name: 'Ravi Soni', designation: 'CTO, ABL BusinessTech', bio: 'Technology leader with 15+ years building enterprise software.' },
+  author: { name: 'Ravi Prasad Kavuru', designation: 'CTO, ABL BusinessTech', bio: 'Technology leader with 15+ years building enterprise software.' },
   category: { title: 'AI & Technology', slug: { current: 'ai-technology' } },
   tags: ['AI', 'Enterprise', 'Software Development'],
   content: [
@@ -44,7 +44,7 @@ const defaultPost = {
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
   let post = null
-  try { post = await getPostBySlug(slug) } catch {}
+  try { post = await getPostBySlug(slug) } catch { }
 
   if (!post && !validSlugs.includes(slug)) notFound()
 

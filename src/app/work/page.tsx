@@ -27,9 +27,9 @@ const defaultWork = [
       { value: '3x', metric: 'Faster Checkout' },
       { value: '68%', metric: 'Page Load Improvement' },
     ],
-    // Unsplash – Free commercial use
-    imageUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80&auto=format&fit=crop',
-    imageAlt: 'Software developers collaborating on e-commerce platform',
+    // Project banner — used as card bg + hero bg on detail page
+    bannerImage: '/E-Commerce-banner.png',
+    imageAlt: 'AI-Powered E-Commerce Platform by ABL BusinessTech',
   },
   {
     _id: '2',
@@ -46,8 +46,8 @@ const defaultWork = [
       { value: '99.99%', metric: 'System Uptime' },
       { value: '$2M', metric: 'Annual Savings' },
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80&auto=format&fit=crop',
-    imageAlt: 'Digital banking and fintech technology collaboration',
+    bannerImage: '/Digital-Banking.png',
+    imageAlt: 'Enterprise Digital Banking Suite by ABL BusinessTech',
   },
   {
     _id: '3',
@@ -64,8 +64,8 @@ const defaultWork = [
       { value: '12', metric: 'Hospitals Connected' },
       { value: '100%', metric: 'HIPAA Compliant' },
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80&auto=format&fit=crop',
-    imageAlt: 'Healthcare data and technology collaboration team',
+    bannerImage: '/Healthcare-ab.png',
+    imageAlt: 'Smart Healthcare Data Platform by ABL BusinessTech',
   },
   {
     _id: '4',
@@ -77,13 +77,14 @@ const defaultWork = [
     publishedAt: '2025-04-01',
     industry: { name: 'Logistics & Supply Chain', slug: { current: 'logistics' } },
     service: { title: 'Software Development', slug: { current: 'software-development' } },
+    bannerImage: '',
+    imageAlt: 'Supply chain logistics platform',
     metrics: [
       { value: '32%', metric: 'Cost Savings' },
       { value: '500+', metric: 'Vehicles Tracked' },
       { value: '8', metric: 'Countries Covered' },
     ],
     imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=80&auto=format&fit=crop',
-    imageAlt: 'Logistics and supply chain management technology',
   },
   {
     _id: '5',
@@ -100,8 +101,9 @@ const defaultWork = [
       { value: '200K+', metric: 'Active Students' },
       { value: '40+', metric: 'Countries Reached' },
     ],
+    bannerImage: '',
+    imageAlt: 'EdTech LMS platform for digital education',
     imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80&auto=format&fit=crop',
-    imageAlt: 'Students collaborating and learning with digital technology',
   },
   {
     _id: '6',
@@ -118,8 +120,9 @@ const defaultWork = [
       { value: '200+', metric: 'IoT Sensors Live' },
       { value: '99.9%', metric: 'Data Accuracy' },
     ],
+    bannerImage: '',
+    imageAlt: 'Manufacturing IoT dashboard and analytics platform',
     imageUrl: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=900&q=80&auto=format&fit=crop',
-    imageAlt: 'Modern manufacturing facility with IoT and technology infrastructure',
   },
 ]
 
@@ -157,7 +160,7 @@ export default async function WorkPage() {
             priority
           />
         </div>
-        
+
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
         <div className="absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#E3164F]/8 to-[#05A7D4]/8 blur-3xl pointer-events-none z-0" />
 
@@ -207,15 +210,17 @@ export default async function WorkPage() {
           </div>
 
           <div className="space-y-16 lg:space-y-20">
-            
+
             {/* Project 1: Image Left, Content Right */}
             {featuredWork[0] && (() => {
               const study = featuredWork[0]
-              const imgSrc = (study as any).imageUrl || `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80&auto=format&fit=crop`
+              const bannerImage = (study as any).bannerImage as string | undefined
+              const imgSrc = bannerImage || (study as any).imageUrl || `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80&auto=format&fit=crop`
               const imgAlt = (study as any).imageAlt || study.title
+              const isBanner = Boolean(bannerImage)
               return (
                 <article className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-20 items-center">
-                  
+
                   {/* Category Pill (Mobile Only: appears above image) */}
                   {study.industry && (
                     <div className="block lg:hidden">
@@ -229,20 +234,18 @@ export default async function WorkPage() {
                     <Link
                       href={`/work/${study.slug.current}`}
                       className="block relative rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100"
-                      style={{ aspectRatio: '16/10' }}
+                      style={isBanner ? { aspectRatio: '16/10', backgroundImage: `url('${imgSrc}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' } : { aspectRatio: '16/10' }}
+                      aria-label={`Case study: ${study.title}`}
                     >
-                      <Image
-                        src={imgSrc}
-                        alt={imgAlt}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-103"
-                        sizes="(max-width: 1024px) 100vw, 58vw"
-                        unoptimized
-                      />
-                      <div className="absolute inset-0 bg-[#0B1220]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      
+                      {/* Fallback Next/Image for non-banner items */}
+                      {!isBanner && <Image src={imgSrc} alt={imgAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-103" sizes="(max-width: 1024px) 100vw, 58vw" unoptimized />}
+                      {/* Subtle zoom overlay via pseudo-bg scale is CSS-only; for banner we add a scale wrapper */}
+                      {isBanner && <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('${imgSrc}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} aria-hidden="true" />}
+                      {/* Dark gradient overlay — always present for readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/65" />
+
                       {/* Category Pill (Desktop Only) */}
-                      <div className="absolute top-5 left-5 hidden lg:block">
+                      <div className="absolute top-5 left-5 hidden lg:block z-10">
                         {study.industry && (
                           <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#E3164F] shadow-sm">
                             {study.industry.name}
@@ -250,7 +253,7 @@ export default async function WorkPage() {
                         )}
                       </div>
 
-                      <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-10">
                         <ArrowRight className="w-4 h-4 text-[#E3164F]" />
                       </div>
                     </Link>
@@ -299,11 +302,13 @@ export default async function WorkPage() {
             {/* Project 2: Content Left, Image Right */}
             {featuredWork[1] && (() => {
               const study = featuredWork[1]
-              const imgSrc = (study as any).imageUrl || `https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80&auto=format&fit=crop`
+              const bannerImage = (study as any).bannerImage as string | undefined
+              const imgSrc = bannerImage || (study as any).imageUrl || `https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80&auto=format&fit=crop`
               const imgAlt = (study as any).imageAlt || study.title
+              const isBanner = Boolean(bannerImage)
               return (
                 <article className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-20 items-center">
-                  
+
                   {/* Category Pill (Mobile Only: appears above image) */}
                   {study.industry && (
                     <div className="block lg:hidden">
@@ -318,19 +323,14 @@ export default async function WorkPage() {
                       href={`/work/${study.slug.current}`}
                       className="block relative rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100"
                       style={{ aspectRatio: '16/10' }}
+                      aria-label={`Case study: ${study.title}`}
                     >
-                      <Image
-                        src={imgSrc}
-                        alt={imgAlt}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-103"
-                        sizes="(max-width: 1024px) 100vw, 58vw"
-                        unoptimized
-                      />
-                      <div className="absolute inset-0 bg-[#0B1220]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      
+                      {!isBanner && <Image src={imgSrc} alt={imgAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-103" sizes="(max-width: 1024px) 100vw, 58vw" unoptimized />}
+                      {isBanner && <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('${imgSrc}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} aria-hidden="true" />}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/65" />
+
                       {/* Category Pill (Desktop Only) */}
-                      <div className="absolute top-5 left-5 hidden lg:block">
+                      <div className="absolute top-5 left-5 hidden lg:block z-10">
                         {study.industry && (
                           <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#E3164F] shadow-sm">
                             {study.industry.name}
@@ -338,7 +338,7 @@ export default async function WorkPage() {
                         )}
                       </div>
 
-                      <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-10">
                         <ArrowRight className="w-4 h-4 text-[#E3164F]" />
                       </div>
                     </Link>
@@ -387,12 +387,14 @@ export default async function WorkPage() {
             {/* Project 3: Large Featured Full-Width Spotlight */}
             {featuredWork[2] && (() => {
               const study = featuredWork[2]
-              const imgSrc = (study as any).imageUrl || `https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80&auto=format&fit=crop`
+              const bannerImage = (study as any).bannerImage as string | undefined
+              const imgSrc = bannerImage || (study as any).imageUrl || `https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80&auto=format&fit=crop`
               const imgAlt = (study as any).imageAlt || study.title
+              const isBanner = Boolean(bannerImage)
               return (
                 <article className="pt-8">
                   <div className="rounded-[2rem] border border-slate-200/60 overflow-hidden shadow-xl bg-white group hover:shadow-2xl transition-all duration-555 flex flex-col lg:relative lg:block">
-                    
+
                     {/* Category Pill (Mobile Only: appears above image) */}
                     {study.industry && (
                       <div className="block lg:hidden p-5 pb-0">
@@ -404,16 +406,10 @@ export default async function WorkPage() {
 
                     {/* Image Area */}
                     <div className="relative w-full aspect-[16/10] lg:aspect-[21/9] overflow-hidden">
-                      <Image
-                        src={imgSrc}
-                        alt={imgAlt}
-                        fill
-                        className="object-cover transition-transform duration-[1.5s] group-hover:scale-101"
-                        sizes="100vw"
-                        unoptimized
-                      />
+                      {!isBanner && <Image src={imgSrc} alt={imgAlt} fill className="object-cover transition-transform duration-[1.5s] group-hover:scale-101" sizes="100vw" unoptimized />}
+                      {isBanner && <div className="absolute inset-0 transition-transform duration-[1.5s] group-hover:scale-103" style={{ backgroundImage: `url('${imgSrc}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} aria-hidden="true" />}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent hidden lg:block" />
-                      
+
                       {/* Top industry pill (Desktop Only) */}
                       <div className="absolute top-5 left-5 hidden lg:block">
                         {study.industry && (
@@ -431,13 +427,13 @@ export default async function WorkPage() {
                           {study.client} &mdash; Featured Spotlight
                         </p>
                       )}
-                      <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight max-w-3xl leading-tight">
+                      <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight max-w-3xl leading-tight text-white">
                         {study.title}
                       </h3>
                       <p className="text-slate-600 lg:text-slate-200 max-w-2xl text-sm font-normal leading-relaxed line-clamp-2">
                         {study.shortDescription}
                       </p>
-                      
+
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-slate-100 lg:border-white/10">
                         {study.metrics && study.metrics.length > 0 && (
                           <div className="flex gap-6 sm:gap-10">
@@ -485,8 +481,10 @@ export default async function WorkPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {remainingWork.map((study) => {
-                const imgSrc = (study as any).imageUrl || `https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80&auto=format&fit=crop`
+                const bannerImage = (study as any).bannerImage as string | undefined
+                const imgSrc = bannerImage || (study as any).imageUrl || `https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80&auto=format&fit=crop`
                 const imgAlt = (study as any).imageAlt || study.title
+                const isBanner = Boolean(bannerImage)
 
                 return (
                   <Link
@@ -496,17 +494,11 @@ export default async function WorkPage() {
                   >
                     {/* Project Image */}
                     <div className="relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
-                      <Image
-                        src={imgSrc}
-                        alt={imgAlt}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-103"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        unoptimized
-                      />
+                      {!isBanner && <Image src={imgSrc} alt={imgAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-103" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" unoptimized />}
+                      {isBanner && <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('${imgSrc}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} aria-hidden="true" />}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       {study.industry && (
-                        <div className="absolute top-4 left-4">
+                        <div className="absolute top-4 left-4 z-10">
                           <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-white/95 text-[#E3164F] shadow-sm">
                             {study.industry.name}
                           </span>

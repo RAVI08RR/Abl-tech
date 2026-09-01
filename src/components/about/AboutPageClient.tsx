@@ -448,7 +448,7 @@ export function AboutPageClient() {
               <div className="pt-4 border-t border-white/10 space-y-2">
                 <p className="text-[10px] font-semibold uppercase text-gray-500 tracking-wider">Direct Reachout</p>
                 <div className="flex flex-col gap-2 text-sm font-medium text-gray-300">
-                  <a href="mailto:hello@abltech.com" className="hover:text-[#D9005B] transition-colors">hello@abltech.com</a>
+                  <a href="mailto:info@ablbusinesstech.com" className="hover:text-[#D9005B] transition-colors">info@ablbusinesstech.com</a>
                   <a href="tel:+919876543210" className="hover:text-[#D9005B] transition-colors">+91 98765 43210</a>
                 </div>
               </div>

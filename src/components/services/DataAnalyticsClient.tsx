@@ -1426,8 +1426,8 @@ export function DataAnalyticsClient() {
                 <div className="pt-6 border-t border-slate-200/80 space-y-3">
                   <p className="text-xs font-bold uppercase text-[#475569] tracking-wider">Direct Reachout</p>
                   <div className="flex flex-col sm:flex-row gap-4 text-sm font-medium text-[#0B1220]">
-                    <a href="mailto:hello@abltech.com" className="hover:text-[#D9005B] transition-colors">
-                      ✉️ hello@abltech.com
+                    <a href="mailto:info@ablbusinesstech.com" className="hover:text-[#D9005B] transition-colors">
+                      ✉️ info@ablbusinesstech.com
                     </a>
                     <a href="tel:+919876543210" className="hover:text-[#D9005B] transition-colors">
                       📞 +91 98765 43210

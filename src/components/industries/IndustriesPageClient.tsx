@@ -1002,8 +1002,8 @@ export function IndustriesPageClient() {
                 <div className="pt-6 border-t border-slate-200/80 space-y-3">
                   <p className="text-xs font-bold uppercase text-slate-500 tracking-wider">Direct Reachout</p>
                   <div className="flex flex-col sm:flex-row gap-4 text-sm font-medium text-[#0B1220]">
-                    <a href="mailto:hello@abbusinesstech.com" className="hover:text-[#E3164F] transition-colors">
-                      ✉️ hello@abbusinesstech.com
+                    <a href="mailto:info@ablbusinesstech.com" className="hover:text-[#E3164F] transition-colors">
+                      ✉️ info@ablbusinesstech.com
                     </a>
                     <a href="tel:+917416743434" className="hover:text-[#E3164F] transition-colors">
                       📞 +91 7416 743 434

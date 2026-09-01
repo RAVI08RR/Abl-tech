@@ -93,7 +93,7 @@ export async function submitContactForm(
   } else {
     return {
       status: 'error',
-      message: 'Something went wrong. Please try again or email us directly at hello@abbusinesstech.com.',
+      message: 'Something went wrong. Please try again or email us directly at info@ablbusinesstech.com.',
     }
   }
 }

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 const defaultContactInfo = [
-  { icon: Mail, label: 'Email Us', value: 'info@abbusinesstech.com', href: 'mailto:info@abbusinesstech.com' },
+  { icon: Mail, label: 'Email Us', value: 'info@ablbusinesstech.com', href: 'mailto:info@ablbusinesstech.com' },
   { icon: Phone, label: 'Call Us', value: '+91 7416 743 434', href: 'tel:+917416743434' },
   { icon: MapPin, label: 'Visit Us', value: 'Mumbai, Maharashtra, India', href: undefined },
   { icon: Clock, label: 'Working Hours', value: 'Mon – Fri, 9 AM – 7 PM IST', href: undefined },
@@ -41,7 +41,7 @@ export default async function ContactPage() {
   const expectHeading = pageData?.expectHeading || 'What to Expect'
   const expectations = pageData?.expectations?.length ? pageData.expectations : defaultWhyContact
 
-  const emailVal = siteSettings?.contactEmail || 'hello@abbusinesstech.com'
+  const emailVal = siteSettings?.contactEmail || 'info@ablbusinesstech.com'
   const phoneVal = siteSettings?.phone || '+91 9876 543 210'
   const addressVal = siteSettings?.address || 'Mumbai, Maharashtra, India'
 

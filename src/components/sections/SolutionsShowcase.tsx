@@ -26,7 +26,7 @@ export const FEATURED_SOLUTIONS = [
     title: 'AI Workflow Automation',
     short: 'Automate repetitive processes, connect business tools, and build intelligent workflows that improve productivity.',
     tags: ['AI', 'Automation', 'SaaS'],
-    color: '#ED396D',
+    color: '#05A7D4',
   },
   {
     id: 'ai-chatbot',
@@ -35,7 +35,7 @@ export const FEATURED_SOLUTIONS = [
     title: 'AI Chatbot Development',
     short: 'Build intelligent conversational experiences for customer support, lead qualification, and business communication.',
     tags: ['AI', 'Real-Time', 'Mobile'],
-    color: '#037C9E',
+    color: '#05A7D4',
   },
   {
     id: 'mobility',
@@ -53,7 +53,7 @@ export const FEATURED_SOLUTIONS = [
     title: 'Healthcare Software',
     short: 'Connected hospital and healthcare management platforms for smarter operations and better patient experiences.',
     tags: ['Enterprise', 'Cloud', 'Analytics'],
-    color: '#ED396D',
+    color: '#05A7D4',
   },
   {
     id: 'education',
@@ -62,7 +62,7 @@ export const FEATURED_SOLUTIONS = [
     title: 'Education & LMS',
     short: 'School management and digital learning platforms for institutions, training providers, and enterprises.',
     tags: ['SaaS', 'Mobile', 'Cloud'],
-    color: '#037C9E',
+    color: '#05A7D4',
   },
   {
     id: 'hospitality',
@@ -80,7 +80,7 @@ export const FEATURED_SOLUTIONS = [
     title: 'Delivery & Logistics',
     short: 'Food delivery, courier, fleet, driver tracking, and on-demand delivery solutions built for scale.',
     tags: ['Mobile', 'Real-Time', 'Cloud'],
-    color: '#ED396D',
+    color: '#05A7D4',
   },
   {
     id: 'fintech',
@@ -89,7 +89,7 @@ export const FEATURED_SOLUTIONS = [
     title: 'Fintech & Digital Payments',
     short: 'Secure wallet, payment, transaction, and fintech platforms built for modern digital businesses.',
     tags: ['Payments', 'Security', 'SaaS'],
-    color: '#037C9E',
+    color: '#05A7D4',
   },
 ]
 
@@ -102,7 +102,7 @@ function SolutionCard({ sol, index }: { sol: typeof FEATURED_SOLUTIONS[0]; index
     <StaggerItem>
       <motion.div
         whileHover={shouldReduce ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
-        className="group relative bg-white rounded-2xl p-5 h-full cursor-pointer hover:border-[#ED396D]/25 hover:shadow-lg transition-all duration-300"
+        className="group relative bg-white rounded-2xl p-5 h-full cursor-pointer hover:border-[#05A7D4]/30 hover:shadow-lg transition-all duration-300"
         style={{ border: '1px solid rgba(0,0,0,0.07)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}
         aria-label={sol.title}
       >
@@ -119,24 +119,24 @@ function SolutionCard({ sol, index }: { sol: typeof FEATURED_SOLUTIONS[0]; index
         <div className="mb-4">
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-            style={{ background: `${sol.color}14` }}
+            style={{ background: 'rgba(5,167,212,0.08)' }}
           >
-            <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" style={{ color: sol.color }} strokeWidth={1.75} aria-hidden="true" />
+            <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 text-[#05A7D4]" strokeWidth={1.75} aria-hidden="true" />
           </div>
         </div>
 
         {/* category pill */}
-        <span className="text-[10px] font-bold uppercase tracking-wider mb-1.5 block" style={{ color: sol.color }}>
+        <span className="text-[10px] font-bold uppercase tracking-wider mb-1.5 block text-[#05A7D4]">
           {sol.category}
         </span>
 
-        <h3 className="text-sm font-bold text-[#111111] mb-2 leading-snug group-hover:text-[#ED396D] transition-colors duration-200">
+        <h3 className="text-sm font-bold text-[#111111] mb-2 leading-snug group-hover:text-[#05A7D4] transition-colors duration-200">
           {sol.title}
         </h3>
         <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{sol.short}</p>
 
         {/* hover arrow */}
-        <div className="flex items-center gap-1 mt-3 text-xs font-semibold opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-200" style={{ color: sol.color }}>
+        <div className="flex items-center gap-1 mt-3 text-xs font-semibold opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-200 text-[#05A7D4]">
           Learn more <ArrowRight className="w-3 h-3" aria-hidden="true" />
         </div>
       </motion.div>
@@ -152,7 +152,7 @@ export function SolutionsShowcase() {
       <div
         className="pointer-events-none absolute top-0 left-0 right-0 h-px"
         aria-hidden="true"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(237,57,109,0.2), rgba(5,167,212,0.2), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(5,167,212,0.2), transparent)' }}
       />
 
       <Container>
@@ -160,22 +160,16 @@ export function SolutionsShowcase() {
 
           {/* ── Left column ── */}
           <FadeUp className="flex flex-col justify-center gap-5">
-            {/* Eyebrow — same pattern as ServicesGrid */}
             <div className="inline-flex items-center gap-2">
-              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-              <span
-                className="text-xs font-bold tracking-[0.18em] uppercase"
-                style={{ background: 'linear-gradient(90deg, #ED396D, #037C9E)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
-              >
+              <span className="h-px w-8 bg-[#05A7D4]" />
+              <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">
                 Business Solutions
               </span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.1] text-[#111111]">
               Custom Solutions for{' '}
-              <span
-                style={{ background: 'linear-gradient(135deg, #ED396D 0%, #037C9E 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
-              >
+              <span className="text-[#05A7D4]">
                 Every Business
               </span>
             </h2>
@@ -189,8 +183,8 @@ export function SolutionsShowcase() {
                 Explore All Solutions <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </Button>
               <Link
-                href="/contacts"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#111111] hover:text-[#ED396D] transition-colors duration-200 group"
+                href="/contact"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#111111] hover:text-[#05A7D4] transition-colors duration-200 group"
               >
                 Start Your Project
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />

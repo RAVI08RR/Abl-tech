@@ -16,7 +16,7 @@ const defaultWork = [
     _id: '1',
     title: 'AI-Powered E-Commerce Platform',
     slug: { current: 'ai-ecommerce-platform' },
-    client: 'RetailVision Inc.',
+    client: 'RetailVision Enterprise (Dummy Project)',
     shortDescription: 'AI-driven commerce engine with personalization, real-time inventory sync, and a headless Next.js storefront delivering sub-second page loads.',
     featured: true,
     publishedAt: '2025-07-01',
@@ -27,15 +27,14 @@ const defaultWork = [
       { value: '3x', metric: 'Faster Checkout' },
       { value: '68%', metric: 'Page Load Improvement' },
     ],
-    // Project banner — used as card bg + hero bg on detail page
     bannerImage: '/E-Commerce-banner.png',
-    imageAlt: 'AI-Powered E-Commerce Platform by ABL BusinessTech',
+    imageAlt: 'AI-Powered E-Commerce Platform - Dummy Project',
   },
   {
     _id: '2',
     title: 'Enterprise Digital Banking Suite',
     slug: { current: 'enterprise-digital-banking' },
-    client: 'FinEdge Capital',
+    client: 'FinEdge Capital (Dummy Project)',
     shortDescription: 'Modernized a legacy core banking system with real-time open banking APIs, AI fraud detection engine, and a white-label mobile banking app.',
     featured: true,
     publishedAt: '2025-06-01',
@@ -47,13 +46,13 @@ const defaultWork = [
       { value: '$2M', metric: 'Annual Savings' },
     ],
     bannerImage: '/Digital-Banking.png',
-    imageAlt: 'Enterprise Digital Banking Suite by ABL BusinessTech',
+    imageAlt: 'Enterprise Digital Banking Suite - Dummy Project',
   },
   {
     _id: '3',
     title: 'Smart Healthcare Data Platform',
     slug: { current: 'smart-healthcare-platform' },
-    client: 'HealthBridge Systems',
+    client: 'HealthBridge Systems (Dummy Project)',
     shortDescription: 'Unified patient data across 12 hospitals with HIPAA-compliant cloud infrastructure, HL7/FHIR interoperability, and real-time clinical dashboards.',
     featured: true,
     publishedAt: '2025-05-01',
@@ -65,20 +64,20 @@ const defaultWork = [
       { value: '100%', metric: 'HIPAA Compliant' },
     ],
     bannerImage: '/Healthcare-ab.png',
-    imageAlt: 'Smart Healthcare Data Platform by ABL BusinessTech',
+    imageAlt: 'Smart Healthcare Data Platform - Dummy Project',
   },
   {
     _id: '4',
     title: 'Supply Chain Visibility Platform',
     slug: { current: 'supply-chain-visibility' },
-    client: 'LogiTrack Africa',
+    client: 'LogiTrack Solutions (Dummy Project)',
     shortDescription: 'Real-time GPS tracking and AI route optimization for 500+ delivery vehicles, cutting fuel costs and improving on-time delivery rates across 8 countries.',
     featured: false,
     publishedAt: '2025-04-01',
     industry: { name: 'Logistics & Supply Chain', slug: { current: 'logistics' } },
     service: { title: 'Software Development', slug: { current: 'software-development' } },
     bannerImage: '',
-    imageAlt: 'Supply chain logistics platform',
+    imageAlt: 'Supply chain logistics platform - Dummy Project',
     metrics: [
       { value: '32%', metric: 'Cost Savings' },
       { value: '500+', metric: 'Vehicles Tracked' },
@@ -90,7 +89,7 @@ const defaultWork = [
     _id: '5',
     title: 'EdTech Learning Management System',
     slug: { current: 'edtech-lms' },
-    client: 'EduTech Pro',
+    client: 'EduTech Global (Dummy Project)',
     shortDescription: 'Scalable LMS serving 200,000+ students across 40+ countries with live HD video classrooms, AI-assisted tutoring, and automated progress tracking.',
     featured: false,
     publishedAt: '2025-03-01',
@@ -102,14 +101,14 @@ const defaultWork = [
       { value: '40+', metric: 'Countries Reached' },
     ],
     bannerImage: '',
-    imageAlt: 'EdTech LMS platform for digital education',
+    imageAlt: 'EdTech LMS platform - Dummy Project',
     imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80&auto=format&fit=crop',
   },
   {
     _id: '6',
     title: 'Manufacturing IoT Dashboard',
     slug: { current: 'manufacturing-iot' },
-    client: 'IndustriaTech GmbH',
+    client: 'IndustriaTech Corp (Dummy Project)',
     shortDescription: 'Real-time IoT sensor telemetry with AI predictive maintenance alerts and production line performance dashboards, reducing unplanned downtime by 40%.',
     featured: false,
     publishedAt: '2025-02-01',
@@ -121,7 +120,7 @@ const defaultWork = [
       { value: '99.9%', metric: 'Data Accuracy' },
     ],
     bannerImage: '',
-    imageAlt: 'Manufacturing IoT dashboard and analytics platform',
+    imageAlt: 'Manufacturing IoT dashboard - Dummy Project',
     imageUrl: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=900&q=80&auto=format&fit=crop',
   },
 ]
@@ -162,13 +161,13 @@ export default async function WorkPage() {
         </div>
 
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#0b1220_1px,transparent_1px),linear-gradient(to_bottom,#0b1220_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
-        <div className="absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#E3164F]/8 to-[#05A7D4]/8 blur-3xl pointer-events-none z-0" />
+        <div className="absolute -top-40 right-0 w-[600px] h-[600px] rounded-full bg-[#05A7D4]/5 blur-3xl pointer-events-none z-0" />
 
         <Container className="relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#E3164F]/10 border border-[#E3164F]/20 mb-6 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E3164F]" />
-              <span className="text-xs font-bold tracking-widest uppercase text-[#E3164F]">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#05A7D4]/10 border border-[#05A7D4]/20 mb-6 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#05A7D4]" />
+              <span className="text-xs font-bold tracking-widest uppercase text-[#05A7D4]">
                 {eyebrow}
               </span>
             </div>
@@ -189,7 +188,7 @@ export default async function WorkPage() {
               { value: '95%', label: 'Client Retention' },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-[#E3164F] to-[#05A7D4] bg-clip-text text-transparent">
+                <p className="text-2xl sm:text-3xl font-black text-[#05A7D4]">
                   {stat.value}
                 </p>
                 <p className="text-xs sm:text-sm font-semibold text-[#475569] mt-1">{stat.label}</p>
@@ -203,7 +202,7 @@ export default async function WorkPage() {
       <section className="bg-white py-16 lg:py-20">
         <Container>
           <div className="mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">Featured Projects</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#05A7D4]">Featured Projects</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B1220] tracking-tight mt-2">
               Landmark Engagements
             </h2>
@@ -224,7 +223,7 @@ export default async function WorkPage() {
                   {/* Category Pill (Mobile Only: appears above image) */}
                   {study.industry && (
                     <div className="block lg:hidden">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#E3164F]/10 text-[#E3164F]">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#05A7D4]/10 text-[#05A7D4]">
                         {study.industry.name}
                       </span>
                     </div>
@@ -247,21 +246,21 @@ export default async function WorkPage() {
                       {/* Category Pill (Desktop Only) */}
                       <div className="absolute top-5 left-5 hidden lg:block z-10">
                         {study.industry && (
-                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#E3164F] shadow-sm">
+                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#05A7D4] shadow-sm">
                             {study.industry.name}
                           </span>
                         )}
                       </div>
 
                       <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-10">
-                        <ArrowRight className="w-4 h-4 text-[#E3164F]" />
+                        <ArrowRight className="w-4 h-4 text-[#05A7D4]" />
                       </div>
                     </Link>
                   </div>
 
                   <div className="lg:col-span-5 space-y-5">
                     {study.client && (
-                      <p className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">
+                      <p className="text-xs font-bold uppercase tracking-widest text-[#05A7D4]">
                         {study.client}
                       </p>
                     )}
@@ -275,7 +274,7 @@ export default async function WorkPage() {
                       <div className="grid grid-cols-3 gap-4 pt-5 border-t border-slate-100">
                         {study.metrics.slice(0, 3).map((m: any) => (
                           <div key={m.metric}>
-                            <p className="text-2xl font-black bg-gradient-to-r from-[#E3164F] to-[#8B5CF6] bg-clip-text text-transparent">
+                            <p className="text-2xl font-black text-[#05A7D4]">
                               {m.value}
                             </p>
                             <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-1">
@@ -288,7 +287,7 @@ export default async function WorkPage() {
                     <div className="pt-2">
                       <Link
                         href={`/work/${study.slug.current}`}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-[#E3164F] hover:gap-3 transition-all group/link"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#05A7D4] hover:text-[#037C9E] hover:gap-3 transition-all group/link"
                       >
                         View Full Case Study
                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
@@ -312,7 +311,7 @@ export default async function WorkPage() {
                   {/* Category Pill (Mobile Only: appears above image) */}
                   {study.industry && (
                     <div className="block lg:hidden">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#E3164F]/10 text-[#E3164F]">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#05A7D4]/10 text-[#05A7D4]">
                         {study.industry.name}
                       </span>
                     </div>
@@ -332,21 +331,21 @@ export default async function WorkPage() {
                       {/* Category Pill (Desktop Only) */}
                       <div className="absolute top-5 left-5 hidden lg:block z-10">
                         {study.industry && (
-                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#E3164F] shadow-sm">
+                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-white/95 text-[#05A7D4] shadow-sm">
                             {study.industry.name}
                           </span>
                         )}
                       </div>
 
                       <div className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-10">
-                        <ArrowRight className="w-4 h-4 text-[#E3164F]" />
+                        <ArrowRight className="w-4 h-4 text-[#05A7D4]" />
                       </div>
                     </Link>
                   </div>
 
                   <div className="lg:col-span-5 lg:order-1 space-y-5">
                     {study.client && (
-                      <p className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">
+                      <p className="text-xs font-bold uppercase tracking-widest text-[#05A7D4]">
                         {study.client}
                       </p>
                     )}
@@ -360,7 +359,7 @@ export default async function WorkPage() {
                       <div className="grid grid-cols-3 gap-4 pt-5 border-t border-slate-100">
                         {study.metrics.slice(0, 3).map((m: any) => (
                           <div key={m.metric}>
-                            <p className="text-2xl font-black bg-gradient-to-r from-[#E3164F] to-[#8B5CF6] bg-clip-text text-transparent">
+                            <p className="text-2xl font-black text-[#05A7D4]">
                               {m.value}
                             </p>
                             <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-1">
@@ -373,7 +372,7 @@ export default async function WorkPage() {
                     <div className="pt-2">
                       <Link
                         href={`/work/${study.slug.current}`}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-[#E3164F] hover:gap-3 transition-all group/link"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#05A7D4] hover:text-[#037C9E] hover:gap-3 transition-all group/link"
                       >
                         View Full Case Study
                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
@@ -398,7 +397,7 @@ export default async function WorkPage() {
                     {/* Category Pill (Mobile Only: appears above image) */}
                     {study.industry && (
                       <div className="block lg:hidden p-5 pb-0">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#E3164F]/10 text-[#E3164F]">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#05A7D4]/10 text-[#05A7D4]">
                           {study.industry.name}
                         </span>
                       </div>
@@ -413,7 +412,7 @@ export default async function WorkPage() {
                       {/* Top industry pill (Desktop Only) */}
                       <div className="absolute top-5 left-5 hidden lg:block">
                         {study.industry && (
-                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-[#E3164F] text-white shadow-sm">
+                          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-[#05A7D4] text-white shadow-sm">
                             {study.industry.name}
                           </span>
                         )}
@@ -423,7 +422,7 @@ export default async function WorkPage() {
                     {/* Content Area - Absolute on Desktop, Stacked on Mobile */}
                     <div className="p-6 sm:p-8 lg:p-10 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 text-[#0B1220] lg:text-white space-y-3">
                       {study.client && (
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#E3164F] lg:text-[#FF6B9D]">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#05A7D4] lg:text-[#05A7D4]">
                           {study.client} &mdash; Featured Spotlight
                         </p>
                       )}
@@ -439,7 +438,7 @@ export default async function WorkPage() {
                           <div className="flex gap-6 sm:gap-10">
                             {study.metrics.slice(0, 3).map((m: any) => (
                               <div key={m.metric}>
-                                <p className="text-xl sm:text-2xl font-black bg-gradient-to-r from-[#E3164F] to-[#8B5CF6] bg-clip-text text-transparent lg:bg-none lg:text-white">
+                                <p className="text-xl sm:text-2xl font-black text-[#05A7D4] lg:text-white">
                                   {m.value}
                                 </p>
                                 <p className="text-[9px] font-bold text-slate-400 lg:text-slate-300 uppercase tracking-wider mt-0.5">
@@ -451,7 +450,7 @@ export default async function WorkPage() {
                         )}
                         <Link
                           href={`/work/${study.slug.current}`}
-                          className="inline-flex items-center justify-center gap-2 text-sm font-bold text-white bg-[#E3164F] hover:bg-[#C01040] px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                          className="inline-flex items-center justify-center gap-2 text-sm font-bold text-white bg-[#05A7D4] hover:bg-[#0390B5] px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                         >
                           Read Case Study
                           <ArrowRight className="w-4 h-4" />
@@ -473,7 +472,7 @@ export default async function WorkPage() {
         <section className="bg-[#F8FAFC] border-t border-slate-100 py-16 lg:py-20">
           <Container>
             <div className="mb-12">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#E3164F]">More Projects</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#05A7D4]">More Projects</span>
               <h2 className="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[#0B1220] tracking-tight mt-2">
                 Additional Engagements
               </h2>
@@ -499,7 +498,7 @@ export default async function WorkPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       {study.industry && (
                         <div className="absolute top-4 left-4 z-10">
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-white/95 text-[#E3164F] shadow-sm">
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-white/95 text-[#05A7D4] shadow-sm">
                             {study.industry.name}
                           </span>
                         </div>
@@ -509,11 +508,11 @@ export default async function WorkPage() {
                     {/* Content */}
                     <div className="p-5 sm:p-6 flex flex-col flex-1 space-y-3">
                       {study.client && (
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#E3164F]">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#05A7D4]">
                           {study.client}
                         </p>
                       )}
-                      <h3 className="text-lg font-bold text-[#0B1220] group-hover:text-[#E3164F] transition-colors leading-snug tracking-tight">
+                      <h3 className="text-lg font-bold text-[#0B1220] group-hover:text-[#05A7D4] transition-colors leading-snug tracking-tight">
                         {study.title}
                       </h3>
                       <p className="text-sm text-slate-500 leading-relaxed line-clamp-2 flex-1 font-normal">
@@ -524,10 +523,10 @@ export default async function WorkPage() {
                       {study.metrics && study.metrics.length > 0 && (
                         <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                           <div>
-                            <p className="text-xl font-black bg-gradient-to-r from-[#E3164F] to-[#F04A8A] bg-clip-text text-transparent">{study.metrics[0].value}</p>
+                            <p className="text-xl font-black text-[#05A7D4]">{study.metrics[0].value}</p>
                             <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">{study.metrics[0].metric}</p>
                           </div>
-                          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#E3164F] transition-colors duration-300 border border-slate-100">
+                          <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#05A7D4] transition-colors duration-300 border border-slate-100">
                             <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-all duration-300" />
                           </div>
                         </div>
@@ -544,8 +543,8 @@ export default async function WorkPage() {
       {/* ── CTA ─────────────────────────────────────── */}
       <section className="relative py-16 overflow-hidden bg-[#0B1220]">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E3164F]/15 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#05A7D4]/15 rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#05A7D4]/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#05A7D4]/10 rounded-full blur-3xl" />
         </div>
 
         <Container className="relative z-10 text-center max-w-3xl mx-auto">
@@ -559,7 +558,6 @@ export default async function WorkPage() {
             href={ctaHref}
             variant="primary"
             size="lg"
-            style={{ background: 'linear-gradient(135deg, #E3164F, #FF6B9D)', border: 'none' }}
           >
             {ctaLabel} <ArrowRight className="w-4 h-4 ml-1.5" />
           </Button>

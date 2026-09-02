@@ -19,7 +19,7 @@ const defaultCaseStudies: CaseStudy[] = [
     _id: '1',
     title: 'AI-Powered E-Commerce Platform',
     slug: { current: 'ai-ecommerce-platform' },
-    client: 'RetailVision Inc.',
+    client: 'RetailVision Enterprise (Dummy Project)',
     shortDescription: 'Built a scalable AI-driven commerce engine with personalization, real-time inventory, and multi-channel management.',
     featured: true,
     industry: { _id: 'i1', name: 'Retail & E-commerce', slug: { current: 'retail-ecommerce' } },
@@ -34,7 +34,7 @@ const defaultCaseStudies: CaseStudy[] = [
     _id: '2',
     title: 'Enterprise Digital Banking Suite',
     slug: { current: 'enterprise-digital-banking' },
-    client: 'FinEdge Capital',
+    client: 'FinEdge Capital (Dummy Project)',
     shortDescription: 'Modernized a legacy core banking system with real-time payments, fraud detection AI, and mobile-first UX.',
     featured: true,
     industry: { _id: 'i2', name: 'Financial Services', slug: { current: 'financial-services' } },
@@ -49,7 +49,7 @@ const defaultCaseStudies: CaseStudy[] = [
     _id: '3',
     title: 'Smart Healthcare Data Platform',
     slug: { current: 'smart-healthcare-platform' },
-    client: 'HealthBridge Systems',
+    client: 'HealthBridge Systems (Dummy Project)',
     shortDescription: 'Unified fragmented patient data across 12 hospitals with HIPAA-compliant cloud infrastructure and ML diagnostics.',
     featured: true,
     industry: { _id: 'i3', name: 'Healthcare', slug: { current: 'healthcare' } },
@@ -63,9 +63,9 @@ const defaultCaseStudies: CaseStudy[] = [
 ] as (CaseStudy & { bannerImage?: string })[]
 
 const cardThemes = [
-  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#037C9E' },
-  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#037C9E' },
-  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#037C9E' },
+  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#05A7D4' },
+  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#05A7D4' },
+  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#05A7D4' },
 ]
 
 export function CaseStudyGrid({ heading, description, caseStudies }: CaseStudyGridProps) {
@@ -97,16 +97,8 @@ export function CaseStudyGrid({ heading, description, caseStudies }: CaseStudyGr
         <FadeUp className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-4">
-              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-              <span
-                className="text-xs font-bold tracking-[0.18em] uppercase"
-                style={{
-                  background: 'linear-gradient(90deg, #ED396D, #05A7D4)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
+              <span className="h-px w-8 bg-[#05A7D4]" />
+              <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">
                 Our Work
               </span>
             </div>

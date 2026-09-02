@@ -260,13 +260,12 @@ function SolutionCard({ sol, index }: { sol: typeof ALL_SOLUTIONS[0]; index: num
   return (
     <motion.div
       whileHover={shouldReduce ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
-      className="group relative bg-white rounded-2xl p-6 flex flex-col cursor-pointer hover:shadow-lg transition-all duration-300"
+      className="group relative bg-white rounded-2xl p-6 flex flex-col cursor-pointer hover:border-[#05A7D4]/30 hover:shadow-lg transition-all duration-300"
       style={{ border: '1px solid rgba(0,0,0,0.07)', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}
     >
       {/* top hover accent bar */}
       <div
-        className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: `linear-gradient(90deg, ${sol.color}, ${sol.color}88)` }}
+        className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#05A7D4]"
         aria-hidden="true"
       />
 
@@ -276,19 +275,19 @@ function SolutionCard({ sol, index }: { sol: typeof ALL_SOLUTIONS[0]; index: num
       </span>
 
       {/* category */}
-      <span className="text-[10px] font-bold uppercase tracking-wider mb-3 block" style={{ color: sol.color }}>
+      <span className="text-[10px] font-bold uppercase tracking-wider mb-3 block text-[#05A7D4]">
         {sol.category}
       </span>
 
       {/* icon */}
       <div className="mb-4">
-        <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: `${sol.color}12` }}>
-          <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" style={{ color: sol.color }} strokeWidth={1.75} aria-hidden="true" />
+        <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: 'rgba(5,167,212,0.08)' }}>
+          <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 text-[#05A7D4]" strokeWidth={1.75} aria-hidden="true" />
         </div>
       </div>
 
       {/* content */}
-      <h3 className="text-base font-bold text-[#111111] mb-1.5 group-hover:text-[#ED396D] transition-colors duration-200 leading-snug">
+      <h3 className="text-base font-bold text-[#111111] mb-1.5 group-hover:text-[#05A7D4] transition-colors duration-200 leading-snug">
         {sol.title}
       </h3>
       <p className="text-xs text-gray-400 font-medium mb-2 leading-snug">{sol.subtitle}</p>
@@ -305,9 +304,8 @@ function SolutionCard({ sol, index }: { sol: typeof ALL_SOLUTIONS[0]; index: num
 
       {/* cta */}
       <Link
-        href="/contacts"
-        className="inline-flex items-center gap-1 text-sm font-semibold transition-all duration-200 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0"
-        style={{ color: sol.color }}
+        href="/contact"
+        className="inline-flex items-center gap-1 text-sm font-semibold transition-all duration-200 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 text-[#05A7D4]"
         aria-label={`Learn more about ${sol.title}`}
       >
         Learn More <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -330,8 +328,8 @@ function FeaturedAI() {
   return (
     <FadeUp>
       <div
-        className="relative rounded-2xl overflow-hidden"
-        style={{ border: '1px solid rgba(237,57,109,0.12)', background: 'linear-gradient(135deg, #fff9fb 0%, #f0faff 100%)' }}
+        className="relative rounded-2xl overflow-hidden bg-slate-50/70"
+        style={{ border: '1px solid rgba(5,167,212,0.18)' }}
       >
         {/* Subtle grid pattern */}
         <div
@@ -345,12 +343,12 @@ function FeaturedAI() {
           <div className="flex flex-col justify-between gap-6">
             <div>
               <div className="inline-flex items-center gap-2 mb-4">
-                <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-                <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#ED396D]">Featured Solution</span>
+                <span className="h-px w-8 bg-[#05A7D4]" />
+                <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">Featured Solution</span>
               </div>
 
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: '#ED396D14' }}>
-                <BrainCircuit className="w-6 h-6 text-[#ED396D]" strokeWidth={1.75} />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: 'rgba(5,167,212,0.10)' }}>
+                <BrainCircuit className="w-6 h-6 text-[#05A7D4]" strokeWidth={1.75} />
               </div>
 
               <h3 className="text-xl sm:text-2xl font-bold text-[#111111] mb-3 leading-tight">
@@ -361,7 +359,7 @@ function FeaturedAI() {
               </p>
             </div>
 
-            <Button href="/contacts" variant="primary" size="sm" className="self-start">
+            <Button href="/contact" variant="primary" size="sm" className="self-start">
               Discuss Your Automation Project <ArrowRight className="w-3.5 h-3.5" />
             </Button>
           </div>
@@ -374,8 +372,8 @@ function FeaturedAI() {
                 className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 bg-white border border-slate-100"
                 style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}
               >
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: '#ED396D10' }}>
-                  <CapIcon className="w-3.5 h-3.5 text-[#ED396D]" strokeWidth={1.75} />
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(5,167,212,0.08)' }}>
+                  <CapIcon className="w-3.5 h-3.5 text-[#05A7D4]" strokeWidth={1.75} />
                 </div>
                 <span className="text-xs font-semibold text-gray-700 leading-tight">{label}</span>
               </div>
@@ -390,25 +388,25 @@ function FeaturedAI() {
 /* ── Why Us compact strip ───────────────────────────────────── */
 function WhyWebBlaze() {
   const items = [
-    { icon: BrainCircuit, title: 'AI-Powered Innovation', desc: 'Intelligent solutions that automate workflows and accelerate business growth.', color: '#ED396D' },
-    { icon: ShieldCheck, title: 'Security & Compliance', desc: 'Enterprise-grade architecture designed for reliable and protected digital products.', color: '#037C9E' },
+    { icon: BrainCircuit, title: 'AI-Powered Innovation', desc: 'Intelligent solutions that automate workflows and accelerate business growth.', color: '#05A7D4' },
+    { icon: ShieldCheck, title: 'Security & Compliance', desc: 'Enterprise-grade architecture designed for reliable and protected digital products.', color: '#05A7D4' },
     { icon: TrendingUp, title: 'Built for Performance', desc: 'Fast and scalable platforms optimized for speed, reliability, and future growth.', color: '#05A7D4' },
-    { icon: Headphones, title: 'Technology Partner', desc: 'Strategy, design, development, deployment and ongoing technical support.', color: '#ED396D' },
+    { icon: Headphones, title: 'Technology Partner', desc: 'Strategy, design, development, deployment and ongoing technical support.', color: '#05A7D4' },
   ]
 
   return (
     <div className="mt-16">
       <FadeUp className="text-center mb-10">
         <div className="inline-flex items-center gap-2 mb-4">
-          <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-          <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ background: 'linear-gradient(90deg, #ED396D, #037C9E)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <span className="h-px w-8 bg-[#05A7D4]" />
+          <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">
             Why WebBlaze
           </span>
-          <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, #05A7D4, transparent)' }} />
+          <span className="h-px w-8 bg-[#05A7D4]" />
         </div>
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111111] mb-3">
           Built for Performance.{' '}
-          <span style={{ background: 'linear-gradient(135deg, #ED396D 0%, #037C9E 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <span className="text-[#05A7D4]">
             Designed for Growth.
           </span>
         </h2>
@@ -450,9 +448,9 @@ function BottomCTA() {
         />
         <div className="relative z-10 max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 mb-4">
-            <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-            <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#ED396D]">Have an Idea?</span>
-            <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, #ED396D, transparent)' }} />
+            <span className="h-px w-8 bg-[#05A7D4]" />
+            <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">Have an Idea?</span>
+            <span className="h-px w-8 bg-[#05A7D4]" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
             Ready to Build Your Next Digital Solution?
@@ -461,7 +459,7 @@ function BottomCTA() {
             Whether you&apos;re launching a startup, modernising enterprise operations or creating an AI-powered platform, WebBlaze Softtech — an ABL BusinessTech LLP Company — can turn your idea into a scalable digital product.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button href="/contacts" variant="primary" size="md">
+            <Button href="/contact" variant="primary" size="md">
               Start Your Project <ArrowRight className="w-4 h-4" />
             </Button>
             <Button
@@ -499,18 +497,18 @@ export function SolutionsPageClient() {
           style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.028) 1px, transparent 1px)', backgroundSize: '30px 30px' }}
         />
         <div className="pointer-events-none absolute -top-40 right-0 w-[500px] h-[500px] rounded-full blur-[120px]" aria-hidden="true"
-          style={{ background: 'radial-gradient(circle,rgba(237,57,109,0.08) 0%,transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle,rgba(5,167,212,0.08) 0%,transparent 70%)' }}
         />
 
         <Container className="relative z-10">
           <FadeUp className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-5">
-              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-              <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#ED396D]">Our Solutions</span>
+              <span className="h-px w-8 bg-[#05A7D4]" />
+              <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">Our Solutions</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-white mb-5">
               Digital Products Built Around{' '}
-              <span style={{ background: 'linear-gradient(135deg, #ED396D 0%, #05A7D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              <span className="text-[#05A7D4]">
                 Real Business Challenges
               </span>
             </h1>
@@ -519,9 +517,9 @@ export function SolutionsPageClient() {
             </p>
             <div className="flex flex-wrap gap-4">
               {[
-                { icon: CheckCircle2, label: '20+ Product Categories', color: '#ED396D' },
+                { icon: CheckCircle2, label: '20+ Product Categories', color: '#05A7D4' },
                 { icon: CheckCircle2, label: '500+ Projects Delivered', color: '#05A7D4' },
-                { icon: CheckCircle2, label: '40+ Industries Served', color: '#ED396D' },
+                { icon: CheckCircle2, label: '40+ Industries Served', color: '#05A7D4' },
               ].map(({ icon: Icon, label, color }) => (
                 <div key={label} className="flex items-center gap-2 text-sm text-gray-300 font-medium">
                   <Icon className="w-4 h-4 shrink-0" style={{ color }} aria-hidden="true" />
@@ -546,8 +544,8 @@ export function SolutionsPageClient() {
           <FadeUp className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-                <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ background: 'linear-gradient(90deg, #ED396D, #037C9E)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                <span className="h-px w-8 bg-[#05A7D4]" />
+                <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">
                   All Solutions
                 </span>
               </div>
@@ -555,7 +553,7 @@ export function SolutionsPageClient() {
                 Complete Product Ecosystem
               </h2>
             </div>
-            <Button href="/contacts" variant="primary" size="sm" className="self-start sm:self-auto">
+            <Button href="/contact" variant="primary" size="sm" className="self-start sm:self-auto">
               Start Your Project <ArrowRight className="w-3.5 h-3.5" />
             </Button>
           </FadeUp>
@@ -573,10 +571,10 @@ export function SolutionsPageClient() {
                   role="tab"
                   aria-selected={activeCategory === cat}
                   onClick={() => setActiveCategory(cat)}
-                  className="shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ED396D] focus-visible:ring-offset-2"
+                  className="shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#05A7D4] focus-visible:ring-offset-2"
                   style={
                     activeCategory === cat
-                      ? { background: 'linear-gradient(135deg, #ED396D, #037C9E)', color: '#fff', boxShadow: '0 2px 8px rgba(237,57,109,0.25)' }
+                      ? { background: '#05A7D4', color: '#fff', boxShadow: '0 2px 8px rgba(5,167,212,0.25)' }
                       : { background: '#f8fafc', color: '#64748b', border: '1px solid rgba(0,0,0,0.07)' }
                   }
                 >

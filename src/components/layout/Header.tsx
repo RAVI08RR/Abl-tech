@@ -179,21 +179,21 @@ export function Header({ navigation }: HeaderProps) {
 
                       {/* Right Side: Featured Showcase Panel */}
                       <div className="w-[280px] bg-gradient-to-br from-[#0D0D1A] to-[#1A1A2E] rounded-xl p-5 text-white flex flex-col justify-between shrink-0 border border-white/5 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(237,57,109,0.12),transparent_60%)]" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(5,167,212,0.12),transparent_60%)]" />
                         <div className="relative z-10">
-                          <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#ED396D]/20 text-[#FF5A86] uppercase tracking-wider mb-4">
+                          <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#05A7D4]/20 text-[#05A7D4] uppercase tracking-wider mb-4">
                             Featured Case Study
                           </span>
                           <h4 className="text-sm font-bold text-white mb-2 leading-snug">
                             AI-Powered E-Commerce Platform
                           </h4>
                           <p className="text-xs text-gray-400 leading-relaxed mb-4">
-                            How we helped RetailVision scale to millions of users and increase conversion by 42%.
+                            AI-driven commerce engine with personalization, real-time sync, and sub-second page loads.
                           </p>
                         </div>
                         <Link
                           href="/work/ai-ecommerce-platform"
-                          className="relative z-10 inline-flex items-center gap-1.5 text-xs font-bold text-[#05A7D4] hover:text-[#037C9E] hover:gap-2.5 transition-all mt-4"
+                          className="relative z-10 inline-flex items-center gap-1.5 text-xs font-bold text-[#05A7D4] hover:text-white hover:gap-2.5 transition-all mt-4"
                           onClick={() => setActiveMega(null)}
                         >
                           Read Case Study <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />

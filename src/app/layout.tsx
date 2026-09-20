@@ -6,7 +6,7 @@ import { PageTransition } from '@/components/ui/PageTransition'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { getNavigation, getFooter } from '@/sanity/lib/queries'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abldigitech.com'
 
 export const viewport: Viewport = {
   themeColor: '#05A7D4',
@@ -18,13 +18,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'ABL BusinessTech LLP — Technology Consulting & Software Development',
-    template: '%s | ABL BusinessTech LLP',
+    default: 'ABL Tech — ABL Digital Technologies: Software Engineering, AI & WFM Consulting',
+    template: '%s | ABL Tech — ABL Digital Technologies',
   },
   description:
-    'ABL BusinessTech LLP helps ambitious businesses design, build, modernize, and scale custom software, AI & ML solutions, web applications, mobile apps, and cloud infrastructure.',
+    'ABL Tech (ABL Digital Technologies) is a senior-led software development & AI consulting firm in India. We design, build, and scale custom web platforms, mobile apps, AI solutions, and cloud infrastructure.',
   keywords: [
-    'software development company',
+    'abl tech',
+    'ABL Tech',
+    'ABL Digital Technologies',
+    'abldigitech.com',
+    'abltech',
+    'software development company India',
+    'WFM consulting India',
     'custom software engineering',
     'AI consulting',
     'machine learning solutions',
@@ -33,11 +39,10 @@ export const metadata: Metadata = {
     'cloud infrastructure',
     'digital transformation agency',
     'ABL BusinessTech',
-    'Hyderabad IT company',
   ],
-  authors: [{ name: 'ABL BusinessTech LLP', url: siteUrl }],
-  creator: 'ABL BusinessTech LLP',
-  publisher: 'ABL BusinessTech LLP',
+  authors: [{ name: 'ABL Digital Technologies', url: siteUrl }],
+  creator: 'ABL Digital Technologies',
+  publisher: 'ABL Digital Technologies',
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -54,8 +59,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'ABL BusinessTech LLP',
-    title: 'ABL BusinessTech LLP — Technology Consulting & Software Development',
+    siteName: 'ABL Tech — ABL Digital Technologies',
+    title: 'ABL Tech — ABL Digital Technologies: Software Engineering & AI Consulting',
     description:
       'Designing, building, modernizing, and scaling high-impact digital products, AI models, and enterprise software.',
     images: [
@@ -63,13 +68,13 @@ export const metadata: Metadata = {
         url: `${siteUrl}/logo-abltech.png`,
         width: 1200,
         height: 630,
-        alt: 'ABL BusinessTech LLP Logo',
+        alt: 'ABL Tech Logo — ABL Digital Technologies',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ABL BusinessTech LLP — Technology Consulting & Software Engineering',
+    title: 'ABL Tech — ABL Digital Technologies: Software Engineering & AI Solutions',
     description:
       'Transforming ambitious ideas into scalable, production-grade digital products.',
     images: [`${siteUrl}/logo-abltech.png`],

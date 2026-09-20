@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Quality Assurance & Testing | ABL Tech',
     description: 'Ruthless Testing. Enterprise Certainty. Automated QA, Performance Stress & Penetration Security Audits.',
-    url: 'https://abltech.com/services/quality-assurance-testing',
+    url: 'https://abldigitech.com/services/quality-assurance-testing',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function QualityAssurancePage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Continuous test automation, performance stress testing, API validation, and SOC2/OWASP penetration security audits.',
     serviceType: 'Quality Assurance & Testing',

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Data & Analytics Solutions | ABL Tech',
     description: 'Stop Drowning in Data. Start Driving Revenue. High-speed data pipelines, Snowflake warehousing & predictive ML.',
-    url: 'https://abltech.com/services/data-analytics-solutions',
+    url: 'https://abldigitech.com/services/data-analytics-solutions',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function DataAnalyticsPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Cloud data warehousing, real-time ETL pipelines, Power BI & Tableau dashboards, and predictive machine learning models.',
     serviceType: 'Data & Analytics Solutions',

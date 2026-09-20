@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'IT Staff Augmentation | ABL Tech',
     description: 'Scale Your Team in 48 Hours. Top 1% Vetted Senior Full-Stack, AI & DevOps Engineers.',
-    url: 'https://abltech.com/services/staff-augmentation',
+    url: 'https://abldigitech.com/services/staff-augmentation',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function StaffAugmentationPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Pre-vetted senior software engineers, dedicated sprint pods, 48-hour rapid onboarding, and zero-risk 14-day replacement trial.',
     serviceType: 'Staff Augmentation & Dedicated Teams',

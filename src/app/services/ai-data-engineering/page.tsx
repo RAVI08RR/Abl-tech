@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI & Data Engineering Services | ABL Tech',
     description: 'Turn AI & Data Into Your Competitive Advantage with Enterprise AI Solutions, Autonomous Agents, and Data Pipelines.',
-    url: 'https://abltech.com/services/ai-data-engineering',
+    url: 'https://abldigitech.com/services/ai-data-engineering',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function AIDataEngineeringPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Turn AI & Data Into Your Competitive Advantage. Build intelligent systems, autonomous AI agents, automate workflows, and transform raw enterprise data into measurable outcomes.',
     serviceType: 'AI & Data Engineering Services',

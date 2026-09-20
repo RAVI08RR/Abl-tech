@@ -85,27 +85,27 @@ export default async function HomePage() {
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'ABL BusinessTech LLP',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com',
-    description: 'Technology consulting and software development company helping businesses build scalable digital products.',
+    name: 'ABL Tech — ABL Digital Technologies',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abldigitech.com',
+    description: 'Senior-led WFM consulting, custom software engineering, AI platforms, and digital products.',
     foundingDate: '2005',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'IN',
     },
     sameAs: [
-      'https://linkedin.com/company/abl-tech',
+      'https://www.linkedin.com/company/ablbusinesstech',
     ],
   }
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'ABL BusinessTech LLP',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com',
+    name: 'ABL Tech — ABL Digital Technologies',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://abldigitech.com',
     potentialAction: {
       '@type': 'SearchAction',
-      target: { '@type': 'EntryPoint', urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL}/search?q={search_term_string}` },
+      target: { '@type': 'EntryPoint', urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://abldigitech.com'}/search?q={search_term_string}` },
       'query-input': 'required name=search_term_string',
     },
   }

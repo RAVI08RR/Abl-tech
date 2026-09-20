@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Us | ABL BusinessTech LLP',
     description: 'Engineering Technology That Moves Enterprise Business. Established 2005, Trusted Globally.',
-    url: 'https://abltech.com/about',
+    url: 'https://abldigitech.com/about',
     type: 'website',
   },
 }
@@ -24,7 +24,7 @@ export default function AboutPage() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'ABL BusinessTech LLP',
-    url: 'https://abltech.com',
+    url: 'https://abldigitech.com',
     foundingDate: '2005',
     description: 'Enterprise AI, custom software engineering, and cloud transformation company since 2005.',
     address: {

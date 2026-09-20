@@ -1,19 +1,20 @@
 import React from 'react'
 
 export function JsonLd() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abldigitech.com'
 
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
-    name: 'ABL BusinessTech LLP',
-    legalName: 'ABL BusinessTech LLP',
+    name: 'ABL Tech — ABL Digital Technologies',
+    legalName: 'ABL Digital Technologies',
+    alternateName: ['ABL Tech', 'ABL BusinessTech LLP'],
     url: siteUrl,
     logo: `${siteUrl}/logo-abltech.png`,
     image: `${siteUrl}/logo-abltech.png`,
     description:
-      'ABL BusinessTech LLP is a premier technology consulting and software engineering agency specializing in custom AI/ML solutions, web applications, mobile app development, cloud infrastructure, and enterprise digital transformation.',
+      'ABL Tech (ABL Digital Technologies) is a premier technology consulting and software engineering agency in India specializing in custom AI/ML platforms, WFM consulting, web applications, mobile app development, and cloud infrastructure.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Hyderabad',
@@ -40,7 +41,7 @@ export function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     '@id': `${siteUrl}/#service`,
-    name: 'ABL BusinessTech LLP',
+    name: 'ABL Tech — ABL Digital Technologies',
     image: `${siteUrl}/logo-abltech.png`,
     url: siteUrl,
     telephone: '+91-7416743434',
@@ -73,7 +74,7 @@ export function JsonLd() {
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Technology & Software Development Services',
+      name: 'Software Engineering & AI Solutions',
       itemListElement: [
         {
           '@type': 'Offer',
@@ -89,6 +90,14 @@ export function JsonLd() {
             '@type': 'Service',
             name: 'AI & Machine Learning Solutions',
             description: 'Custom AI models, automation, and predictive analytics.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'WFM Consulting & Advisory',
+            description: 'Workforce management consulting, business tools, and market intelligence.',
           },
         },
         {
@@ -116,7 +125,8 @@ export function JsonLd() {
     '@type': 'WebSite',
     '@id': `${siteUrl}/#website`,
     url: siteUrl,
-    name: 'ABL BusinessTech LLP',
+    name: 'ABL Tech — ABL Digital Technologies',
+    alternateName: 'ABL Tech',
     publisher: {
       '@id': `${siteUrl}/#organization`,
     },

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Enterprise Applications | ABL Tech',
     description: 'Architected for Scale. Engineered for Your Enterprise. Custom ERP, CRM & Business Application Engineering.',
-    url: 'https://abltech.com/services/enterprise-applications',
+    url: 'https://abldigitech.com/services/enterprise-applications',
     type: 'website',
   },
 }
@@ -28,7 +28,7 @@ export default function EnterpriseApplicationsPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Custom ERPs, CRMs, HRMS systems, and process automation platforms architected for scale with 100% IP ownership.',
     serviceType: 'Enterprise Applications',

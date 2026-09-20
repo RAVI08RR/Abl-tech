@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Software Engineering Services | ABL Tech',
     description: 'Build Software That Scales, Not Technical Debt. Custom SaaS, Enterprise Applications, and API Microservices.',
-    url: 'https://abltech.com/services/software-engineering',
+    url: 'https://abldigitech.com/services/software-engineering',
     type: 'website',
   },
 }
@@ -28,7 +28,7 @@ export default function SoftwareEngineeringPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Build software that scales, not technical debt. Custom enterprise software, SaaS applications, microservices, and legacy modernization.',
     serviceType: 'Software Engineering Services',

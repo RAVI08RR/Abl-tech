@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Digital Experiences (Web & Mobile) | ABL Tech',
     description: 'Stop Losing Users to Clunky Interfaces. High-performance PWAs, iOS & Android mobile apps, and enterprise portals.',
-    url: 'https://abltech.com/services/digital-experiences-web-mobile',
+    url: 'https://abldigitech.com/services/digital-experiences-web-mobile',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function DigitalExperiencesPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Stop losing users to clunky interfaces. High-performance web apps, mobile apps for iOS and Android, and enterprise dashboard portals.',
     serviceType: 'Digital Experiences (Web & Mobile)',

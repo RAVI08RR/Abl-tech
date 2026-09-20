@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abltech.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abldigitech.com'
   const currentDate = new Date()
 
   const routes = [

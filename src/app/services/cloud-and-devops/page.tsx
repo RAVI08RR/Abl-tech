@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Cloud & DevOps Services | ABL Tech',
     description: 'Ship Code Faster. Never Go Down. Scalable Cloud Architecture, Kubernetes, CI/CD & FinOps.',
-    url: 'https://abltech.com/services/cloud-and-devops',
+    url: 'https://abldigitech.com/services/cloud-and-devops',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function CloudAndDevOpsPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Cloud migration, automated CI/CD pipelines, Kubernetes containerization, DevSecOps, and FinOps cost optimization.',
     serviceType: 'Cloud & DevOps Services',

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'UI/UX Design Services | ABL Tech',
     description: 'Interfaces That Wow. Experiences That Convert. Figma Design Systems, Mobile & SaaS UX Design.',
-    url: 'https://abltech.com/services/ui-ux-design',
+    url: 'https://abldigitech.com/services/ui-ux-design',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function UIUXDesignPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Empirical UX research, tokenized Figma design systems, mobile & web product UI design, and WCAG AA accessibility compliance.',
     serviceType: 'UI/UX Design Services',

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Industries We Transform | ABL Tech',
     description: 'Deep Domain Expertise. Engineered for Your Sector. FinTech, Healthcare, Retail, Manufacturing & Logistics.',
-    url: 'https://abltech.com/industries',
+    url: 'https://abldigitech.com/industries',
     type: 'website',
   },
 }
@@ -29,7 +29,7 @@ export default function IndustriesPage() {
     provider: {
       '@type': 'Organization',
       name: 'ABL Tech',
-      url: 'https://abltech.com',
+      url: 'https://abldigitech.com',
     },
     description: 'Domain-specific software engineering, compliance automation, and enterprise platform solutions across 20+ industries.',
     serviceType: 'Industry Software Solutions',

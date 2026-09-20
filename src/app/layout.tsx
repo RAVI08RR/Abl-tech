@@ -90,6 +90,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'NK0f72BR_kEeGWdQuPJdBsxs1Ao4hWBNDo13LaeZLWo',
+  },
   category: 'technology',
 }
 

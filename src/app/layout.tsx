@@ -91,7 +91,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'NK0f72BR_kEeGWdQuPJdBsxs1Ao4hWBNDo13LaeZLWo',
+    google: [
+      'nbyaPjOUdrhlW_jTUaTO_q2DbAPRVGRsHJYqHjCtVro',
+      'NK0f72BR_kEeGWdQuPJdBsxs1Ao4hWBNDo13LaeZLWo',
+    ],
   },
   category: 'technology',
 }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/MotionSection'
@@ -19,7 +19,7 @@ const defaultCaseStudies: CaseStudy[] = [
     _id: '1',
     title: 'AI-Powered E-Commerce Platform',
     slug: { current: 'ai-ecommerce-platform' },
-    client: 'RetailVision Enterprise (Dummy Project)',
+    client: 'RetailVision Enterprise',
     shortDescription: 'Built a scalable AI-driven commerce engine with personalization, real-time inventory, and multi-channel management.',
     featured: true,
     industry: { _id: 'i1', name: 'Retail & E-commerce', slug: { current: 'retail-ecommerce' } },
@@ -34,7 +34,7 @@ const defaultCaseStudies: CaseStudy[] = [
     _id: '2',
     title: 'Enterprise Digital Banking Suite',
     slug: { current: 'enterprise-digital-banking' },
-    client: 'FinEdge Capital (Dummy Project)',
+    client: 'FinEdge Capital',
     shortDescription: 'Modernized a legacy core banking system with real-time payments, fraud detection AI, and mobile-first UX.',
     featured: true,
     industry: { _id: 'i2', name: 'Financial Services', slug: { current: 'financial-services' } },
@@ -49,7 +49,7 @@ const defaultCaseStudies: CaseStudy[] = [
     _id: '3',
     title: 'Smart Healthcare Data Platform',
     slug: { current: 'smart-healthcare-platform' },
-    client: 'HealthBridge Systems (Dummy Project)',
+    client: 'HealthBridge Systems',
     shortDescription: 'Unified fragmented patient data across 12 hospitals with HIPAA-compliant cloud infrastructure and ML diagnostics.',
     featured: true,
     industry: { _id: 'i3', name: 'Healthcare', slug: { current: 'healthcare' } },
@@ -62,176 +62,150 @@ const defaultCaseStudies: CaseStudy[] = [
   },
 ] as (CaseStudy & { bannerImage?: string })[]
 
-const cardThemes = [
-  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#05A7D4' },
-  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#05A7D4' },
-  { bg: 'linear-gradient(145deg, #061525 0%, #0A1F35 100%)', accent: '#05A7D4', accentTo: '#05A7D4' },
-]
-
 export function CaseStudyGrid({ heading, description, caseStudies }: CaseStudyGridProps) {
   const displayStudies = caseStudies?.length ? caseStudies : defaultCaseStudies
   const displayHeading = heading || 'Real Problems. Measurable Outcomes.'
-  const displayDescription = description || 'We partner with ambitious businesses to solve complex technology challenges and deliver results that matter.'
+  const displayDescription = description || 'We partner with ambitious businesses to solve complex technology challenges and deliver transformational digital results.'
 
   const shouldReduce = useReducedMotion()
 
   return (
-    <section className="relative section-padding overflow-hidden bg-white" aria-label="Featured case studies">
-      {/* Dot grid */}
+    <section className="relative py-24 lg:py-32 bg-slate-950 text-white overflow-hidden" aria-label="Featured case studies">
+      {/* ── Background Aesthetics ── */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 opacity-15"
         aria-hidden="true"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
         }}
       />
+
       <div
-        className="pointer-events-none absolute -bottom-32 left-0 w-80 h-80 rounded-full blur-[100px]"
+        className="pointer-events-none absolute top-1/3 -left-40 w-96 h-96 rounded-full blur-[140px] opacity-20"
         aria-hidden="true"
-        style={{ background: 'radial-gradient(circle, rgba(5,167,212,0.06) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #05A7D4 0%, transparent 70%)' }}
+      />
+      <div
+        className="pointer-events-none absolute -bottom-40 right-0 w-96 h-96 rounded-full blur-[140px] opacity-20"
+        aria-hidden="true"
+        style={{ background: 'radial-gradient(circle, #ED396D 0%, transparent 70%)' }}
       />
 
       <Container className="relative z-10">
-        {/* Header */}
+        {/* ── Section Header ── */}
         <FadeUp className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <span className="h-px w-8 bg-[#05A7D4]" />
-              <span className="text-xs font-bold tracking-[0.18em] uppercase text-[#05A7D4]">
-                Our Work
-              </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-semibold text-[#05A7D4] tracking-widest uppercase mb-4 backdrop-blur-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#ED396D]" />
+              <span>Our Work</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-[#111111] text-balance">
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] text-white text-balance">
               {displayHeading}
             </h2>
-            <p className="mt-4 text-lg text-gray-500 leading-relaxed text-pretty">{displayDescription}</p>
+            <p className="mt-4 text-base sm:text-lg text-slate-300/90 leading-relaxed text-pretty font-normal">
+              {displayDescription}
+            </p>
           </div>
-          <Button href="/work" variant="outline" className="shrink-0 self-start lg:self-auto">
-            View All Work <ArrowRight className="w-4 h-4" aria-hidden="true" />
+
+          <Button
+            href="/work"
+            variant="outline"
+            className="shrink-0 self-start lg:self-auto border-white/15 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+          >
+            View All Work <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
           </Button>
         </FadeUp>
 
-        {/* Cards */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {displayStudies.slice(0, 3).map((study, index) => {
-            const theme = cardThemes[index % cardThemes.length]
+        {/* ── Case Study Cards ── */}
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {displayStudies.slice(0, 3).map((study) => {
             const bannerImage = (study as any).bannerImage as string | undefined
+
             return (
               <StaggerItem key={study._id}>
                 <motion.div
-                  className="h-full rounded-3xl overflow-hidden"
+                  className="group relative h-full rounded-2xl bg-slate-900/60 border border-white/10 hover:border-[#05A7D4]/40 overflow-hidden flex flex-col justify-between transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#05A7D4]/10"
                   whileHover={shouldReduce ? {} : {
                     y: -6,
-                    boxShadow: `0 30px 70px ${theme.accent}25`,
-                    transition: { type: 'spring', stiffness: 400, damping: 25 },
+                    transition: { type: 'spring', stiffness: 350, damping: 25 },
                   }}
                 >
                   <Link
                     href={`/work/${study.slug.current}`}
-                    className="group relative flex flex-col justify-between min-h-[460px] p-8 h-full transition-all duration-300"
-                    style={bannerImage
-                      ? {
-                          backgroundImage: `url('${bannerImage}')`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          backgroundRepeat: 'no-repeat',
-                        }
-                      : { background: theme.bg }
-                    }
+                    className="flex flex-col h-full justify-between p-7 relative z-10"
                     aria-label={`Case study: ${study.title}`}
                   >
-                    {/* Dark gradient overlay for banner images — ensures text is always readable */}
-                    {bannerImage && (
-                      <div
-                        className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-80"
-                        style={{ background: 'linear-gradient(160deg, rgba(6,21,37,0.78) 0%, rgba(6,21,37,0.60) 50%, rgba(6,21,37,0.75) 100%)' }}
-                        aria-hidden="true"
-                      />
-                    )}
-
-                    {/* Background radial accent (non-banner only) */}
-                    {!bannerImage && (
-                      <div
-                        className="absolute inset-0 opacity-[0.07] pointer-events-none transition-opacity duration-300 group-hover:opacity-[0.14]"
-                        style={{ background: `radial-gradient(ellipse at 30% 70%, ${theme.accent}, transparent 60%)` }}
-                        aria-hidden="true"
-                      />
-                    )}
-
-                    {/* Top border accent */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-[2px] rounded-t-3xl"
-                      style={{ background: `linear-gradient(90deg, ${theme.accent}, ${theme.accentTo})` }}
-                      aria-hidden="true"
-                    />
-
-                    {/* Subtle zoom layer for banner hover */}
-                    {bannerImage && (
-                      <div
-                        className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-                        style={{
-                          backgroundImage: `url('${bannerImage}')`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          zIndex: -1,
-                        }}
-                        aria-hidden="true"
-                      />
-                    )}
-
-                    {/* Top content */}
-                    <div className="relative z-10">
-                      <div className="flex items-start justify-between gap-4 mb-5">
-                        <div>
-                          {study.industry && (
-                            <span
-                              className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3"
-                              style={{ background: `${theme.accent}20`, color: theme.accentTo }}
-                            >
-                              {study.industry.name}
-                            </span>
-                          )}
-                          <h3 className="text-xl font-bold text-white leading-tight">{study.title}</h3>
-                          {study.client && (
-                            <p className="text-sm text-gray-400 mt-1">{study.client}</p>
-                          )}
-                        </div>
-                        <ExternalLink
-                          className="w-5 h-5 text-gray-600 group-hover:text-white opacity-0 group-hover:opacity-100 transition-all duration-200 shrink-0 mt-1"
+                    {/* Background Banner Image with Smooth Overlay */}
+                    {bannerImage ? (
+                      <div className="absolute inset-0 z-0 overflow-hidden">
+                        <div
+                          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                          style={{ backgroundImage: `url('${bannerImage}')` }}
+                          aria-hidden="true"
+                        />
+                        <div
+                          className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/60 transition-opacity duration-300 group-hover:opacity-90"
                           aria-hidden="true"
                         />
                       </div>
-                      <p className="text-sm text-gray-300 leading-relaxed">{study.shortDescription}</p>
+                    ) : (
+                      <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 to-slate-950" />
+                    )}
+
+                    {/* Top Content */}
+                    <div className="relative z-10">
+                      {/* Industry pill & Link Icon */}
+                      <div className="flex items-center justify-between gap-3 mb-6">
+                        {study.industry ? (
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 backdrop-blur-md text-white border border-white/15">
+                            {study.industry.name}
+                          </span>
+                        ) : (
+                          <span />
+                        )}
+                        <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-[#05A7D4] group-hover:border-[#05A7D4] transition-all duration-300">
+                          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl font-bold text-white leading-snug mb-2 group-hover:text-[#05A7D4] transition-colors duration-200">
+                        {study.title}
+                      </h3>
+
+                      {study.client && (
+                        <p className="text-xs font-medium text-slate-400 mb-3 tracking-wide">
+                          Client: {study.client}
+                        </p>
+                      )}
+
+                      <p className="text-sm text-slate-300/90 leading-relaxed font-normal line-clamp-3">
+                        {study.shortDescription}
+                      </p>
                     </div>
 
-                    {/* Bottom metrics */}
-                    <div className="relative z-10">
+                    {/* Bottom Metrics & Meta */}
+                    <div className="relative z-10 mt-8">
                       {study.metrics && study.metrics.length > 0 && (
-                        <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+                        <div className="grid grid-cols-2 gap-4 pt-5 border-t border-white/15">
                           {study.metrics.slice(0, 2).map((metric) => (
                             <div key={metric.metric}>
-                              <p
-                                className="text-2xl font-black"
-                                style={{ color: theme.accentTo }}
-                              >
+                              <p className="text-2xl font-black bg-gradient-to-r from-[#ED396D] to-[#05A7D4] bg-clip-text text-transparent">
                                 {metric.value}
                               </p>
-                              <p className="text-xs text-gray-400 mt-0.5 leading-snug">{metric.metric}</p>
+                              <p className="text-xs text-slate-400 font-medium mt-0.5 leading-snug">
+                                {metric.metric}
+                              </p>
                             </div>
                           ))}
                         </div>
                       )}
+
                       {study.service && (
-                        <div className="flex items-center gap-2 mt-5">
-                          <span
-                            className="w-1.5 h-1.5 rounded-full shrink-0"
-                            style={{ background: theme.accent }}
-                            aria-hidden="true"
-                          />
-                          <span className="text-xs text-gray-400">
-                            Service: <span className="text-gray-200 font-medium">{study.service.title}</span>
-                          </span>
+                        <div className="flex items-center gap-2 mt-4 text-xs text-slate-400">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#05A7D4]" />
+                          <span>{study.service.title}</span>
                         </div>
                       )}
                     </div>
@@ -245,4 +219,5 @@ export function CaseStudyGrid({ heading, description, caseStudies }: CaseStudyGr
     </section>
   )
 }
+
 

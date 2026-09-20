@@ -1,18 +1,25 @@
 'use client'
 
-import { useActionState, useEffect, useRef } from 'react'
-import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
+import { useActionState, useEffect, useRef, useState } from 'react'
+import {
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  Send,
+  User,
+  Mail,
+  Phone,
+  Building2,
+} from 'lucide-react'
+import { countries } from '@/lib/countries'
 import { submitContactForm, type ContactFormState } from './actions'
-import { Container } from '@/components/ui/Container'
 
 const initialState: ContactFormState = { status: 'idle' }
-
-const services = ['Software Development', 'AI & Machine Learning', 'Web Development', 'Mobile App Development', 'Cloud Solutions', 'UI/UX Design', 'Digital Transformation', 'E-commerce Development', 'Technology Consulting', 'Other']
-const budgets = ['Under ₹5 Lakhs', '₹5L – ₹20L', '₹20L – ₹50L', '₹50L – ₹1 Crore', 'Above ₹1 Crore', 'Let\'s discuss']
 
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, initialState)
   const formRef = useRef<HTMLFormElement>(null)
+  const [selectedCountry, setSelectedCountry] = useState('+91')
 
   useEffect(() => {
     if (state.status === 'success') {
@@ -22,155 +29,202 @@ export default function ContactForm() {
 
   return (
     <div>
-      {/* Success message */}
+      {/* Success Alert */}
       {state.status === 'success' && (
-        <div className="flex items-start gap-3 p-5 bg-green-50 border border-green-200 rounded-xl mb-6" role="alert" aria-live="polite">
-          <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" aria-hidden="true" />
+        <div className="flex items-start gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl mb-5 animate-in fade-in slide-in-from-top-2 duration-300" role="alert">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
           <div>
-            <p className="font-semibold text-green-800">Message Sent!</p>
-            <p className="text-sm text-green-700 mt-0.5">{state.message}</p>
+            <p className="font-bold text-emerald-900 text-sm">Message Sent Successfully!</p>
+            <p className="text-xs text-emerald-700 mt-0.5">{state.message}</p>
           </div>
         </div>
       )}
 
-      {/* Error message */}
+      {/* Error Alert */}
       {state.status === 'error' && !state.errors && (
-        <div className="flex items-start gap-3 p-5 bg-red-50 border border-red-200 rounded-xl mb-6" role="alert" aria-live="polite">
-          <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" aria-hidden="true" />
-          <p className="text-sm text-red-700">{state.message}</p>
+        <div className="flex items-start gap-3 p-4 bg-rose-50 border border-rose-200 rounded-2xl mb-5 animate-in fade-in slide-in-from-top-2 duration-300" role="alert">
+          <AlertCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+          <p className="text-xs text-rose-700 font-medium">{state.message}</p>
         </div>
       )}
 
-      <form ref={formRef} action={formAction} noValidate>
-        {/* Name row */}
-        <div className="grid grid-cols-2 gap-4 mb-5">
+      <form ref={formRef} action={formAction} noValidate className="space-y-4">
+        {/* Name Inputs */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="contact-firstName" className="form-label">
-              First Name <span className="text-[#E3164F]" aria-hidden="true">*</span>
+            <label htmlFor="contact-firstName" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+              First Name <span className="text-[#ED396D]">*</span>
             </label>
-            <input
-              id="contact-firstName"
-              name="firstName"
-              type="text"
-              autoComplete="given-name"
-              className={`form-input ${state.errors?.firstName ? 'error' : ''}`}
-              placeholder="John"
-              aria-required="true"
-              aria-describedby={state.errors?.firstName ? 'contact-firstName-error' : undefined}
-            />
+            <div className="relative">
+              <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                id="contact-firstName"
+                name="firstName"
+                type="text"
+                autoComplete="given-name"
+                className={`w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border ${
+                  state.errors?.firstName ? 'border-rose-500 bg-rose-50/30' : 'border-slate-200/90'
+                } rounded-xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#05A7D4] focus:ring-2 focus:ring-[#05A7D4]/20 outline-none transition-all duration-200`}
+                placeholder="Enter First Name"
+                aria-required="true"
+              />
+            </div>
             {state.errors?.firstName && (
-              <p id="contact-firstName-error" className="mt-1.5 text-xs text-red-600" role="alert">{state.errors.firstName}</p>
+              <p className="mt-1 text-xs text-rose-600 font-medium">{state.errors.firstName}</p>
             )}
           </div>
+
           <div>
-            <label htmlFor="contact-lastName" className="form-label">
-              Last Name <span className="text-[#E3164F]" aria-hidden="true">*</span>
+            <label htmlFor="contact-lastName" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+              Last Name <span className="text-[#ED396D]">*</span>
             </label>
-            <input
-              id="contact-lastName"
-              name="lastName"
-              type="text"
-              autoComplete="family-name"
-              className={`form-input ${state.errors?.lastName ? 'error' : ''}`}
-              placeholder="Doe"
-              aria-required="true"
-              aria-describedby={state.errors?.lastName ? 'contact-lastName-error' : undefined}
-            />
+            <div className="relative">
+              <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                id="contact-lastName"
+                name="lastName"
+                type="text"
+                autoComplete="family-name"
+                className={`w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border ${
+                  state.errors?.lastName ? 'border-rose-500 bg-rose-50/30' : 'border-slate-200/90'
+                } rounded-xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#05A7D4] focus:ring-2 focus:ring-[#05A7D4]/20 outline-none transition-all duration-200`}
+                placeholder="Enter Last Name"
+                aria-required="true"
+              />
+            </div>
             {state.errors?.lastName && (
-              <p id="contact-lastName-error" className="mt-1.5 text-xs text-red-600" role="alert">{state.errors.lastName}</p>
+              <p className="mt-1 text-xs text-rose-600 font-medium">{state.errors.lastName}</p>
             )}
           </div>
         </div>
 
-        {/* Email */}
-        <div className="mb-5">
-          <label htmlFor="contact-email" className="form-label">
-            Business Email <span className="text-[#E3164F]" aria-hidden="true">*</span>
+        {/* Email & Company Name */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="contact-email" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+              Business Email <span className="text-[#ED396D]">*</span>
+            </label>
+            <div className="relative">
+              <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                className={`w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border ${
+                  state.errors?.email ? 'border-rose-500 bg-rose-50/30' : 'border-slate-200/90'
+                } rounded-xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#05A7D4] focus:ring-2 focus:ring-[#05A7D4]/20 outline-none transition-all duration-200`}
+                placeholder="Enter Business Email"
+                aria-required="true"
+              />
+            </div>
+            {state.errors?.email && (
+              <p className="mt-1 text-xs text-rose-600 font-medium">{state.errors.email}</p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="contact-company" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+              Company / Organization Name
+            </label>
+            <div className="relative">
+              <Building2 className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                id="contact-company"
+                name="company"
+                type="text"
+                autoComplete="organization"
+                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border border-slate-200/90 rounded-xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#05A7D4] focus:ring-2 focus:ring-[#05A7D4]/20 outline-none transition-all duration-200"
+                placeholder="Enter Company Name"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Phone Number Full Width */}
+        <div>
+          <label htmlFor="contact-phone" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+            Phone Number
           </label>
-          <input
-            id="contact-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            className={`form-input ${state.errors?.email ? 'error' : ''}`}
-            placeholder="john@company.com"
-            aria-required="true"
-            aria-describedby={state.errors?.email ? 'contact-email-error' : undefined}
-          />
-          {state.errors?.email && (
-            <p id="contact-email-error" className="mt-1.5 text-xs text-red-600" role="alert">{state.errors.email}</p>
-          )}
-        </div>
+          <div className="flex gap-2">
+            <select
+              id="contact-countryCode"
+              name="countryCode"
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+              className="w-28 sm:w-32 px-2.5 py-2.5 bg-slate-50/70 border border-slate-200/90 rounded-xl text-xs font-bold text-slate-800 focus:bg-white focus:border-[#05A7D4] focus:ring-2 focus:ring-[#05A7D4]/20 outline-none transition-all duration-200 shrink-0 cursor-pointer"
+              aria-label="Select Country Code"
+            >
+              {countries.map((item) => (
+                <option key={`${item.iso}-${item.code}`} value={item.code}>
+                  {item.flag} {item.shortCode} {item.code}
+                </option>
+              ))}
+            </select>
 
-        {/* Phone + Company */}
-        <div className="grid grid-cols-2 gap-4 mb-5">
-          <div>
-            <label htmlFor="contact-phone" className="form-label">Phone Number</label>
-            <input id="contact-phone" name="phone" type="tel" autoComplete="tel" className="form-input" placeholder="+91 98765 43210" />
+            <div className="relative flex-1">
+              <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                id="contact-phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border border-slate-200/90 rounded-xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#05A7D4] focus:ring-2 focus:ring-[#05A7D4]/20 outline-none transition-all duration-200"
+                placeholder="Enter Phone Number"
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor="contact-company" className="form-label">Company</label>
-            <input id="contact-company" name="company" type="text" autoComplete="organization" className="form-input" placeholder="Your Company" />
-          </div>
         </div>
 
-        {/* Service */}
-        <div className="mb-5">
-          <label htmlFor="contact-service" className="form-label">Service You&apos;re Interested In</label>
-          <select id="contact-service" name="service" className="form-input">
-            <option value="">Select a service</option>
-            {services.map((s) => <option key={s} value={s}>{s}</option>)}
-          </select>
-        </div>
-
-        {/* Budget */}
-        <div className="mb-5">
-          <label htmlFor="contact-budget" className="form-label">Project Budget</label>
-          <select id="contact-budget" name="budget" className="form-input">
-            <option value="">Select a budget range</option>
-            {budgets.map((b) => <option key={b} value={b}>{b}</option>)}
-          </select>
-        </div>
-
-        {/* Message */}
-        <div className="mb-7">
-          <label htmlFor="contact-message" className="form-label">
-            Tell Us About Your Project <span className="text-[#E3164F]" aria-hidden="true">*</span>
+        {/* Project Message */}
+        <div>
+          <label htmlFor="contact-message" className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+            Tell Us About Your Project <span className="text-[#ED396D]">*</span>
           </label>
           <textarea
             id="contact-message"
             name="message"
-            rows={5}
-            className={`form-input resize-none ${state.errors?.message ? 'error' : ''}`}
-            placeholder="Describe your project, goals, timeline, and any specific requirements..."
+            rows={4}
+            className={`w-full p-3.5 bg-slate-50/70 border ${
+              state.errors?.message ? 'border-rose-500 bg-rose-50/30' : 'border-slate-200/90'
+            } rounded-xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#05A7D4] focus:ring-2 focus:ring-[#05A7D4]/20 outline-none transition-all duration-200 resize-none`}
+            placeholder="Describe your project goals, scope, or requirements..."
             aria-required="true"
-            aria-describedby={state.errors?.message ? 'contact-message-error' : undefined}
           />
           {state.errors?.message && (
-            <p id="contact-message-error" className="mt-1.5 text-xs text-red-600" role="alert">{state.errors.message}</p>
+            <p className="mt-1 text-xs text-rose-600 font-medium">{state.errors.message}</p>
           )}
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={isPending}
-          className="w-full py-4 px-6 bg-[#E3164F] hover:bg-[#B00E3A] disabled:bg-gray-400 text-white font-semibold rounded-full transition-all duration-200 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E3164F] focus-visible:ring-offset-2"
+          className="w-full py-3.5 px-6 bg-gradient-to-r from-[#ED396D] via-[#05A7D4] to-[#037C9E] hover:from-[#d82a5e] hover:to-[#0390b5] disabled:opacity-60 text-white text-sm font-extrabold rounded-xl transition-all duration-300 shadow-lg shadow-[#05A7D4]/15 hover:shadow-xl hover:shadow-[#05A7D4]/25 flex items-center justify-center gap-2 cursor-pointer mt-3 group"
           aria-busy={isPending}
         >
           {isPending ? (
             <>
-              <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
-              Sending...
+              <Loader2 className="w-4 h-4 animate-spin" />
+              <span>Sending Request...</span>
             </>
           ) : (
-            'Send Message'
+            <>
+              <span>Send Message</span>
+              <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </>
           )}
         </button>
 
-        <p className="text-xs text-gray-400 text-center mt-4">
-          By submitting, you agree to our privacy policy. We&apos;ll never share your data.
+        <p className="text-[11px] text-slate-400 text-center font-normal pt-1">
+          🔒 Confidential. We execute NDAs prior to sensitive project discussions.
         </p>
       </form>
     </div>
   )
 }
+
+
+
+
+

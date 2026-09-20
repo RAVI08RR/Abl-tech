@@ -8,6 +8,8 @@ import {
   ShieldCheck,
   TrendingUp,
   Handshake,
+  Sparkles,
+  CheckCircle2,
 } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { FadeUp, StaggerContainer, StaggerItem } from '@/components/ui/MotionSection'
@@ -19,48 +21,36 @@ interface WhyUsProps {
   values?: CompanyValue[]
 }
 
-const cardThemes = [
+const valueCards = [
   {
     icon: Lightbulb,
-    gradFrom: '#05A7D4',
-    gradTo: '#037C9E',
-    glowColor: 'rgba(5, 167, 212, 0.08)',
-    borderColor: 'rgba(5, 167, 212, 0.1)',
+    color: '#ED396D',
+    bg: 'rgba(237, 57, 109, 0.08)',
   },
   {
     icon: Users,
-    gradFrom: '#05A7D4',
-    gradTo: '#037C9E',
-    glowColor: 'rgba(5, 167, 212, 0.08)',
-    borderColor: 'rgba(5, 167, 212, 0.1)',
+    color: '#05A7D4',
+    bg: 'rgba(5, 167, 212, 0.08)',
   },
   {
     icon: CloudCog,
-    gradFrom: '#05A7D4',
-    gradTo: '#037C9E',
-    glowColor: 'rgba(5, 167, 212, 0.08)',
-    borderColor: 'rgba(5, 167, 212, 0.1)',
+    color: '#037C9E',
+    bg: 'rgba(3, 124, 158, 0.08)',
   },
   {
     icon: ShieldCheck,
-    gradFrom: '#05A7D4',
-    gradTo: '#037C9E',
-    glowColor: 'rgba(5, 167, 212, 0.08)',
-    borderColor: 'rgba(5, 167, 212, 0.1)',
+    color: '#ED396D',
+    bg: 'rgba(237, 57, 109, 0.08)',
   },
   {
     icon: TrendingUp,
-    gradFrom: '#05A7D4',
-    gradTo: '#037C9E',
-    glowColor: 'rgba(5, 167, 212, 0.08)',
-    borderColor: 'rgba(5, 167, 212, 0.1)',
+    color: '#05A7D4',
+    bg: 'rgba(5, 167, 212, 0.08)',
   },
   {
     icon: Handshake,
-    gradFrom: '#05A7D4',
-    gradTo: '#037C9E',
-    glowColor: 'rgba(5, 167, 212, 0.08)',
-    borderColor: 'rgba(5, 167, 212, 0.1)',
+    color: '#037C9E',
+    bg: 'rgba(3, 124, 158, 0.08)',
   },
 ]
 
@@ -69,15 +59,15 @@ const defaultValues: CompanyValue[] = [
     _id: '1',
     title: 'Tailored Technology Solutions',
     description:
-      'Custom-built solutions designed around your unique business goals — not off-the-shelf compromises.',
+      'Custom-built solutions engineered around your unique business goals — not off-the-shelf compromises.',
     icon: '💡',
     order: 1,
   },
   {
     _id: '2',
-    title: 'Expert Development Team',
+    title: 'Expert Engineering Team',
     description:
-      'Senior engineers averaging 8+ years of experience. You get the people you meet — every time.',
+      'Senior engineers averaging 8+ years of experience across web, cloud, and AI architectures.',
     icon: '👨‍💻',
     order: 2,
   },
@@ -85,31 +75,31 @@ const defaultValues: CompanyValue[] = [
     _id: '3',
     title: 'Cloud & Digital Innovation',
     description:
-      'Future-ready cloud solutions on AWS, Azure, and GCP that improve flexibility and performance.',
+      'Future-ready cloud solutions on AWS, Azure, and GCP optimizing performance and scalability.',
     icon: '☁️',
     order: 3,
   },
   {
     _id: '4',
-    title: 'Secure & Reliable Solutions',
+    title: 'Security-First Architecture',
     description:
-      'Technology engineered with security-first architecture, built for performance and long-term stability.',
+      'Built with enterprise-grade security standards ensuring operational stability and compliance.',
     icon: '🛡️',
     order: 4,
   },
   {
     _id: '5',
-    title: 'Scalable for Growth',
+    title: 'Designed for 10x Scale',
     description:
-      'We design for 10× growth from day one — flexible digital solutions that scale alongside your business.',
+      'Architectures built to accommodate high-volume growth and continuous seamless upgrades.',
     icon: '📈',
     order: 5,
   },
   {
     _id: '6',
-    title: 'End-to-End Partnership',
+    title: 'Full Lifecycle Partnership',
     description:
-      'From strategy and development to deployment and ongoing support — we are your full-cycle technology partner.',
+      'From product strategy and design to deployment, maintenance, and long-term optimization.',
     icon: '🤝',
     order: 6,
   },
@@ -119,210 +109,140 @@ export function WhyUs({ heading, description, values }: WhyUsProps) {
   const displayValues = values?.length ? values : defaultValues
   const displayDescription =
     description ||
-    'A trusted technology partner helping businesses build, scale, transform, and succeed in the digital world.'
+    'A trusted technology partner helping ambitious businesses build, scale, and transform in the digital world.'
 
   const shouldReduce = useReducedMotion()
 
   return (
     <section
-      className="relative overflow-hidden bg-white py-24 lg:py-32"
+      className="relative py-24 lg:py-32 bg-slate-50/50 overflow-hidden"
       aria-label="Why choose us"
     >
-      {/* ── Background decoration ── */}
-
-      {/* Subtle Dot grid */}
+      {/* ── Background Aesthetics ── */}
+      {/* Dot matrix pattern */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 opacity-40"
         aria-hidden="true"
         style={{
           backgroundImage:
-            'radial-gradient(circle, rgba(0,0,0,0.02) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
+            'radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
         }}
       />
 
-      {/* Subtle light brand-colored glows */}
+      {/* Ambient gradient glows */}
       <div
-        className="pointer-events-none absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full blur-[120px] opacity-40"
+        className="pointer-events-none absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full blur-[140px] opacity-25"
         aria-hidden="true"
-        style={{ background: 'radial-gradient(circle, rgba(227,22,79,0.08) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #ED396D 0%, transparent 70%)' }}
       />
       <div
-        className="pointer-events-none absolute -bottom-40 -right-40 w-[480px] h-[480px] rounded-full blur-[120px] opacity-40"
+        className="pointer-events-none absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full blur-[140px] opacity-25"
         aria-hidden="true"
-        style={{ background: 'radial-gradient(circle, rgba(0,139,203,0.08) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, #05A7D4 0%, transparent 70%)' }}
       />
 
-      {/* Horizontal accent line */}
-      <div
-        className="pointer-events-none absolute top-0 left-0 right-0 h-px"
-        aria-hidden="true"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(227,22,79,0.2), rgba(0,139,203,0.2), transparent)' }}
-      />
+      <Container className="relative z-10">
+        {/* ── Section Header ── */}
+        <FadeUp className="text-center mb-16 sm:mb-20 max-w-3xl mx-auto">
+          {/* Eyebrow badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-slate-200/80 text-xs font-semibold text-[#ED396D] tracking-widest uppercase mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#05A7D4]" />
+            <span>Why Choose Us</span>
+          </div>
 
-      <Container>
-        <div className="relative z-10">
-
-          {/* ── Section Header ── */}
-          <FadeUp className="text-center mb-20 max-w-3xl mx-auto">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-5">
-              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #ED396D)' }} />
-              <span
-                className="text-xs font-bold tracking-[0.18em] uppercase"
-                style={{
-                  background: 'linear-gradient(90deg, #ED396D, #05A7D4)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                Why Choose Us
-              </span>
-              <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, #05A7D4, transparent)' }} />
-            </div>
-
-            {/* Main Heading */}
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-[#111111] mb-6">
-              Why Businesses Choose{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, #ED396D 0%, #05A7D4 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                ABL BusinessTech
-              </span>
-            </h2>
-
-            {/* Divider */}
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div
-                className="h-px flex-1 max-w-[80px]"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(227,22,79,0.2))' }}
-              />
-              <div
-                className="w-2.5 h-2.5 rounded-full"
-                style={{ background: 'linear-gradient(135deg, #E3164F, #008BCB)' }}
-              />
-              <div
-                className="h-px flex-1 max-w-[80px]"
-                style={{ background: 'linear-gradient(90deg, rgba(0,139,203,0.2), transparent)' }}
-              />
-            </div>
-
-            <p className="text-lg text-gray-500 leading-relaxed text-pretty font-medium">
-              {displayDescription}
-            </p>
-          </FadeUp>
-
-          {/* ── Feature Cards Grid ── */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayValues.slice(0, 6).map((value, index) => {
-              const theme = cardThemes[index % cardThemes.length]
-              const IconComponent = theme.icon
-
-              return (
-                <StaggerItem key={value._id}>
-                  <motion.div
-                    className="group relative rounded-2xl p-8 cursor-default overflow-hidden h-full"
-                    style={{
-                      background: '#FFFFFF',
-                      border: '1px solid rgba(0, 0, 0, 0.06)',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.02)',
-                    }}
-                    whileHover={shouldReduce ? {} : {
-                      y: -6,
-                      borderColor: `${theme.gradFrom}40`,
-                      boxShadow: `0 20px 40px ${theme.glowColor}, 0 4px 12px rgba(0,0,0,0.03)`,
-                      transition: { type: 'spring', stiffness: 400, damping: 25 },
-                    }}
-                    aria-label={value.title}
-                  >
-                    {/* Top gradient bar */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: `linear-gradient(90deg, ${theme.gradFrom}, ${theme.gradTo})` }}
-                      aria-hidden="true"
-                    />
-
-                    {/* Corner number watermark */}
-                    <span
-                      className="absolute top-4 right-6 text-6xl font-black leading-none select-none pointer-events-none"
-                      style={{ color: 'rgba(0,0,0,0.03)' }}
-                      aria-hidden="true"
-                    >
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-
-                    {/* Icon container */}
-                    <div className="relative z-10 mb-6">
-                      <div
-                        className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300"
-                        style={{
-                          background: `linear-gradient(135deg, ${theme.gradFrom}10, ${theme.gradTo}18)`,
-                          border: `1px solid ${theme.gradFrom}20`,
-                        }}
-                      >
-                        <IconComponent
-                          className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
-                          style={{ color: theme.gradFrom }}
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Text content */}
-                    <div className="relative z-10">
-                      <h3 className="text-lg font-bold text-[#111111] mb-3 leading-snug transition-colors duration-200 group-hover:text-[#05A7D4]">
-                        {value.title}
-                      </h3>
-                      <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-600 transition-colors duration-200">
-                        {value.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </StaggerItem>
-              )
-            })}
-          </StaggerContainer>
-
-          {/* ── Bottom trust stats bar (light themed) ── */}
-          <FadeUp
-            className="mt-16 rounded-2xl px-8 py-6 flex flex-wrap items-center justify-center gap-8 text-center"
-            style={{
-              background: '#F9FAFB',
-              border: '1px solid rgba(0, 0, 0, 0.05)',
-            }}
-          >
-            {[
-              { stat: '12+', label: 'Years of Excellence' },
-              { stat: '200+', label: 'Projects Delivered' },
-              { stat: '40+', label: 'Industries Served' },
-              { stat: '95%', label: 'Client Retention Rate' },
-            ].map(({ stat, label }) => (
-              <div key={label} className="flex flex-col items-center gap-1 min-w-[110px]">
-                <span
-                  className="text-3xl font-black tracking-tight"
-                  style={{
-                    background: 'linear-gradient(135deg, #E3164F, #008BCB)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  {stat}
+          {/* Main Heading */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] text-slate-900 mb-5 text-balance">
+            {heading ? (
+              heading
+            ) : (
+              <>
+                Why Ambitious Brands Partner With{' '}
+                <span className="bg-gradient-to-r from-[#ED396D] via-[#05A7D4] to-[#037C9E] bg-clip-text text-transparent">
+                  ABL BusinessTech
                 </span>
-                <span className="text-xs text-gray-500 font-semibold">{label}</span>
-              </div>
-            ))}
-          </FadeUp>
+              </>
+            )}
+          </h2>
 
-        </div>
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal text-pretty">
+            {displayDescription}
+          </p>
+        </FadeUp>
+
+        {/* ── Feature Cards Grid ── */}
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayValues.slice(0, 6).map((value, index) => {
+            const cardCfg = valueCards[index % valueCards.length]
+            const IconComponent = cardCfg.icon
+
+            return (
+              <StaggerItem key={value._id}>
+                <motion.div
+                  className="group relative h-full rounded-2xl bg-white border border-slate-200/80 p-7 hover:border-[#05A7D4]/30 hover:shadow-xl hover:shadow-[#05A7D4]/5 transition-all duration-300 overflow-hidden flex flex-col justify-between"
+                  whileHover={shouldReduce ? {} : {
+                    y: -6,
+                    transition: { type: 'spring', stiffness: 350, damping: 25 },
+                  }}
+                  aria-label={value.title}
+                >
+                  {/* Subtle top hover gradient line */}
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ED396D] to-[#05A7D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Watermark Number */}
+                  <span
+                    className="absolute top-4 right-5 text-5xl font-extrabold leading-none select-none pointer-events-none text-slate-100 group-hover:text-slate-200/60 transition-colors duration-300"
+                    aria-hidden="true"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <div>
+                    {/* Icon Container */}
+                    <div
+                      className="w-13 h-13 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-105"
+                      style={{ background: cardCfg.bg }}
+                    >
+                      <IconComponent
+                        className="w-6 h-6 transition-transform duration-300"
+                        style={{ color: cardCfg.color }}
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="text-lg font-bold text-slate-900 mb-2.5 leading-snug group-hover:text-[#05A7D4] transition-colors duration-200">
+                      {value.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 leading-relaxed font-normal">
+                      {value.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            )
+          })}
+        </StaggerContainer>
+
+        {/* ── Minimalist Bottom Trust Banner ── */}
+        <FadeUp className="mt-14 rounded-2xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#ED396D]/10 flex items-center justify-center shrink-0">
+              <CheckCircle2 className="w-5 h-5 text-[#ED396D]" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-slate-900">Proven Technical Excellence & Guarantee</p>
+              <p className="text-xs text-slate-500">Delivering enterprise software standards with transparent governance.</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-6 text-xs font-semibold text-slate-600 shrink-0">
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#05A7D4]" /> 100% On-Time Delivery</span>
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#ED396D]" /> Dedicated Agile Team</span>
+          </div>
+        </FadeUp>
       </Container>
     </section>
   )
-
 }
+

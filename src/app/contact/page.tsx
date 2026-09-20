@@ -6,8 +6,17 @@ import { getContactPage, getSiteSettings } from '@/sanity/lib/queries'
 import ContactForm from './ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Get in touch with ABL BusinessTech LLP. Tell us about your project and we\'ll respond within 1 business day.',
+  title: 'Contact Us | Custom Software & AI Engineering Consultation',
+  description:
+    'Get in touch with ABL BusinessTech LLP. Speak directly with senior technical leaders about your custom software, AI, mobile app, or cloud project within 1 business day.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact ABL BusinessTech LLP — Free Technical Discovery',
+    description:
+      'Discuss your project goals with senior engineering leaders. Free 45-minute technical discovery session.',
+  },
 }
 
 const defaultContactInfo = [
